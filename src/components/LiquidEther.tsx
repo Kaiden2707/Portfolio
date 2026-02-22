@@ -1181,7 +1181,7 @@ export default function LiquidEther({
       loop() {
         if (!this.running) return;
         this.render();
-        rafRef.current = requestAnimationFrame(this._loop);
+        rafRef.current = requestAnimationFrame(this._loop); // rAF for smooth animation (no setInterval)
       }
       start() {
         if (this.running) return;

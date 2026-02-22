@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Bebas_Neue, Roboto, JetBrains_Mono, Saira_Stencil_One } from "next/font/google";
-import { GlobalLiquidBackground } from "@/components/GlobalLiquidBackground";
+import { GlobalLiquidBackgroundLoader } from "@/components/GlobalLiquidBackgroundLoader";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -48,7 +48,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${bebasNeue.variable} ${roboto.variable} ${jetbrainsMono.variable} ${sairaStencil.variable} min-h-screen bg-background text-foreground antialiased`}
       >
-        <GlobalLiquidBackground />
+        <GlobalLiquidBackgroundLoader />
         <div className="relative z-10">{children}</div>
       </body>
     </html>

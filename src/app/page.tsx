@@ -2,16 +2,8 @@ import { Section } from "@/components/Section";
 import { SiteShell } from "@/components/SiteShell";
 import { profile } from "@/content/profile";
 import { ContactPanel } from "@/components/contact/ContactPanel";
-import FlowingMenu from "@/components/FlowingMenu";
 import { TileSpotlight } from "@/components/TileSpotlight";
 import Grainient from "@/components/Grainient";
-
-const flowingMenuItems = [
-  { link: "#about", text: "About", image: "https://picsum.photos/600/400?random=1" },
-  { link: "#skills", text: "Skills", image: "https://picsum.photos/600/400?random=2" },
-  { link: "#projects", text: "Planned projects", image: "https://picsum.photos/600/400?random=3" },
-  { link: "#contact", text: "Contact", image: "https://picsum.photos/600/400?random=4" },
-];
 
 export default function Home() {
   const [firstName, ...rest] = profile.name.split(" ");
@@ -77,20 +69,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="relative h-[420px] w-full">
-        <FlowingMenu
-          items={flowingMenuItems}
-          speed={15}
-          textColor="#ffffff"
-          bgColor="transparent"
-          marqueeBgColor="#31138F"
-          marqueeTextColor="#ffffff"
-          borderColor="rgba(255,255,255,0.15)"
-          className="font-horizontal"
-        />
-      </div>
-
-      {/* Spacer so About/Skills do not touch the first page — must scroll to see */}
+      {/* Spacer so About section does not touch hero — scroll or arrow to see */}
       <div className="min-h-[4rem] sm:min-h-[5rem]" aria-hidden />
 
       <Section id="about" eyebrow="Intro" title="About">
