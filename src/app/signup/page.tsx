@@ -28,8 +28,7 @@ export default function SignUpPage() {
       setError(err.message ?? "Sign up failed");
       return;
     }
-    if (data?.url) router.push(data.url);
-    else router.push("/");
+    router.push("/");
   }
 
   return (
