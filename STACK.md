@@ -59,7 +59,17 @@ drizzle.config.ts                     # schema path, out dir, dialect postgresql
 | `DATABASE_URL` | Neon Postgres connection string (pooler, `?sslmode=require`) |
 | `BETTER_AUTH_SECRET` | Secret for auth (32+ chars) |
 | `BETTER_AUTH_URL` | App base URL (e.g. `http://localhost:3000`) |
-| `NEXT_PUBLIC_APP_URL` | Optional; public URL for auth redirects |
+| `NEXT_PUBLIC_APP_URL` | Optional; client uses `window.location.origin` in browser if unset |
+
+### Production (Vercel)
+
+`.env.local` is for local development only and is not deployed. In Vercel, set:
+
+- **BETTER_AUTH_URL** = `https://kaidensportfolio.vercel.app` (your production URL)
+- **BETTER_AUTH_SECRET** = same value as in `.env.local`
+- **DATABASE_URL** = your Neon connection string (same as local)
+
+The auth client uses the current origin in the browser, so sign-up/sign-in requests go to your live domain after redeploy.
 
 ---
 
