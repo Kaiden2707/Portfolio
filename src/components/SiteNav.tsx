@@ -105,6 +105,19 @@ export function SiteNav() {
       <NavLink href="#contact" active={active === "contact"}>
         Contact
       </NavLink>
+      <span className="mx-2 h-4 w-px bg-border" aria-hidden />
+      <Link
+        href="/login"
+        className="rounded-full px-3 py-1 text-sm text-muted transition hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60"
+      >
+        Sign in
+      </Link>
+      <Link
+        href="/signup"
+        className="rounded-full bg-accent/20 px-3 py-1 text-sm font-medium text-accent transition hover:bg-accent/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60"
+      >
+        Sign up
+      </Link>
     </nav>
   );
 }

@@ -128,3 +128,7 @@ body {
 .font-hero-code {
   font-family: var(--font-hero-code), var(--font-geist-sans), ui-monospace, monospace;
 }
+
+.font-ethnocentric {
+  font-family: var(--font-ethnocentric), var(--font-geist-sans), sans-serif;
+}

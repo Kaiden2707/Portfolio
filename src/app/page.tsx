@@ -1,16 +1,47 @@
+import React from "react";
 import { Section } from "@/components/Section";
 import { SiteShell } from "@/components/SiteShell";
 import { profile } from "@/content/profile";
 import { ContactPanel } from "@/components/contact/ContactPanel";
 import { TileSpotlight } from "@/components/TileSpotlight";
 import Grainient from "@/components/Grainient";
+import { GlobalLiquidBackgroundLoader } from "@/components/GlobalLiquidBackgroundLoader";
+import { MountAfterLayout } from "@/components/MountAfterLayout";
+
+function highlightQuoted(text: string, paragraphIndex: number): React.ReactNode {
+  const parts: React.ReactNode[] = [];
+  let lastIndex = 0;
+  const re = /"([^"]+)"/g;
+  let match;
+  while ((match = re.exec(text)) !== null) {
+    if (match.index > lastIndex) {
+      parts.push(text.slice(lastIndex, match.index));
+    }
+    parts.push(
+      <span
+        key={`${paragraphIndex}-${match.index}`}
+        className="font-bold text-accent [text-shadow:0_0_8px_rgba(var(--accent-rgb),0.7),0_0_16px_rgba(var(--accent-rgb),0.4)]"
+      >
+        {match[1]}
+      </span>
+    );
+    lastIndex = re.lastIndex;
+  }
+  if (lastIndex < text.length) {
+    parts.push(text.slice(lastIndex));
+  }
+  return <>{parts}</>;
+}
 
 export default function Home() {
   const [firstName, ...rest] = profile.name.split(" ");
   const lastName = rest.join(" ");
 
   return (
-    <SiteShell name={profile.name}>
+    <MountAfterLayout>
+      <GlobalLiquidBackgroundLoader />
+      <div className="relative z-10">
+        <SiteShell name={profile.name}>
       {/* First page: hero with Grainient background — scroll or arrow to see more */}
       <div className="relative h-[85vh] w-full overflow-hidden sm:h-[90vh]">
         {/* Grainient background — hero only */}
@@ -44,11 +75,11 @@ export default function Home() {
         {/* Name + title: JetBrains Mono (code-style) for name and tagline */}
         <div className="absolute inset-0 z-10 flex items-center justify-center">
           <div className="text-center space-y-1 sm:space-y-2">
-            <h1 className="font-hero-code font-light text-3xl leading-tight tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">
+            <h1 className="font-ethnocentric font-light text-3xl leading-tight tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">
               <span className="block">{firstName}</span>
               {lastName ? <span className="block">{lastName}</span> : null}
             </h1>
-            <p className="font-hero-code font-extralight text-sm tracking-normal text-white sm:text-base">
+            <p className="font-ethnocentric font-extralight text-sm tracking-normal text-white sm:text-base">
               {profile.tagline}
             </p>
           </div>
@@ -76,8 +107,8 @@ export default function Home() {
         <div className="grid gap-6 md:grid-cols-12">
           <div className="md:col-span-8">
             <div className="space-y-4 text-sm leading-7 text-foreground/90 sm:text-base">
-              {profile.about.map((p) => (
-                <p key={p}>{p}</p>
+              {profile.about.map((p, i) => (
+                <p key={i}>{highlightQuoted(p, i)}</p>
               ))}
             </div>
           </div>
@@ -107,6 +138,18 @@ export default function Home() {
                 <li className="flex items-center justify-between">
                   <span>CySA+</span>
                   <span className="font-mono text-xs text-foreground/80">78</span>
+                </li>
+                <li className="flex items-center justify-between">
+                  <span>Linux Administration</span>
+                  <span className="font-mono text-xs text-foreground/80">76</span>
+                </li>
+                <li className="flex items-center justify-between">
+                  <span>SecurityX (formerly CASP+)</span>
+                  <span className="font-mono text-xs text-foreground/80">84</span>
+                </li>
+                <li className="flex items-center justify-between">
+                  <span>Wireless Networks and Security</span>
+                  <span className="font-mono text-xs text-foreground/80">72</span>
                 </li>
               </ul>
             </TileSpotlight>
@@ -241,6 +284,8 @@ export default function Home() {
       <Section id="contact" eyebrow="Connect" title="Contact">
         <ContactPanel />
       </Section>
-    </SiteShell>
+        </SiteShell>
+      </div>
+    </MountAfterLayout>
   );
 }

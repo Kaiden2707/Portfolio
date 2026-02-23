@@ -2,8 +2,11 @@ export const profile = {
   name: "Kaiden McIntosh",
   tagline: "Frontend web developer focused on clean, fast interfaces.",
   about: [
-    "I’m Kaiden McIntosh — a frontend web developer who likes minimalist, dark UIs with a strong focus on polish.",
-    "Right now I’m focused on getting comfortable with modern frameworks and building small, sharp projects that feel like real products.",
+    "I'm a 20-year-old frontend developer focused on building \"fast\", \"modern\", and \"visually sharp\" web experiences.",
+    "I started coding a few months ago and quickly realized I genuinely enjoy figuring things out and building \"real\" projects. I experiment a lot with AI tools like \"Cursor\" to speed up my workflow and push ideas into production faster. Instead of just following tutorials, I prefer to build, test, break things, fix them, and learn through \"doing\".",
+    "Alongside development, I've studied \"cybersecurity\", which has shaped how I think about systems and structure. It's made me more aware of how applications work behind the scenes, not just how they look on the surface. I try to build with both performance and responsibility in mind.",
+    "Right now, I work mainly with \"Next.js\" and \"React\", deploy projects using \"Vercel\", and manage code through \"GitHub\". I care about clean design, smooth performance, and creating interfaces that feel simple and intentional.",
+    "I'm still early in my journey, but I'm learning fast and building consistently.",
   ],
   projectsPlanned: [
     {

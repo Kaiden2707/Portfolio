@@ -1,7 +1,13 @@
 import type { Metadata } from "next";
+import localFont from "next/font/local";
 import { Geist, Bebas_Neue, Roboto, JetBrains_Mono, Saira_Stencil_One } from "next/font/google";
-import { GlobalLiquidBackgroundLoader } from "@/components/GlobalLiquidBackgroundLoader";
 import "./globals.css";
+
+const ethnocentric = localFont({
+  src: "../../public/fonts/Ethnocentric.otf",
+  variable: "--font-ethnocentric",
+  display: "swap",
+});
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -46,10 +52,9 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full">
       <body
-        className={`${geistSans.variable} ${bebasNeue.variable} ${roboto.variable} ${jetbrainsMono.variable} ${sairaStencil.variable} min-h-screen bg-background text-foreground antialiased`}
+        className={`${geistSans.variable} ${bebasNeue.variable} ${roboto.variable} ${jetbrainsMono.variable} ${sairaStencil.variable} ${ethnocentric.variable} min-h-screen bg-background text-foreground antialiased`}
       >
-        <GlobalLiquidBackgroundLoader />
-        <div className="relative z-10">{children}</div>
+        {children}
       </body>
     </html>
   );
