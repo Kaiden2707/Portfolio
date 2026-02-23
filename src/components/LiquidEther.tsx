@@ -130,7 +130,7 @@ export default function LiquidEther({
       delta = 0;
       container: HTMLElement | null = null;
       renderer: THREE.WebGLRenderer | null = null;
-      clock: THREE.Clock | null = null;
+      clock: { getDelta: () => number; start: () => void } | null = null;
       init(container: HTMLElement) {
         this.container = container;
         this.pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
@@ -147,7 +147,18 @@ export default function LiquidEther({
         el.style.width = "100%";
         el.style.height = "100%";
         el.style.display = "block";
-        this.clock = new THREE.Clock();
+        let lastTime = 0;
+        this.clock = {
+          start() {
+            lastTime = performance.now() / 1000;
+          },
+          getDelta() {
+            const now = performance.now() / 1000;
+            const delta = now - lastTime;
+            lastTime = now;
+            return delta;
+          },
+        };
         this.clock.start();
       }
       resize() {
