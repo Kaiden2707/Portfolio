@@ -7,6 +7,9 @@ export const auth = betterAuth({
     provider: "pg",
     schema: { user, session, account, verification },
   }),
+  emailAndPassword: {
+    enabled: true,
+  },
   experimental: { joins: true },
   secret: process.env.BETTER_AUTH_SECRET,
   baseURL: process.env.BETTER_AUTH_URL,

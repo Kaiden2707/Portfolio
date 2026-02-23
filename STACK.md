@@ -82,7 +82,7 @@ Set up authentication and database for my Next.js App Router project with this s
 
 - **Database**: Neon (serverless Postgres). I have a Neon project and will provide DATABASE_URL in .env.local.
 - **ORM**: Drizzle ORM, type-safe, with the Neon serverless driver (@neondatabase/serverless).
-- **Auth**: Better Auth with the Drizzle adapter (provider: "pg"). Use the Better Auth CLI to generate the Drizzle schema (user, session, account, verification with relations), then place the schema in src/lib/db/schema.ts and wire it to the Drizzle client and auth config.
+- **Auth**: Better Auth with the Drizzle adapter (provider: "pg"). Enable email/password with `emailAndPassword: { enabled: true }` in the auth config. Use the Better Auth CLI to generate the Drizzle schema (user, session, account, verification with relations), then place the schema in src/lib/db/schema.ts and wire it to the Drizzle client and auth config.
 - **Scripts**: Add "db:generate": "drizzle-kit generate" and "db:push": "drizzle-kit push" to package.json. Use a drizzle.config.ts that reads DATABASE_URL from .env.local (e.g. with dotenv).
 - **Auth API**: Next.js route at app/api/auth/[...all]/route.ts using toNextJsHandler(auth).
 - **Auth client**: createAuthClient from better-auth/react in src/lib/auth-client.ts, exporting signIn, signUp, signOut, useSession. Base URL from NEXT_PUBLIC_APP_URL or fallback to localhost:3000.
@@ -97,5 +97,5 @@ Install: drizzle-orm, @neondatabase/serverless, better-auth; dev: drizzle-kit, @
 ## Short one-liner prompt
 
 ```text
-Add Better Auth + Drizzle + Neon to my Next.js app: Drizzle schema (user, session, account, verification) in src/lib/db, auth server in src/lib/auth.ts with drizzleAdapter(db, { provider: "pg" }), API at api/auth/[...all], auth client with signIn/signUp/signOut/useSession, login and signup pages, db:generate and db:push scripts, and .env.local with DATABASE_URL, BETTER_AUTH_SECRET, BETTER_AUTH_URL.
+Add Better Auth + Drizzle + Neon to my Next.js app: Drizzle schema (user, session, account, verification) in src/lib/db, auth server in src/lib/auth.ts with drizzleAdapter(db, { provider: "pg" }) and emailAndPassword: { enabled: true }, API at api/auth/[...all], auth client with signIn/signUp/signOut/useSession, login and signup pages, db:generate and db:push scripts, and .env.local with DATABASE_URL, BETTER_AUTH_SECRET, BETTER_AUTH_URL.
 ```
