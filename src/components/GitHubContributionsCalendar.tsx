@@ -40,6 +40,7 @@ export function GitHubContributionsCalendar({
   year = 2026,
   className = "",
 }: GitHubContributionsCalendarProps) {
+  const [mounted, setMounted] = useState(false);
   const [data, setData] = useState<ApiResponse | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -48,6 +49,11 @@ export function GitHubContributionsCalendar({
   const yearNum = typeof year === "number" ? year : new Date().getFullYear();
 
   useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!mounted) return;
     setLoading(true);
     setError(null);
     fetch(`${API_BASE}/${username}?y=${year}`)
@@ -60,7 +66,7 @@ export function GitHubContributionsCalendar({
         setError(err instanceof Error ? err.message : "Failed to load");
       })
       .finally(() => setLoading(false));
-  }, [username, year]);
+  }, [mounted, username, year]);
 
   const renderBlock = useCallback(
     (block: React.ReactElement, activity: Activity) => {
@@ -71,6 +77,14 @@ export function GitHubContributionsCalendar({
     },
     []
   );
+
+  if (!mounted) {
+    return (
+      <div className={className} style={{ minHeight: 200 }} aria-hidden>
+        <div className="animate-pulse rounded-lg bg-surface/50" style={{ height: 200 }} />
+      </div>
+    );
+  }
 
   if (error) {
     return (
@@ -84,15 +98,8 @@ export function GitHubContributionsCalendar({
 
   if (loading || !data) {
     return (
-      <div className={className}>
-        <ActivityCalendar
-          data={[]}
-          loading
-          theme={greenTheme}
-          blockSize={14}
-          blockMargin={5}
-          fontSize={13}
-        />
+      <div className={className} style={{ minHeight: 200 }} aria-hidden>
+        <div className="animate-pulse rounded-lg bg-surface/50" style={{ height: 200 }} />
       </div>
     );
   }

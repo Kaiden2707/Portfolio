@@ -76,7 +76,6 @@ export default function AboutPage() {
                               <SplitText
                                 text={seg.text}
                                 tag="span"
-                                scrollFlow
                                 {...bodyTextProps}
                                 className={
                                   seg.quoted
