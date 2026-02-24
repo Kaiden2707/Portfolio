@@ -2,6 +2,7 @@ import Image from "next/image";
 import { Section } from "@/components/Section";
 import { SiteShell } from "@/components/SiteShell";
 import { TileSpotlight } from "@/components/TileSpotlight";
+import { ScrollFlowBlock } from "@/components/ScrollFlowBlock";
 import { ScrollFlowWrapper } from "@/components/ScrollFlowWrapper";
 import SplitText from "@/components/SplitText";
 import { profile } from "@/content/profile";
@@ -108,19 +109,73 @@ export default function AboutPage() {
           </Section>
           <Section id="personal" eyebrow="Outside of code" title="A bit more human" titleScrollFlow>
             <div className="space-y-6">
-              <div className="flex flex-col gap-6 sm:flex-row sm:items-stretch">
-                <TileSpotlight className="rounded-2xl border border-border bg-surface p-5 sm:min-w-0 sm:flex-1">
-                  <div className="text-sm font-semibold">What I'm into</div>
-                  <ul className="mt-3 space-y-2 text-sm text-muted">
-                    {profile.personal.interests.map((item) => (
-                      <li key={item} className="flex items-center gap-2">
-                        <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-accent shadow-[0_0_10px_rgba(var(--accent-rgb)/0.8)]" />
-                        <span className="capitalize">{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </TileSpotlight>
-                <div className="relative aspect-[3/4] w-full overflow-hidden rounded-2xl border border-border bg-surface-2 sm:w-72 sm:shrink-0">
+              <div className="flex flex-col gap-6 sm:flex-row sm:items-start">
+                <div className="min-w-0 flex-1 space-y-6">
+                  <ScrollFlowBlock>
+                    <p className="text-sm leading-7 text-foreground/90 sm:text-base">
+                      I started coding out of curiosity, but stayed because of the feeling of turning nothing into something real.
+                      There’s something addictive about solving a problem and watching an idea come to life.
+                    </p>
+                  </ScrollFlowBlock>
+                  <ScrollFlowBlock>
+                    <div className="grid gap-4 sm:grid-cols-3">
+                    <TileSpotlight className="rounded-2xl border border-border bg-surface p-4">
+                      <div className="flex items-center gap-2 text-sm font-semibold">
+                        <span aria-hidden>🧠</span>
+                        Why I Build
+                      </div>
+                      <ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-muted">
+                        <li>I like creating things from scratch.</li>
+                        <li>I enjoy figuring out how things work.</li>
+                        <li>I’m obsessed with refining small details until they feel right.</li>
+                        <li>When something finally works, it’s a rush.</li>
+                      </ul>
+                    </TileSpotlight>
+                    <TileSpotlight className="rounded-2xl border border-border bg-surface p-4">
+                      <div className="flex items-center gap-2 text-sm font-semibold">
+                        <span aria-hidden>🌿</span>
+                        Outside the Screen
+                      </div>
+                      <ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-muted">
+                        <li>Into fitness - I like pushing limits physically the same way I do mentally.</li>
+                        <li>Competitive by nature.</li>
+                        <li>Gaming for strategy and creativity.</li>
+                        <li>I care about aesthetics and clean design.</li>
+                      </ul>
+                    </TileSpotlight>
+                    <TileSpotlight className="rounded-2xl border border-border bg-surface p-4">
+                      <div className="flex items-center gap-2 text-sm font-semibold">
+                        <span aria-hidden>🚀</span>
+                        What Drives Me
+                      </div>
+                      <ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-muted">
+                        <li>Becoming insanely skilled at what I do.</li>
+                        <li>Building websites for real people.</li>
+                        <li>Working remotely and creating freedom through skill.</li>
+                        <li>Making cool things that actually get used.</li>
+                      </ul>
+                    </TileSpotlight>
+                    </div>
+                  </ScrollFlowBlock>
+                  <ScrollFlowBlock>
+                  <div className="space-y-3">
+                    <h3 className="flex items-center gap-2 text-lg font-semibold sm:text-xl">
+                      <span aria-hidden>🌍</span>
+                      Where I’m Headed
+                    </h3>
+                    <p className="text-base leading-7 text-foreground/90 sm:text-lg sm:leading-8">
+                      I’m not just learning to code, I’m building a skillset that gives me the freedom to create anything I can imagine.
+                      My goal isn’t just to work remotely, but to become so skilled that the quality of my work speaks before I do.
+                    </p>
+                    <p className="text-base leading-7 text-foreground/90 sm:text-lg sm:leading-8">
+                      I want to reach a point where I can take any idea, mine or someone else’s and bring it to life cleanly and confidently.
+                      Not chasing trends, but building things that feel intentional, thoughtful, and built to last.
+                    </p>
+                  </div>
+                  </ScrollFlowBlock>
+                </div>
+                <ScrollFlowBlock className="w-full sm:w-72 sm:shrink-0">
+                <div className="relative aspect-[3/4] w-full overflow-hidden rounded-2xl border border-border bg-surface-2">
                   <Image
                     src="/personal-image.png"
                     alt=""
@@ -129,13 +184,8 @@ export default function AboutPage() {
                     sizes="(max-width: 640px) 100vw, 288px"
                   />
                 </div>
+                </ScrollFlowBlock>
               </div>
-              <TileSpotlight className="rounded-2xl border border-border bg-surface p-5">
-                <div className="text-sm font-semibold">How I like to work</div>
-                <p className="mt-3 text-sm leading-7 text-muted">
-                  {profile.personal.workStyle}
-                </p>
-              </TileSpotlight>
             </div>
           </Section>
         </ScrollFlowWrapper>

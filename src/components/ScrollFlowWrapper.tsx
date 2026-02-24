@@ -9,10 +9,9 @@ gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 const defaultFrom = { opacity: 0, y: 28 };
 const defaultTo = { opacity: 1, y: 0 };
-const duration = 0.6;
-const stagger = 0.028;
+const duration = 0.4;
+const stagger = 0.018;
 const ease = "power3.out";
-const gapBetweenBlocks = 0;
 
 export function ScrollFlowWrapper({ children }: { children: React.ReactNode }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -56,7 +55,7 @@ export function ScrollFlowWrapper({ children }: { children: React.ReactNode }) {
             willChange: "transform, opacity",
             force3D: true,
           },
-          i === 0 ? 0 : "-=0.6"
+          i === 0 ? 0 : "-=0.4"
         );
       });
 
