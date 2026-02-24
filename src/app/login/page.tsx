@@ -2,12 +2,12 @@
 
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { authClient } from "@/lib/auth-client";
 
 const defaultCallbackURL = "/blog";
 
-export default function LoginPage() {
+function LoginForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const callbackURL = searchParams.get("callbackURL") ?? defaultCallbackURL;
@@ -97,5 +97,24 @@ export default function LoginPage() {
         ← Back to home
       </Link>
     </div>
+  );
+}
+
+export default function LoginPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="flex min-h-screen flex-col items-center justify-center px-5">
+          <div className="w-full max-w-sm rounded-2xl border border-border bg-surface p-6 sm:p-8">
+            <div className="h-7 w-32 animate-pulse rounded bg-surface-2" />
+            <div className="mt-2 h-4 w-64 animate-pulse rounded bg-surface-2" />
+            <div className="mt-6 h-10 w-full animate-pulse rounded bg-surface-2" />
+            <div className="mt-4 h-10 w-full animate-pulse rounded bg-surface-2" />
+          </div>
+        </div>
+      }
+    >
+      <LoginForm />
+    </Suspense>
   );
 }
