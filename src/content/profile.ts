@@ -39,7 +39,7 @@ export const profile = {
   contact: {
     email: "kaidenmcintosh27@gmail.com",
     phone: "0815012030",
-    github: "Kaiden_dev",
+    github: "Kaiden2707",
     instagram: "Kaiden.xo",
     linkedin: "",
   },

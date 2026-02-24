@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { SiteNav } from "@/components/SiteNav";
@@ -12,17 +13,22 @@ export function SiteShell({
   return (
     <div className="min-h-screen bg-transparent">
       <header className="sticky top-0 z-20 border-b border-white/10 bg-background/80 backdrop-blur-md supports-[backdrop-filter]:bg-background/60">
-        <div className="mx-auto flex w-full max-w-5xl items-center justify-between px-5 py-4 sm:px-8">
+        <div className="mx-auto flex w-full max-w-5xl items-center justify-between gap-6 px-5 py-4 sm:px-8">
           <Link
             href="/"
             className="group inline-flex items-center gap-2 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60"
           >
-            <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-surface-2 ring-1 ring-border shadow-[0_0_0_1px_rgba(var(--accent-rgb)/0.15)]">
-              <span className="h-2 w-2 rounded-full bg-accent shadow-[0_0_16px_rgba(var(--accent-rgb)/0.55)]" />
+            <span className="relative inline-flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-full bg-surface-2 ring-1 ring-border sm:h-9 sm:w-9">
+              <Image
+                src="/navbar-logo.png"
+                alt=""
+                width={36}
+                height={36}
+                className="object-contain"
+              />
             </span>
-            <span className="text-sm font-semibold tracking-tight">{name}</span>
+            <span className="text-base font-bold tracking-tight sm:text-lg">{name}</span>
           </Link>
-
           <SiteNav />
         </div>
       </header>

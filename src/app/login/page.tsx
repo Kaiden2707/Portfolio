@@ -1,12 +1,16 @@
 "use client";
 
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { authClient } from "@/lib/auth-client";
 
+const defaultCallbackURL = "/blog";
+
 export default function LoginPage() {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const callbackURL = searchParams.get("callbackURL") ?? defaultCallbackURL;
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
@@ -16,17 +20,17 @@ export default function LoginPage() {
     e.preventDefault();
     setError(null);
     setLoading(true);
-    const { data, error: err } = await authClient.signIn.email({
+    const { error: err } = await authClient.signIn.email({
       email,
       password,
-      callbackURL: "/",
+      callbackURL,
     });
     setLoading(false);
     if (err) {
       setError(err.message ?? "Sign in failed");
       return;
     }
-    if (data) router.push(data.url ?? "/");
+    router.push(callbackURL);
   }
 
   return (

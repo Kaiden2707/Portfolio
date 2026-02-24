@@ -21,14 +21,14 @@ export default function SignUpPage() {
       name,
       email,
       password,
-      callbackURL: "/",
+      callbackURL: "/blog",
     });
     setLoading(false);
     if (err) {
       setError(err.message ?? "Sign up failed");
       return;
     }
-    router.push("/");
+    router.push("/blog");
   }
 
   return (

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import { Geist, Bebas_Neue, Roboto, JetBrains_Mono, Saira_Stencil_One } from "next/font/google";
+import { Geist, Bebas_Neue, Roboto, JetBrains_Mono, Saira_Stencil_One, Comfortaa } from "next/font/google";
 import "./globals.css";
 
 const ethnocentric = localFont({
@@ -38,6 +38,12 @@ const sairaStencil = Saira_Stencil_One({
   weight: "400",
 });
 
+const comfortaa = Comfortaa({
+  variable: "--font-comfortaa",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
+
 export const metadata: Metadata = {
   title: "Kaiden McIntosh | Portfolio",
   description:
@@ -52,7 +58,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full">
       <body
-        className={`${geistSans.variable} ${bebasNeue.variable} ${roboto.variable} ${jetbrainsMono.variable} ${sairaStencil.variable} ${ethnocentric.variable} min-h-screen bg-background text-foreground antialiased`}
+        className={`${geistSans.variable} ${bebasNeue.variable} ${roboto.variable} ${jetbrainsMono.variable} ${sairaStencil.variable} ${ethnocentric.variable} ${comfortaa.variable} min-h-screen bg-background text-foreground antialiased`}
       >
         {children}
       </body>
