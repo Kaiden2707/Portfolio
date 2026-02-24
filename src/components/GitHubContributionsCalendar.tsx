@@ -121,7 +121,8 @@ export function GitHubContributionsCalendar({
   const isLeap =
     (yearNum % 4 === 0 && yearNum % 100 !== 0) || yearNum % 400 === 0;
   const daysInYear = typeof year === "number" ? (isLeap ? 366 : 365) : 365;
-  const average = Math.round((total / daysInYear) * 10) / 10;
+  const average =
+    Math.round((Number(total) / Number(daysInYear)) * 10) / 10;
 
   const statBlocks = [
     { label: "Total", value: total },
