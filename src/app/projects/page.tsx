@@ -25,14 +25,14 @@ export default function ProjectsPage() {
               <SplitText
                 text="I'm treating these as small labs for learning modern frameworks — focused places to practice patterns, animation, and layout without shipping a huge app on day one."
                 tag="p"
-                className="text-sm leading-7 text-muted sm:text-base"
+                className="text-sm leading-7 text-muted sm:text-base dark:text-white"
                 {...introTextProps}
               />
               <div className="grid gap-4 md:grid-cols-1">
                 {profile.projectsPlanned.map((project) => (
                   <TileSpotlight
                     key={project.name}
-                    className="flex flex-col justify-between rounded-2xl border border-border bg-surface p-5 transition hover:border-accent/30 hover:bg-surface-2"
+                    className="flex flex-col justify-between rounded-2xl border border-border bg-surface p-5 transition hover:border-accent/30 hover:bg-surface-2 dark:text-white"
                   >
                     <div>
                       <div className="flex items-center justify-between gap-2">
@@ -49,7 +49,7 @@ export default function ProjectsPage() {
                       {project.tech.map((t) => (
                         <span
                           key={t}
-                          className="tile-spotlight rounded-full bg-surface-2 px-2 py-1 text-[10px] font-medium text-foreground/80 ring-1 ring-border"
+                          className="tile-spotlight rounded-full bg-surface-2 px-2 py-1 text-[10px] font-medium text-foreground/80 ring-1 ring-border dark:text-white"
                         >
                           {t}
                         </span>

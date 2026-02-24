@@ -24,14 +24,14 @@ export default function SkillsPage() {
                 {Object.entries(profile.skills).map(([group, items]) => (
                   <TileSpotlight
                     key={group}
-                    className="rounded-2xl border border-border bg-surface p-5 transition hover:border-accent/25 hover:bg-surface-2"
+                    className="rounded-2xl border border-border bg-surface p-5 transition hover:border-accent/25 hover:bg-surface-2 dark:text-white"
                   >
                     <div className="text-sm font-semibold">{group}</div>
                     <div className="mt-4 flex flex-wrap gap-2">
                       {items.map((skill) => (
                         <span
                           key={skill}
-                          className="tile-spotlight inline-flex items-center rounded-full border border-border bg-surface-2 px-3 py-1 text-xs font-medium text-foreground/90 shadow-[0_0_0_1px_rgba(var(--accent-rgb)/0.10)] transition hover:border-accent/40 hover:shadow-[0_0_0_1px_rgba(var(--accent-rgb)/0.25),0_0_24px_rgba(var(--accent-rgb)/0.18)]"
+                          className="tile-spotlight inline-flex items-center rounded-full border border-border bg-surface-2 px-3 py-1 text-xs font-medium text-foreground/90 shadow-[0_0_0_1px_rgba(var(--accent-rgb)/0.10)] transition hover:border-accent/40 hover:shadow-[0_0_0_1px_rgba(var(--accent-rgb)/0.25),0_0_24px_rgba(var(--accent-rgb)/0.18)] dark:text-white"
                         >
                           {skill}
                         </span>
@@ -40,7 +40,7 @@ export default function SkillsPage() {
                   </TileSpotlight>
                 ))}
               </div>
-              <TileSpotlight className="rounded-2xl border border-border bg-surface p-4 transition hover:border-accent/25 hover:bg-surface-2 sm:p-5">
+              <TileSpotlight className="rounded-2xl border border-border bg-surface p-4 transition hover:border-accent/25 hover:bg-surface-2 sm:p-5 dark:text-white">
                 <div className="mb-3 flex items-center justify-between gap-2">
                   <div className="text-sm font-semibold">Core tooling</div>
                   <span className="rounded-full border border-border bg-surface-2 px-2 py-[2px] text-[10px] font-mono uppercase tracking-[0.16em] text-muted">
@@ -51,7 +51,7 @@ export default function SkillsPage() {
                   {coreTools.map(({ title, desc }) => (
                     <TileSpotlight
                       key={title}
-                      className="rounded-xl border border-border bg-surface-2 px-3 py-3"
+                      className="rounded-xl border border-border bg-surface-2 px-3 py-3 dark:text-white"
                     >
                       <div className="font-semibold">{title}</div>
                       <p className="mt-1 text-[11px] text-muted">{desc}</p>
@@ -61,7 +61,7 @@ export default function SkillsPage() {
               </TileSpotlight>
             </div>
             <div className="mt-8">
-              <h3 className="text-sm font-semibold text-foreground/90">
+              <h3 className="text-sm font-semibold text-foreground/90 dark:text-white">
                 GitHub Insights
               </h3>
               <div className="mt-4 [&_svg]:max-w-full [&_svg]:h-auto">

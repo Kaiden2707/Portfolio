@@ -10,9 +10,9 @@ export default function Home() {
 
   return (
     <MountAfterLayout>
-      <div className="relative z-10">
-        <SiteShell name={profile.name}>
-          <div className="relative h-[85vh] w-full overflow-hidden sm:h-[90vh]">
+      <div className="relative z-10 min-h-screen">
+        <SiteShell name={profile.name} hideFooter>
+          <div className="relative min-h-screen w-full overflow-hidden">
             <div className="absolute inset-0 z-0">
               <Grainient
                 color1="#b494ff"
@@ -62,8 +62,17 @@ export default function Home() {
                 </span>
               </Link>
             </div>
+            <div className="absolute inset-x-0 bottom-0 z-10 px-5 py-6 text-center text-sm text-white/70 sm:px-8 sm:py-8">
+              <div className="mx-auto flex max-w-5xl flex-col gap-2 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
+                <p>
+                  <span suppressHydrationWarning>© {new Date().getFullYear()}</span> {profile.name}
+                </p>
+                <p className="font-mono text-xs tracking-tight">
+                  Built with Next.js + pnpm
+                </p>
+              </div>
+            </div>
           </div>
-          <div className="min-h-[4rem] sm:min-h-[5rem]" aria-hidden />
         </SiteShell>
       </div>
     </MountAfterLayout>

@@ -124,7 +124,7 @@ export function ContactPanel() {
   ];
 
   return (
-    <div className="tile-spotlight rounded-2xl border border-border bg-surface p-10 transition hover:border-accent/25 hover:bg-surface-2 sm:p-12 md:p-14">
+    <div className="tile-spotlight rounded-2xl border border-border bg-surface p-10 transition hover:border-accent/25 hover:bg-surface-2 sm:p-12 md:p-14 dark:text-white">
       <p className="max-w-2xl text-sm leading-7 text-muted sm:text-base">
         Get in touch through any of these channels. Hover over the icons to see
         my handles.
@@ -178,7 +178,7 @@ export function ContactPanel() {
 
               {/* Handle display on hover */}
               <div
-                className={`absolute top-full mt-4 whitespace-nowrap rounded-full border border-border/50 bg-surface-2 px-4 py-2 text-sm text-muted transition-all duration-300 ease-out ${
+                className={`absolute top-full mt-4 whitespace-nowrap rounded-full border border-border/50 bg-surface-2 px-4 py-2 text-sm text-muted transition-all duration-300 ease-out dark:text-white ${
                   showHandle
                     ? "translate-y-0 opacity-100"
                     : "translate-y-2 opacity-0"

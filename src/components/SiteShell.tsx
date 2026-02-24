@@ -6,9 +6,11 @@ import { SiteNav } from "@/components/SiteNav";
 export function SiteShell({
   name,
   children,
+  hideFooter,
 }: {
   name: string;
   children: ReactNode;
+  hideFooter?: boolean;
 }) {
   return (
     <div className="min-h-screen bg-transparent">
@@ -35,18 +37,20 @@ export function SiteShell({
 
       <main>{children}</main>
 
-      <footer className="border-t border-white/10 bg-transparent">
-        <div className="mx-auto w-full max-w-5xl px-5 py-10 text-sm text-muted sm:px-8">
-          <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-            <p>
-              <span suppressHydrationWarning>© {new Date().getFullYear()}</span> {name}
-            </p>
-            <p className="font-mono text-xs tracking-tight">
-              Built with Next.js + pnpm
-            </p>
+      {!hideFooter && (
+        <footer className="border-t border-white/10 bg-transparent">
+          <div className="mx-auto w-full max-w-5xl px-5 py-10 text-sm text-muted sm:px-8">
+            <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+              <p>
+                <span suppressHydrationWarning>© {new Date().getFullYear()}</span> {name}
+              </p>
+              <p className="font-mono text-xs tracking-tight">
+                Built with Next.js + pnpm
+              </p>
+            </div>
           </div>
-        </div>
-      </footer>
+        </footer>
+      )}
     </div>
   );
 }

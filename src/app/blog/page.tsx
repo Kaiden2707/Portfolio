@@ -28,14 +28,14 @@ export default function BlogPage() {
         <div className="min-h-[6rem] sm:min-h-[8rem]" aria-hidden />
 
         <Section id="posts" eyebrow="Writing" title="Blog">
-          <p className="mb-8 text-sm leading-7 text-muted sm:text-base">
+          <p className="mb-8 text-sm leading-7 text-muted sm:text-base dark:text-white">
             Short posts on development, security, and whatever I'm working on.
           </p>
           <ul className="space-y-4">
             {placeholderPosts.map((post) => (
               <li key={post.slug}>
                 <Link href={`/blog/${post.slug}`} className="block">
-                  <TileSpotlight className="rounded-2xl border border-border bg-surface p-5 transition hover:border-accent/25 hover:bg-surface-2">
+                  <TileSpotlight className="rounded-2xl border border-border bg-surface p-5 transition hover:border-accent/25 hover:bg-surface-2 dark:text-white">
                     <div className="flex flex-wrap items-baseline justify-between gap-2">
                       <h3 className="text-sm font-semibold">{post.title}</h3>
                       <span className="font-mono text-xs text-muted">

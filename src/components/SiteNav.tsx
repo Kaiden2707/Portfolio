@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { signOut, useSession } from "@/lib/auth-client";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 const sectionLinks = [
   { href: "/about", label: "About" },
@@ -30,7 +31,7 @@ export function SiteNav() {
             href={href}
             aria-current={pathname === href ? "page" : undefined}
             className={[
-              "rounded-full px-3 py-1.5 text-base transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60",
+              "rounded-full px-3 py-1.5 text-base transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60 dark:text-white dark:hover:text-white",
               pathname === href
                 ? "bg-surface-2 text-foreground shadow-[0_0_0_1px_rgba(var(--accent-rgb)/0.25),0_0_20px_rgba(var(--accent-rgb)/0.10)]"
                 : "text-muted hover:text-foreground",
@@ -42,7 +43,7 @@ export function SiteNav() {
         <Link
           href="/blog"
           className={[
-            "rounded-full px-3 py-1.5 text-base transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60",
+            "rounded-full px-3 py-1.5 text-base transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60 dark:text-white dark:hover:text-white",
             onBlog
               ? "bg-surface-2 text-foreground shadow-[0_0_0_1px_rgba(var(--accent-rgb)/0.25),0_0_20px_rgba(var(--accent-rgb)/0.10)]"
               : "text-muted hover:text-foreground",
@@ -52,10 +53,10 @@ export function SiteNav() {
         </Link>
       </div>
       <span className="flex-1" aria-hidden />
-      <div className="flex items-center gap-1">
+      <div className="flex items-center gap-3">
         {session?.user ? (
           <>
-<span className="rounded-full px-3 py-1.5 text-base text-foreground/90">
+<span className="rounded-full px-3 py-1.5 text-base text-foreground/90 dark:text-white">
             {session.user.name ?? session.user.email ?? "Account"}
             </span>
             <button
@@ -70,7 +71,7 @@ export function SiteNav() {
           <>
             <Link
               href="/login"
-              className="rounded-full px-3 py-1.5 text-base text-muted transition hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60"
+              className="rounded-full px-3 py-1.5 text-base text-muted transition hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60 dark:text-white dark:hover:text-white"
             >
               Sign in
             </Link>
@@ -82,6 +83,7 @@ export function SiteNav() {
             </Link>
           </>
         )}
+        <ThemeToggle />
       </div>
     </nav>
   );
