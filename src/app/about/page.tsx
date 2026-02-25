@@ -1,7 +1,6 @@
 import { ImageCarousel } from "@/components/ImageCarousel";
 import { Section } from "@/components/Section";
 import { SiteShell } from "@/components/SiteShell";
-import { Carousel3D } from "@/components/Carousel3D";
 import { TileSpotlight } from "@/components/TileSpotlight";
 import { ScrollFlowBlock } from "@/components/ScrollFlowBlock";
 import { ScrollFlowWrapper } from "@/components/ScrollFlowWrapper";
@@ -55,16 +54,20 @@ export default function AboutPage() {
   return (
     <div className="min-h-screen bg-transparent">
       <SiteShell name={profile.name}>
-        <div className="min-h-[6rem] sm:min-h-[8rem]" aria-hidden />
+        <div className="min-h-[2rem] sm:min-h-[3rem]" aria-hidden />
         <ScrollFlowWrapper>
           <Section id="about" eyebrow="Intro" title="About" titleScrollFlow>
             <div className="grid gap-6 md:grid-cols-12">
               <div className="md:col-span-8">
                 <div className="space-y-4 text-sm leading-7 text-foreground/90 sm:text-base dark:text-white">
-                  {profile.about.map((p, i) => {
+                  <h3 className="flex items-center gap-2 text-lg font-semibold sm:text-xl text-foreground dark:text-white">
+                    <span aria-hidden>📌</span>
+                    Who I am
+                  </h3>
+                  {profile.about.slice(0, 1).map((p) => {
                     const segments = segmentizeQuoted(p);
                     return (
-                      <p key={i} className="text-sm leading-7 text-foreground/90 sm:text-base dark:text-white">
+                      <p key="who" className="text-sm leading-7 text-foreground/90 sm:text-base dark:text-white">
                         {segments.map((seg, j) => {
                           const prevTrimmed = segments[j - 1]?.text.trim() ?? "";
                           const currTrimmed = seg.text.trim();
@@ -73,7 +76,76 @@ export default function AboutPage() {
                             /[a-zA-Z0-9)]$/.test(prevTrimmed) &&
                             /^[a-zA-Z0-9]/.test(currTrimmed);
                           return (
-                            <span key={`${i}-${j}`} className="inline">
+                            <span key={`who-${j}`} className="inline">
+                              {needSpace ? " " : null}
+                              <SplitText
+                                text={seg.text}
+                                tag="span"
+                                {...bodyTextProps}
+                                className={
+                                  seg.quoted
+                                    ? `!inline ${accentClass}`
+                                    : "!inline text-foreground/90 dark:text-white"
+                                }
+                              />
+                            </span>
+                          );
+                        })}
+                      </p>
+                    );
+                  })}
+                  <h3 className="flex items-center gap-2 pt-2 text-lg font-semibold sm:text-xl text-foreground dark:text-white">
+                    <span aria-hidden>👷</span>
+                    How I build
+                  </h3>
+                  {profile.about.slice(1, 2).map((p) => {
+                    const segments = segmentizeQuoted(p);
+                    return (
+                      <p key="how" className="text-sm leading-7 text-foreground/90 sm:text-base dark:text-white">
+                        {segments.map((seg, j) => {
+                          const prevTrimmed = segments[j - 1]?.text.trim() ?? "";
+                          const currTrimmed = seg.text.trim();
+                          const needSpace =
+                            j > 0 &&
+                            /[a-zA-Z0-9)]$/.test(prevTrimmed) &&
+                            /^[a-zA-Z0-9]/.test(currTrimmed);
+                          return (
+                            <span key={`how-${j}`} className="inline">
+                              {needSpace ? " " : null}
+                              <SplitText
+                                text={seg.text}
+                                tag="span"
+                                {...bodyTextProps}
+                                className={
+                                  seg.quoted
+                                    ? `!inline ${accentClass}`
+                                    : "!inline text-foreground/90 dark:text-white"
+                                }
+                              />
+                            </span>
+                          );
+                        })}
+                      </p>
+                    );
+                  })}
+                  <h3 className="flex items-center gap-2 pt-2 text-lg font-semibold sm:text-xl text-foreground dark:text-white">
+                    <span aria-hidden>🌐</span>
+                    <span aria-hidden>🔒</span>
+                    Cyber Security
+                  </h3>
+                  {profile.about.slice(2).map((p, i) => {
+                    const segments = segmentizeQuoted(p);
+                    return (
+                      <p key={`rest-${i}`} className="text-sm leading-7 text-foreground/90 sm:text-base dark:text-white">
+                        {segments.map((seg, j) => {
+                          const prevTrimmed = segments[j - 1]?.text.trim() ?? "";
+                          const currTrimmed = seg.text.trim();
+                          const needSpace =
+                            j > 0 &&
+                            /[a-zA-Z0-9)]$/.test(prevTrimmed) &&
+                            /^[a-zA-Z0-9]/.test(currTrimmed);
+                          return (
+                            <span key={`rest-${i}-${j}`} className="inline">
                               {needSpace ? " " : null}
                               <SplitText
                                 text={seg.text}
@@ -119,7 +191,7 @@ export default function AboutPage() {
                     </p>
                   </ScrollFlowBlock>
                   <ScrollFlowBlock>
-                    <Carousel3D>
+                    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
                       <TileSpotlight className="rounded-2xl border-2 border-accent dark:border-white bg-surface p-4 dark:text-white">
                         <div className="flex items-center gap-2 text-sm font-semibold">
                           <span aria-hidden>🧠</span>
@@ -156,7 +228,7 @@ export default function AboutPage() {
                           <li>Making cool things that actually get used.</li>
                         </ul>
                       </TileSpotlight>
-                    </Carousel3D>
+                    </div>
                   </ScrollFlowBlock>
                   <ScrollFlowBlock>
                   <div className="space-y-3 dark:text-white">

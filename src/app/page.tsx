@@ -50,14 +50,17 @@ export default function Home() {
                 </p>
               </div>
             </div>
-            <div className="pointer-events-none absolute inset-x-0 bottom-12 z-10 flex justify-center sm:bottom-16">
+            <div className="absolute inset-x-0 bottom-32 z-10 flex justify-center sm:bottom-36">
               <Link
                 href="/about"
-                className="pointer-events-auto flex flex-col items-center text-xs font-mono uppercase tracking-[0.2em] text-white/80 transition hover:text-white"
+                className="hero-cta-btn relative inline-block overflow-hidden rounded-lg bg-black px-6 py-3 text-sm font-medium text-white transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-transparent sm:text-base"
               >
-                <span className="flex h-10 w-10 items-center justify-center sm:h-12 sm:w-12">
-                  <span className="animate-bounce text-3xl leading-none sm:text-4xl">
-                    ↓
+                <span className="relative z-10 flex items-center gap-1.5">
+                  Learn more
+                  <span className="hero-cta-arrow inline-flex transition-transform duration-200 ease-out" aria-hidden>
+                    <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
                   </span>
                 </span>
               </Link>
