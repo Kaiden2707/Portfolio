@@ -35,7 +35,7 @@ export default async function BlogPostPage({
   return (
     <div className="min-h-screen bg-transparent">
       <SiteShell name={profile.name}>
-        <div className="min-h-[6rem] sm:min-h-[8rem]" aria-hidden />
+        <div className="min-h-[2rem] sm:min-h-[3rem]" aria-hidden />
 
         <Section id="post" eyebrow="Blog" title={post.title}>
           <div className="flex flex-wrap items-baseline justify-between gap-2 text-sm text-muted">

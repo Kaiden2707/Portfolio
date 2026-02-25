@@ -26,7 +26,7 @@ export function BlogGuard({ children }: { children: ReactNode }) {
     return (
       <div className="min-h-screen bg-transparent">
         <SiteShell name={profile.name}>
-          <div className="min-h-[6rem] sm:min-h-[8rem]" aria-hidden />
+          <div className="min-h-[2rem] sm:min-h-[3rem]" aria-hidden />
           <Section id="sign-in-required" eyebrow="Blog" title="Sign in to view">
             <div className="mx-auto max-w-md rounded-2xl border border-border bg-surface p-6 text-center shadow-[0_0_0_1px_rgba(var(--accent-rgb)/0.08)] sm:p-8">
               <p className="text-sm leading-7 text-foreground/90">

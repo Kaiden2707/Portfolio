@@ -25,7 +25,7 @@ export default function BlogPage() {
   return (
     <div className="min-h-screen bg-transparent">
       <SiteShell name={profile.name}>
-        <div className="min-h-[6rem] sm:min-h-[8rem]" aria-hidden />
+        <div className="min-h-[2rem] sm:min-h-[3rem]" aria-hidden />
 
         <Section id="posts" eyebrow="Writing" title="Blog">
           <p className="mb-8 text-sm leading-7 text-muted sm:text-base dark:text-white">

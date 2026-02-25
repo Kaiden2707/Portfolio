@@ -1,69 +1,82 @@
 import { Section } from "@/components/Section";
 import { SiteShell } from "@/components/SiteShell";
-import { TileSpotlight } from "@/components/TileSpotlight";
 import { ScrollFlowWrapper } from "@/components/ScrollFlowWrapper";
 import { GitHubContributionsCalendar } from "@/components/GitHubContributionsCalendar";
+import { TechStackBar } from "@/components/TechStackBar";
 import { profile } from "@/content/profile";
-
-const coreTools = [
-  { title: "React", desc: "Primary UI framework for building interactive views." },
-  { title: "pnpm", desc: "Fast, disk-efficient package manager I use for projects." },
-  { title: "GitHub", desc: "Where I ship small experiments and future projects." },
-  { title: "VS Code / Cursor", desc: "My main editors for writing and refactoring frontend code." },
-];
+import {
+  frontendBarItems,
+  backendBarItems,
+  topLanguages,
+} from "@/content/techStack";
+import { techIconUrl } from "@/lib/techIcons";
 
 export default function SkillsPage() {
   return (
     <div className="min-h-screen bg-transparent">
       <SiteShell name={profile.name}>
-        <div className="min-h-[6rem] sm:min-h-[8rem]" aria-hidden />
+        <div className="min-h-[2rem] sm:min-h-[3rem]" aria-hidden />
         <ScrollFlowWrapper>
           <Section id="skills" eyebrow="Stack" title="Skills" titleScrollFlow>
-            <div className="grid gap-4 md:grid-cols-[minmax(0,2fr)_minmax(0,1.4fr)]">
-              <div className="space-y-4">
-                {Object.entries(profile.skills).map(([group, items]) => (
-                  <TileSpotlight
-                    key={group}
-                    className="rounded-2xl border border-border bg-surface p-5 transition hover:border-accent/25 hover:bg-surface-2 dark:text-white"
-                  >
-                    <div className="text-sm font-semibold">{group}</div>
-                    <div className="mt-4 flex flex-wrap gap-2">
-                      {items.map((skill) => (
-                        <span
-                          key={skill}
-                          className="tile-spotlight inline-flex items-center rounded-full border border-border bg-surface-2 px-3 py-1 text-xs font-medium text-foreground/90 shadow-[0_0_0_1px_rgba(var(--accent-rgb)/0.10)] transition hover:border-accent/40 hover:shadow-[0_0_0_1px_rgba(var(--accent-rgb)/0.25),0_0_24px_rgba(var(--accent-rgb)/0.18)] dark:text-white"
-                        >
-                          {skill}
-                        </span>
-                      ))}
-                    </div>
-                  </TileSpotlight>
-                ))}
-              </div>
-              <TileSpotlight className="rounded-2xl border border-border bg-surface p-4 transition hover:border-accent/25 hover:bg-surface-2 sm:p-5 dark:text-white">
-                <div className="mb-3 flex items-center justify-between gap-2">
-                  <div className="text-sm font-semibold">Core tooling</div>
-                  <span className="rounded-full border border-border bg-surface-2 px-2 py-[2px] text-[10px] font-mono uppercase tracking-[0.16em] text-muted">
-                    focused
-                  </span>
-                </div>
-                <div className="mt-4 grid grid-cols-2 gap-3 text-xs sm:text-sm">
-                  {coreTools.map(({ title, desc }) => (
-                    <TileSpotlight
-                      key={title}
-                      className="rounded-xl border border-border bg-surface-2 px-3 py-3 dark:text-white"
-                    >
-                      <div className="font-semibold">{title}</div>
-                      <p className="mt-1 text-[11px] text-muted">{desc}</p>
-                    </TileSpotlight>
-                  ))}
-                </div>
-              </TileSpotlight>
+            <p className="max-w-2xl text-muted-foreground">
+              {profile.skillsIntro}
+            </p>
+
+            <div className="mt-8 space-y-6">
+              <TechStackBar
+                items={frontendBarItems}
+                direction="left"
+                className="w-full"
+              />
+              <TechStackBar
+                items={backendBarItems}
+                direction="right"
+                className="w-full"
+              />
             </div>
-            <div className="mt-8">
-              <h3 className="text-sm font-semibold text-foreground/90 dark:text-white">
-                GitHub Insights
-              </h3>
+
+            <h3 className="mt-10 font-comfortaa text-base font-semibold text-foreground sm:text-lg">
+              Top code used
+            </h3>
+            <div className="mt-4 flex flex-wrap gap-4 gap-y-6 sm:gap-6">
+              {topLanguages.map(({ name, percent, iconId }) => (
+                <div
+                  key={name}
+                  className="flex items-center gap-3 rounded-xl border border-border bg-surface/80 px-4 py-3 min-w-0"
+                >
+                  <img
+                    src={techIconUrl(iconId)}
+                    alt=""
+                    width={28}
+                    height={28}
+                    className="shrink-0 opacity-90"
+                  />
+                  <div className="min-w-0">
+                    <div className="text-sm font-medium text-foreground">
+                      {name}
+                    </div>
+                    <div className="text-xs text-muted-foreground tabular-nums">
+                      {percent}%
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-10">
+              <div className="flex items-center justify-between gap-6">
+                <div className="h-px flex-1 bg-border" />
+                <h3 className="flex shrink-0 items-center gap-2 text-xl font-semibold text-foreground dark:text-white sm:text-2xl">
+                  <img
+                    src={techIconUrl("github")}
+                    alt=""
+                    width={28}
+                    height={28}
+                    className="shrink-0 tech-logo-invert"
+                  />
+                  GitHub Insights
+                </h3>
+              </div>
               <div className="mt-4 [&_svg]:max-w-full [&_svg]:h-auto">
                 <GitHubContributionsCalendar
                   username={profile.contact.github}
