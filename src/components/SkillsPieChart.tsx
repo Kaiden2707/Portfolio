@@ -25,7 +25,7 @@ export function SkillsPieChart({ items }: { items: readonly LanguageItem[] }) {
 
     const chart = echarts.init(chartRef.current);
 
-    const rich: Record<string, { backgroundColor?: { image: string }; width: number; height: number; color?: string; fontSize?: number }> = {};
+    const rich: Record<string, { backgroundColor?: { image: string }; width?: number; height?: number; color?: string; fontSize?: number; fontFamily?: string }> = {};
     items.forEach((_, idx) => {
       rich[`icon${idx}`] = {
         backgroundColor: { image: techIconUrl(items[idx].iconId) },
