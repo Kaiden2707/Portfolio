@@ -6,11 +6,13 @@ export function Section({
   id,
   title,
   eyebrow,
+  titleScrollFlow,
   children,
 }: {
   id: string;
   title: string;
   eyebrow?: string;
+  titleScrollFlow?: boolean;
   children: ReactNode;
 }) {
   return (
