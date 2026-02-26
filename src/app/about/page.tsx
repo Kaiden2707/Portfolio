@@ -60,12 +60,12 @@ export default function AboutPage() {
             <div className="grid gap-6 md:grid-cols-12">
               <div className="md:col-span-8">
                 <div className="space-y-4 text-sm leading-7 text-foreground/90 sm:text-base dark:text-white">
-                  <h3 className="flex items-center gap-2 text-lg font-semibold sm:text-xl text-foreground dark:text-white">
-                    <span aria-hidden>📌</span>
+                  <h3 className="text-lg font-semibold sm:text-xl text-foreground dark:text-white">
                     Who I am
                   </h3>
                   {profile.about.slice(0, 1).map((p) => {
-                    const segments = segmentizeQuoted(p);
+                    const normalized = p.replace(/,(?!\s)/g, ", ");
+                    const segments = segmentizeQuoted(normalized);
                     return (
                       <p key="who" className="text-sm leading-7 text-foreground/90 sm:text-base dark:text-white">
                         {segments.map((seg, j) => {
@@ -94,12 +94,12 @@ export default function AboutPage() {
                       </p>
                     );
                   })}
-                  <h3 className="flex items-center gap-2 pt-2 text-lg font-semibold sm:text-xl text-foreground dark:text-white">
-                    <span aria-hidden>👷</span>
+                  <h3 className="pt-2 text-lg font-semibold sm:text-xl text-foreground dark:text-white">
                     How I build
                   </h3>
                   {profile.about.slice(1, 2).map((p) => {
-                    const segments = segmentizeQuoted(p);
+                    const normalized = p.replace(/,(?!\s)/g, ", ");
+                    const segments = segmentizeQuoted(normalized);
                     return (
                       <p key="how" className="text-sm leading-7 text-foreground/90 sm:text-base dark:text-white">
                         {segments.map((seg, j) => {
@@ -128,13 +128,12 @@ export default function AboutPage() {
                       </p>
                     );
                   })}
-                  <h3 className="flex items-center gap-2 pt-2 text-lg font-semibold sm:text-xl text-foreground dark:text-white">
-                    <span aria-hidden>🌐</span>
-                    <span aria-hidden>🔒</span>
+                  <h3 className="pt-2 text-lg font-semibold sm:text-xl text-foreground dark:text-white">
                     Cyber Security
                   </h3>
                   {profile.about.slice(2).map((p, i) => {
-                    const segments = segmentizeQuoted(p);
+                    const normalized = p.replace(/,(?!\s)/g, ", ");
+                    const segments = segmentizeQuoted(normalized);
                     return (
                       <p key={`rest-${i}`} className="text-sm leading-7 text-foreground/90 sm:text-base dark:text-white">
                         {segments.map((seg, j) => {

@@ -3,6 +3,7 @@ import { SiteShell } from "@/components/SiteShell";
 import { ScrollFlowWrapper } from "@/components/ScrollFlowWrapper";
 import { GitHubContributionsCalendar } from "@/components/GitHubContributionsCalendar";
 import { TechStackBar } from "@/components/TechStackBar";
+import { TileSpotlight } from "@/components/TileSpotlight";
 import { profile } from "@/content/profile";
 import {
   frontendBarItems,
@@ -10,6 +11,7 @@ import {
   topLanguages,
 } from "@/content/techStack";
 import { techIconUrl } from "@/lib/techIcons";
+import { SkillsPieChart } from "@/components/SkillsPieChart";
 
 export default function SkillsPage() {
   return (
@@ -18,9 +20,13 @@ export default function SkillsPage() {
         <div className="min-h-[2rem] sm:min-h-[3rem]" aria-hidden />
         <ScrollFlowWrapper>
           <Section id="skills" eyebrow="Stack" title="Skills" titleScrollFlow>
-            <p className="max-w-2xl text-muted-foreground">
-              {profile.skillsIntro}
-            </p>
+            <div className="max-w-2xl space-y-3 text-muted-foreground">
+              {Array.isArray(profile.skillsIntro)
+                ? profile.skillsIntro.map((para, i) => (
+                    <p key={i}>{para}</p>
+                  ))
+                : <p>{profile.skillsIntro}</p>}
+            </div>
 
             <div className="mt-8 space-y-6">
               <TechStackBar
@@ -38,32 +44,37 @@ export default function SkillsPage() {
             <h3 className="mt-10 font-comfortaa text-base font-semibold text-foreground sm:text-lg">
               Top code used
             </h3>
-            <div className="mt-4 flex flex-wrap gap-4 gap-y-6 sm:gap-6">
-              {topLanguages.map(({ name, percent, iconId }) => (
-                <div
-                  key={name}
-                  className="flex items-center gap-3 rounded-xl border border-border bg-surface/80 px-4 py-3 min-w-0"
-                >
-                  <img
-                    src={techIconUrl(iconId)}
-                    alt=""
-                    width={28}
-                    height={28}
-                    className="shrink-0 opacity-90"
-                  />
-                  <div className="min-w-0">
-                    <div className="text-sm font-medium text-foreground">
-                      {name}
+            <div className="mt-2 flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between lg:gap-8">
+              <div className="grid w-full max-w-[340px] grid-cols-2 gap-3 sm:gap-4 min-w-0 shrink-0 sm:max-w-[380px]">
+                {topLanguages.map(({ name, percent, iconId }) => (
+                  <TileSpotlight
+                    key={name}
+                    className="flex min-w-0 items-center gap-3 rounded-2xl border border-border bg-surface p-4 transition hover:border-accent/25 hover:bg-surface-2 dark:text-white sm:p-5"
+                  >
+                    <img
+                      src={techIconUrl(iconId)}
+                      alt=""
+                      width={26}
+                      height={26}
+                      className="shrink-0 opacity-90"
+                    />
+                    <div className="min-w-0">
+                      <div className="text-[15px] font-medium text-foreground leading-tight sm:text-base">
+                        {name}
+                      </div>
+                      <div className="text-xs text-muted-foreground tabular-nums">
+                        {percent}%
+                      </div>
                     </div>
-                    <div className="text-xs text-muted-foreground tabular-nums">
-                      {percent}%
-                    </div>
-                  </div>
-                </div>
-              ))}
+                  </TileSpotlight>
+                ))}
+              </div>
+              <div className="lg:ml-auto lg:shrink-0">
+                <SkillsPieChart items={topLanguages} />
+              </div>
             </div>
 
-            <div className="mt-10">
+            <div className="mt-16">
               <div className="flex items-center justify-between gap-6">
                 <div className="h-px flex-1 bg-border" />
                 <h3 className="flex shrink-0 items-center gap-2 text-xl font-semibold text-foreground dark:text-white sm:text-2xl">

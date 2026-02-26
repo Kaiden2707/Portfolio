@@ -30,8 +30,10 @@ export const profile = {
       tech: ["React", "Tailwind CSS"],
     },
   ],
-  skillsIntro:
-    "These are the technologies I work with daily to build modern web and AI projects.",
+  skillsIntro: [
+    "This is the stack I work in day-to-day.",
+    "Whether I'm building a responsive UI, setting up backend systems, or deploying a full project, these are the technologies I rely on. I focus on keeping things clean and practical.",
+  ],
   skills: {
     Languages: ["TypeScript", "JavaScript", "HTML", "CSS"],
     Frameworks: ["React", "Next.js", "Tailwind CSS"],

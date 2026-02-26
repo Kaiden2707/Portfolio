@@ -269,6 +269,24 @@ body {
   font-family: var(--font-ethnocentric), var(--font-geist-sans), sans-serif;
 }
 
+/* Section page headings: hero font, gradient text, ~25% lighter weight */
+.section-heading {
+  font-family: var(--font-ethnocentric), var(--font-geist-sans), sans-serif;
+  font-weight: 400;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(to right, var(--foreground) 0%, rgba(var(--accent-rgb), 0.95) 100%);
+}
+html.dark .section-heading,
+.dark .section-heading {
+  background-image: linear-gradient(to right, #fff 0%, rgba(168, 85, 247, 0.95) 100%);
+}
+html.light .section-heading,
+.light .section-heading {
+  background-image: linear-gradient(to right, #111124 0%, rgba(124, 58, 237, 0.95) 100%);
+}
+
 .font-comfortaa {
   font-family: var(--font-comfortaa), var(--font-geist-sans), sans-serif;
 }
