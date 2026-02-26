@@ -39,7 +39,7 @@ export function SkillsPieChart({ items }: { items: readonly LanguageItem[] }) {
       fontFamily: "var(--font-geist-sans), sans-serif",
     };
 
-    const option: echarts.ComposeOption = {
+    const option = {
       color: SEGMENT_COLORS,
       series: [
         {
