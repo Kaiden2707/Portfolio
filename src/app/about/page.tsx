@@ -248,10 +248,7 @@ export default function AboutPage() {
                 </div>
                 <ScrollFlowBlock className="w-full sm:w-72 sm:shrink-0">
                   <ImageCarousel
-                    images={[
-                      { src: "/personal-image.png", alt: "" },
-                      { src: "/personal-image-2.png", alt: "" },
-                    ]}
+                    images={[{ src: "/personal-image.png", alt: "" }]}
                   />
                 </ScrollFlowBlock>
               </div>
