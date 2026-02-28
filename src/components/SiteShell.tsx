@@ -28,6 +28,7 @@ export function SiteShell({
                 width={36}
                 height={36}
                 className="object-contain"
+                priority
               />
             </span>
             <span className="text-base font-bold tracking-tight sm:text-lg">{name}</span>

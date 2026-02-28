@@ -6,7 +6,7 @@ import { useCallback, useRef, useState } from "react";
 const SWIPE_THRESHOLD = 50;
 
 type Props = {
-  /** Image srcs (e.g. /personal-image.png, /personal-image-2.png) */
+  /** Image srcs (e.g. /personal-image.png) */
   images: { src: string; alt: string }[];
   className?: string;
 };
