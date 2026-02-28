@@ -2,10 +2,17 @@ export const profile = {
   name: "Kaiden McIntosh",
   tagline: "Frontend web developer focused on clean, fast interfaces.",
   about: [
-    "I'm a 20-year-old frontend developer focused on building \"fast\", \"modern\", and \"visually sharp\" web experiences.",
-    "I started coding a few months ago and quickly realized I genuinely enjoy figuring things out and building \"real\" projects. I experiment a lot with AI tools like \"Cursor\" to speed up my workflow and push ideas into production faster. Instead of just following tutorials, I prefer to build, test, break things, fix them, and learn through \"doing\".",
-    "Alongside development, I've studied \"cybersecurity\", which has shaped how I think about systems and structure. It's made me more aware of how applications work behind the scenes, not just how they look on the surface. I try to build with both performance and responsibility in mind.",
-    "I'm still early in my journey, but I'm learning fast and building consistently.",
+    "I am a frontend developer who delivers fast, modern and \"visually appealing\" web experiences. While design is important, I also ensure \"functionality\".",
+    "I create real projects while testing ideas, identifying weaknesses and optimizing outcomes.",
+    "I focus on maintaining \"open communication\" with my employers to ensure the website \"aligns\" with their \"objectives\" and most importantly the \"customers needs\". My goal when building is clear: Customer focused solutions, clean execution and \"reliable results\".",
+    "Understanding how systems can be \"exploited\" and where vulnerabilities appear, changes how I \"approach\" building websites.",
+    "Even on frontend websites, I consider the full stack and how all components link together and build with both \"performance\" and \"responsibility\" in mind.",
+  ],
+  aboutCyberBullets: [
+    "Secure data handling",
+    "access control",
+    "Attack surfaces",
+    "System exposure",
   ],
   projectsPlanned: [
     {

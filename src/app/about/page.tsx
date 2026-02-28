@@ -97,11 +97,11 @@ export default function AboutPage() {
                   <h3 className="pt-2 text-lg font-semibold sm:text-xl text-foreground dark:text-white">
                     How I build
                   </h3>
-                  {profile.about.slice(1, 2).map((p) => {
+                  {profile.about.slice(1, 3).map((p, i) => {
                     const normalized = p.replace(/,(?!\s)/g, ", ");
                     const segments = segmentizeQuoted(normalized);
                     return (
-                      <p key="how" className="text-sm leading-7 text-foreground/90 sm:text-base dark:text-white">
+                      <p key={`how-${i}`} className="text-sm leading-7 text-foreground/90 sm:text-base dark:text-white">
                         {segments.map((seg, j) => {
                           const prevTrimmed = segments[j - 1]?.text.trim() ?? "";
                           const currTrimmed = seg.text.trim();
@@ -110,7 +110,7 @@ export default function AboutPage() {
                             /[a-zA-Z0-9)]$/.test(prevTrimmed) &&
                             /^[a-zA-Z0-9]/.test(currTrimmed);
                           return (
-                            <span key={`how-${j}`} className="inline">
+                            <span key={`how-${i}-${j}`} className="inline">
                               {needSpace ? " " : null}
                               <SplitText
                                 text={seg.text}
@@ -129,13 +129,13 @@ export default function AboutPage() {
                     );
                   })}
                   <h3 className="pt-2 text-lg font-semibold sm:text-xl text-foreground dark:text-white">
-                    Cyber Security
+                    Cyber Security Background
                   </h3>
-                  {profile.about.slice(2).map((p, i) => {
+                  {profile.about.slice(3, 4).map((p) => {
                     const normalized = p.replace(/,(?!\s)/g, ", ");
                     const segments = segmentizeQuoted(normalized);
                     return (
-                      <p key={`rest-${i}`} className="text-sm leading-7 text-foreground/90 sm:text-base dark:text-white">
+                      <p key="cyber-intro" className="text-sm leading-7 text-foreground/90 sm:text-base dark:text-white">
                         {segments.map((seg, j) => {
                           const prevTrimmed = segments[j - 1]?.text.trim() ?? "";
                           const currTrimmed = seg.text.trim();
@@ -144,7 +144,46 @@ export default function AboutPage() {
                             /[a-zA-Z0-9)]$/.test(prevTrimmed) &&
                             /^[a-zA-Z0-9]/.test(currTrimmed);
                           return (
-                            <span key={`rest-${i}-${j}`} className="inline">
+                            <span key={`cyber-intro-${j}`} className="inline">
+                              {needSpace ? " " : null}
+                              <SplitText
+                                text={seg.text}
+                                tag="span"
+                                {...bodyTextProps}
+                                className={
+                                  seg.quoted
+                                    ? `!inline ${accentClass}`
+                                    : "!inline text-foreground/90 dark:text-white"
+                                }
+                              />
+                            </span>
+                          );
+                        })}
+                      </p>
+                    );
+                  })}
+                  <p className="mt-2 text-sm font-medium text-foreground/90 sm:text-base dark:text-white">
+                    I keep an eye on:
+                  </p>
+                  <ul className="mt-2 list-disc space-y-1 pl-5 text-sm leading-7 text-foreground/90 sm:text-base dark:text-white">
+                    {profile.aboutCyberBullets.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                  {profile.about.slice(4, 5).map((p) => {
+                    const normalized = p.replace(/,(?!\s)/g, ", ");
+                    const segments = segmentizeQuoted(normalized);
+                    return (
+                      <p key="cyber-outro" className="mt-3 text-sm leading-7 text-foreground/90 sm:text-base dark:text-white">
+                        {segments.map((seg, j) => {
+                          const prevTrimmed = segments[j - 1]?.text.trim() ?? "";
+                          const currTrimmed = seg.text.trim();
+                          const needSpace =
+                            j > 0 &&
+                            /[a-zA-Z0-9)]$/.test(prevTrimmed) &&
+                            /^[a-zA-Z0-9]/.test(currTrimmed);
+                          return (
+                            <span key={`cyber-outro-${j}`} className="inline">
                               {needSpace ? " " : null}
                               <SplitText
                                 text={seg.text}
