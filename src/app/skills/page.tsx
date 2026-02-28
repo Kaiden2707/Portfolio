@@ -75,9 +75,9 @@ export default function SkillsPage() {
             </div>
 
             <div className="mt-16">
-              <div className="flex items-center justify-between gap-6">
-                <div className="h-px flex-1 bg-border" />
-                <h3 className="flex shrink-0 items-center gap-2 text-xl font-semibold text-foreground dark:text-white sm:text-2xl">
+              <div className="grid grid-cols-5 items-center gap-4">
+                <div className="col-span-3 h-px bg-border" />
+                <h3 className="col-span-1 flex items-center gap-2 whitespace-nowrap text-2xl font-semibold text-foreground dark:text-white sm:text-3xl">
                   <img
                     src={techIconUrl("github")}
                     alt=""
@@ -87,8 +87,14 @@ export default function SkillsPage() {
                   />
                   GitHub Insights
                 </h3>
+                <div className="col-span-1 h-px bg-border" />
               </div>
-              <div className="mt-4 [&_svg]:max-w-full [&_svg]:h-auto">
+              <p className="mt-6 max-w-2xl text-left text-sm text-muted-foreground sm:text-base dark:text-white">
+                Each square represents work done on projects.
+                <br />
+                The lighter the square, the more activity on that day. It reflects my consistency and ongoing development.
+              </p>
+              <div className="mt-6 [&_svg]:max-w-full [&_svg]:h-auto">
                 <GitHubContributionsCalendar
                   username={profile.contact.github}
                   year={2026}
