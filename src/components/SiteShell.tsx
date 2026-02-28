@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { SiteNav } from "@/components/SiteNav";
+import { GridBackground } from "@/components/GridBackground";
 
 export function SiteShell({
   name,
@@ -35,21 +36,25 @@ export function SiteShell({
         </div>
       </header>
 
-      <main>{children}</main>
-
-      {!hideFooter && (
-        <footer className="border-t border-white/10 bg-transparent">
-          <div className="mx-auto w-full max-w-5xl px-5 py-10 text-sm text-muted sm:px-8">
-            <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-              <p>
-                <span suppressHydrationWarning>© {new Date().getFullYear()}</span> {name}
-              </p>
-              <p className="font-mono text-xs tracking-tight">
-                Built with Next.js + pnpm
-              </p>
+      {hideFooter ? (
+        <main className="relative z-10">{children}</main>
+      ) : (
+        <div className="relative">
+          <GridBackground />
+          <main className="relative z-10">{children}</main>
+          <footer className="bg-transparent">
+            <div className="mx-auto w-full max-w-5xl px-5 py-10 text-sm text-muted sm:px-8">
+              <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+                <p>
+                  <span suppressHydrationWarning>© {new Date().getFullYear()}</span> {name}
+                </p>
+                <p className="font-mono text-xs tracking-tight">
+                  Built with Next.js + pnpm
+                </p>
+              </div>
             </div>
-          </div>
-        </footer>
+          </footer>
+        </div>
       )}
     </div>
   );

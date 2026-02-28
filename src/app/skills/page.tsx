@@ -41,10 +41,10 @@ export default function SkillsPage() {
               />
             </div>
 
-            <h3 className="mt-10 font-comfortaa text-base font-semibold text-foreground sm:text-lg">
+            <h3 className="mt-10 font-comfortaa text-lg font-semibold text-foreground sm:text-xl">
               Top code used
             </h3>
-            <div className="mt-2 flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between lg:gap-8">
+            <div className="mt-2 flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between lg:gap-8">
               <div className="grid w-full max-w-[340px] grid-cols-2 gap-3 sm:gap-4 min-w-0 shrink-0 sm:max-w-[380px]">
                 {topLanguages.map(({ name, percent, iconId }) => (
                   <TileSpotlight

@@ -118,22 +118,15 @@ export function GitHubContributionsCalendar({
     contributions.length > 0
       ? Math.max(...contributions.map((c) => c.count))
       : 0;
-  const isLeap =
-    (yearNum % 4 === 0 && yearNum % 100 !== 0) || yearNum % 400 === 0;
-  const daysInYear = typeof year === "number" ? (isLeap ? 366 : 365) : 365;
-  const average =
-    Math.round((Number(total) / Number(daysInYear)) * 10) / 10;
-
   const statBlocks = [
     { label: "Total", value: total },
     { label: "This Week", value: thisWeek },
     { label: "Best Day", value: bestDay },
-    { label: "Average", value: average },
   ];
 
   return (
     <div className={className}>
-      <div className="mb-4 grid grid-cols-2 gap-3 sm:grid-cols-4">
+      <div className="mb-4 grid grid-cols-2 gap-3 sm:grid-cols-3">
         {statBlocks.map(({ label, value }) => (
           <div
             key={label}
