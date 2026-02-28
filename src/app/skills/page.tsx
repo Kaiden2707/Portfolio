@@ -1,6 +1,6 @@
 import { Section } from "@/components/Section";
 import { SiteShell } from "@/components/SiteShell";
-import { ScrollFlowWrapper } from "@/components/ScrollFlowWrapper";
+import { PageReveal } from "@/components/PageReveal";
 import { GitHubContributionsCalendar } from "@/components/GitHubContributionsCalendar";
 import { TechStackBar } from "@/components/TechStackBar";
 import { TileSpotlight } from "@/components/TileSpotlight";
@@ -18,7 +18,7 @@ export default function SkillsPage() {
     <div className="min-h-screen bg-transparent">
       <SiteShell name={profile.name}>
         <div className="min-h-[2rem] sm:min-h-[3rem]" aria-hidden />
-        <ScrollFlowWrapper>
+        <PageReveal>
           <Section id="skills" eyebrow="Stack" title="Skills" titleScrollFlow>
             <div className="max-w-2xl space-y-3 text-muted-foreground">
               {Array.isArray(profile.skillsIntro)
@@ -102,7 +102,7 @@ export default function SkillsPage() {
               </div>
             </div>
           </Section>
-        </ScrollFlowWrapper>
+        </PageReveal>
       </SiteShell>
     </div>
   );

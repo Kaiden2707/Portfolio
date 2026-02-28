@@ -2,9 +2,7 @@ import { ImageCarousel } from "@/components/ImageCarousel";
 import { Section } from "@/components/Section";
 import { SiteShell } from "@/components/SiteShell";
 import { TileSpotlight } from "@/components/TileSpotlight";
-import { ScrollFlowBlock } from "@/components/ScrollFlowBlock";
-import { ScrollFlowWrapper } from "@/components/ScrollFlowWrapper";
-import SplitText from "@/components/SplitText";
+import { PageReveal } from "@/components/PageReveal";
 import { profile } from "@/content/profile";
 
 function segmentizeQuoted(text: string): { quoted: boolean; text: string }[] {
@@ -27,15 +25,6 @@ function segmentizeQuoted(text: string): { quoted: boolean; text: string }[] {
   return segments.filter((s) => s.text.length > 0);
 }
 
-const bodyTextProps = {
-  splitType: "words" as const,
-  scrollFlow: true as const,
-  from: { opacity: 0, y: 28 },
-  to: { opacity: 1, y: 0 },
-  ease: "power3.out" as const,
-  textAlign: "left" as const,
-};
-
 const accentClass =
   "font-bold text-accent [text-shadow:0_0_8px_rgba(var(--accent-rgb),0.7),0_0_16px_rgba(var(--accent-rgb),0.4)]";
 
@@ -55,7 +44,7 @@ export default function AboutPage() {
     <div className="min-h-screen bg-transparent">
       <SiteShell name={profile.name}>
         <div className="min-h-[2rem] sm:min-h-[3rem]" aria-hidden />
-        <ScrollFlowWrapper>
+        <PageReveal>
           <Section id="about" eyebrow="Intro" title="About" titleScrollFlow>
             <div className="grid gap-6 md:grid-cols-12">
               <div className="md:col-span-8">
@@ -78,16 +67,7 @@ export default function AboutPage() {
                           return (
                             <span key={`who-${j}`} className="inline">
                               {needSpace ? " " : null}
-                              <SplitText
-                                text={seg.text}
-                                tag="span"
-                                {...bodyTextProps}
-                                className={
-                                  seg.quoted
-                                    ? `!inline ${accentClass}`
-                                    : "!inline text-foreground/90 dark:text-white"
-                                }
-                              />
+                              <span className={seg.quoted ? accentClass : "text-foreground/90 dark:text-white"}>{seg.text}</span>
                             </span>
                           );
                         })}
@@ -112,16 +92,7 @@ export default function AboutPage() {
                           return (
                             <span key={`how-${i}-${j}`} className="inline">
                               {needSpace ? " " : null}
-                              <SplitText
-                                text={seg.text}
-                                tag="span"
-                                {...bodyTextProps}
-                                className={
-                                  seg.quoted
-                                    ? `!inline ${accentClass}`
-                                    : "!inline text-foreground/90 dark:text-white"
-                                }
-                              />
+                              <span className={seg.quoted ? accentClass : "text-foreground/90 dark:text-white"}>{seg.text}</span>
                             </span>
                           );
                         })}
@@ -146,16 +117,7 @@ export default function AboutPage() {
                           return (
                             <span key={`cyber-intro-${j}`} className="inline">
                               {needSpace ? " " : null}
-                              <SplitText
-                                text={seg.text}
-                                tag="span"
-                                {...bodyTextProps}
-                                className={
-                                  seg.quoted
-                                    ? `!inline ${accentClass}`
-                                    : "!inline text-foreground/90 dark:text-white"
-                                }
-                              />
+                              <span className={seg.quoted ? accentClass : "text-foreground/90 dark:text-white"}>{seg.text}</span>
                             </span>
                           );
                         })}
@@ -185,16 +147,7 @@ export default function AboutPage() {
                           return (
                             <span key={`cyber-outro-${j}`} className="inline">
                               {needSpace ? " " : null}
-                              <SplitText
-                                text={seg.text}
-                                tag="span"
-                                {...bodyTextProps}
-                                className={
-                                  seg.quoted
-                                    ? `!inline ${accentClass}`
-                                    : "!inline text-foreground/90 dark:text-white"
-                                }
-                              />
+                              <span className={seg.quoted ? accentClass : "text-foreground/90 dark:text-white"}>{seg.text}</span>
                             </span>
                           );
                         })}
@@ -222,14 +175,11 @@ export default function AboutPage() {
             <div className="space-y-6">
               <div className="flex flex-col gap-6 sm:flex-row sm:items-start">
                 <div className="min-w-0 flex-1 space-y-6">
-                  <ScrollFlowBlock>
-                    <p className="text-sm leading-7 text-foreground/90 sm:text-base dark:text-white">
-                      I started coding out of curiosity, but stayed because of the feeling of turning nothing into something real.
-                      There’s something addictive about solving a problem and watching an idea come to life.
-                    </p>
-                  </ScrollFlowBlock>
-                  <ScrollFlowBlock>
-                    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                  <p className="text-sm leading-7 text-foreground/90 sm:text-base dark:text-white">
+                    I started coding out of curiosity, but stayed because of the feeling of turning nothing into something real.
+                    There’s something addictive about solving a problem and watching an idea come to life.
+                  </p>
+                  <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
                       <TileSpotlight className="rounded-2xl border-2 border-accent dark:border-white bg-surface p-4 dark:text-white">
                         <div className="flex items-center gap-2 text-sm font-semibold">
                           <span aria-hidden>🧠</span>
@@ -267,8 +217,6 @@ export default function AboutPage() {
                         </ul>
                       </TileSpotlight>
                     </div>
-                  </ScrollFlowBlock>
-                  <ScrollFlowBlock>
                   <div className="space-y-3 dark:text-white">
                     <h3 className="flex items-center gap-2 text-lg font-semibold sm:text-xl">
                       <span aria-hidden>🌍</span>
@@ -283,17 +231,16 @@ export default function AboutPage() {
                       Not chasing trends, but building things that feel intentional, thoughtful, and built to last.
                     </p>
                   </div>
-                  </ScrollFlowBlock>
                 </div>
-                <ScrollFlowBlock className="w-full sm:w-72 sm:shrink-0">
+                <div className="w-full sm:w-72 sm:shrink-0">
                   <ImageCarousel
                     images={[{ src: "/personal-image.png", alt: "" }]}
                   />
-                </ScrollFlowBlock>
+                </div>
               </div>
             </div>
           </Section>
-        </ScrollFlowWrapper>
+        </PageReveal>
       </SiteShell>
     </div>
   );

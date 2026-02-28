@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Section } from "@/components/Section";
 import { SiteShell } from "@/components/SiteShell";
 import { TileSpotlight } from "@/components/TileSpotlight";
+import { PageReveal } from "@/components/PageReveal";
 import { profile } from "@/content/profile";
 
 const placeholderPosts = [
@@ -27,7 +28,8 @@ export default function BlogPage() {
       <SiteShell name={profile.name}>
         <div className="min-h-[2rem] sm:min-h-[3rem]" aria-hidden />
 
-        <Section id="posts" eyebrow="Writing" title="Blog">
+        <PageReveal>
+          <Section id="posts" eyebrow="Writing" title="Blog">
           <p className="mb-8 text-sm leading-7 text-muted sm:text-base dark:text-white">
             Short posts on development, security, and whatever I'm working on.
           </p>
@@ -53,7 +55,8 @@ export default function BlogPage() {
               </li>
             ))}
           </ul>
-        </Section>
+          </Section>
+        </PageReveal>
       </SiteShell>
     </div>
   );

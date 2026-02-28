@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Section } from "@/components/Section";
 import { SiteShell } from "@/components/SiteShell";
 import { TileSpotlight } from "@/components/TileSpotlight";
-import { ScrollFlowWrapper } from "@/components/ScrollFlowWrapper";
+import { PageReveal } from "@/components/PageReveal";
 import { projectDocs } from "@/content/projectDocs";
 import { profile } from "@/content/profile";
 
@@ -12,7 +12,7 @@ export default function ProjectsPage() {
     <div className="min-h-screen bg-transparent">
       <SiteShell name={profile.name}>
         <div className="min-h-[2rem] sm:min-h-[3rem]" aria-hidden />
-        <ScrollFlowWrapper>
+        <PageReveal>
           <Section id="projects" eyebrow="Next up" title="Projects" titleScrollFlow>
             <div className="space-y-6">
               <p className="text-center text-sm leading-7 text-muted sm:text-base dark:text-white">
@@ -54,7 +54,7 @@ export default function ProjectsPage() {
               </div>
             </div>
           </Section>
-        </ScrollFlowWrapper>
+        </PageReveal>
       </SiteShell>
     </div>
   );

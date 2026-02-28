@@ -23,12 +23,12 @@ export function GridBackground() {
         backgroundSize: `${CELL_SIZE}px ${CELL_SIZE}px`,
         backgroundPosition: "0 0",
         maskImage: `
-          linear-gradient(to right, transparent 0%, transparent 14%, black 24%, black 76%, transparent 86%, transparent 100%),
-          linear-gradient(to bottom, transparent 0%, black 6%, black 94%, transparent 100%)
+          linear-gradient(to right, transparent 0%, black 42%, black 58%, transparent 100%),
+          linear-gradient(to bottom, transparent 0%, black 32%, black 68%, transparent 100%)
         `,
         WebkitMaskImage: `
-          linear-gradient(to right, transparent 0%, transparent 14%, black 24%, black 76%, transparent 86%, transparent 100%),
-          linear-gradient(to bottom, transparent 0%, black 6%, black 94%, transparent 100%)
+          linear-gradient(to right, transparent 0%, black 42%, black 58%, transparent 100%),
+          linear-gradient(to bottom, transparent 0%, black 32%, black 68%, transparent 100%)
         `,
         maskComposite: "intersect",
         WebkitMaskComposite: "source-in",
