@@ -8,16 +8,18 @@ export function Section({
   eyebrow,
   titleScrollFlow,
   children,
+  containerClassName,
 }: {
   id: string;
   title: string;
   eyebrow?: string;
   titleScrollFlow?: boolean;
   children: ReactNode;
+  containerClassName?: string;
 }) {
   return (
     <section id={id} className="scroll-mt-24 py-8 sm:py-10">
-      <div className="mx-auto w-full max-w-5xl px-5 sm:px-8">
+      <div className={`mx-auto w-full px-5 sm:px-8 ${containerClassName ?? "max-w-5xl"}`}>
         <div className="flex items-baseline justify-between gap-6">
           <div className="min-w-0">
             {eyebrow ? (

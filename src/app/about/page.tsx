@@ -3,6 +3,7 @@ import { Section } from "@/components/Section";
 import { SiteShell } from "@/components/SiteShell";
 import { TileSpotlight } from "@/components/TileSpotlight";
 import { PageReveal } from "@/components/PageReveal";
+import { CyberFoundationRadial } from "@/components/CyberFoundationRadial";
 import { profile } from "@/content/profile";
 
 function segmentizeQuoted(text: string): { quoted: boolean; text: string }[] {
@@ -28,25 +29,19 @@ function segmentizeQuoted(text: string): { quoted: boolean; text: string }[] {
 const accentClass =
   "font-bold text-accent [text-shadow:0_0_8px_rgba(var(--accent-rgb),0.7),0_0_16px_rgba(var(--accent-rgb),0.4)]";
 
-const certs = [
-  "PenTest+",
-  "N+",
-  "A+",
-  "S+",
-  "CySA+",
-  "Linux Administration",
-  "SecurityX (formerly CASP+)",
-  "Wireless Networks and Security",
-];
-
 export default function AboutPage() {
   return (
     <div className="min-h-screen bg-transparent">
       <SiteShell name={profile.name}>
         <div className="min-h-[2rem] sm:min-h-[3rem]" aria-hidden />
         <PageReveal>
-          <Section id="about" eyebrow="Intro" title="About" titleScrollFlow>
-            <div className="grid gap-6 md:grid-cols-12">
+          <Section
+            id="about"
+            eyebrow="Intro"
+            title="About"
+            titleScrollFlow
+          >
+            <div className="grid gap-8 md:grid-cols-12 md:items-start">
               <div className="md:col-span-8">
                 <div className="space-y-4 text-sm leading-7 text-foreground/90 sm:text-base dark:text-white">
                   <h3 className="text-lg font-semibold sm:text-xl text-foreground dark:text-white">
@@ -124,14 +119,6 @@ export default function AboutPage() {
                       </p>
                     );
                   })}
-                  <p className="mt-2 text-sm font-medium text-foreground/90 sm:text-base dark:text-white">
-                    I keep an eye on:
-                  </p>
-                  <ul className="mt-2 list-disc space-y-1 pl-5 text-sm leading-7 text-foreground/90 sm:text-base dark:text-white">
-                    {profile.aboutCyberBullets.map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
                   {profile.about.slice(4, 5).map((p) => {
                     const normalized = p.replace(/,(?!\s)/g, ", ");
                     const segments = segmentizeQuoted(normalized);
@@ -156,18 +143,8 @@ export default function AboutPage() {
                   })}
                 </div>
               </div>
-              <div className="md:col-span-4">
-                <TileSpotlight className="rounded-2xl border border-border bg-surface p-5 transition hover:border-accent/25 hover:bg-surface-2 dark:text-white">
-                  <div className="text-sm font-semibold">Education</div>
-                  <div className="mt-1 text-xs uppercase tracking-wider text-muted dark:text-white">
-                    EDUVOS 2025, Cyber security
-                  </div>
-                  <ul className="mt-3 space-y-2 text-sm text-muted dark:text-white">
-                    {certs.map((name) => (
-                      <li key={name}>{name}</li>
-                    ))}
-                  </ul>
-                </TileSpotlight>
+              <div className="md:col-span-4 md:-mr-14 md:pt-2 md:pl-3 lg:-mr-24 lg:pl-6">
+                <CyberFoundationRadial />
               </div>
             </div>
           </Section>
