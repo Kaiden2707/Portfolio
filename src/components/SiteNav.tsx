@@ -31,7 +31,7 @@ export function SiteNav() {
             href={href}
             aria-current={pathname === href ? "page" : undefined}
             className={[
-              "rounded-full px-3 py-1.5 text-base transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60 dark:text-white dark:hover:text-white",
+              "transform-gpu rounded-full px-3 py-1.5 text-base transition-transform duration-250 ease-out will-change-transform motion-safe:hover:scale-[1.06] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60 dark:text-white dark:hover:text-white",
               pathname === href
                 ? "bg-surface-2 text-foreground shadow-[0_0_0_1px_rgba(var(--accent-rgb)/0.25),0_0_20px_rgba(var(--accent-rgb)/0.10)]"
                 : "text-muted hover:text-foreground",
@@ -43,7 +43,7 @@ export function SiteNav() {
         <Link
           href="/blog"
           className={[
-            "rounded-full px-3 py-1.5 text-base transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60 dark:text-white dark:hover:text-white",
+            "transform-gpu rounded-full px-3 py-1.5 text-base transition-transform duration-250 ease-out will-change-transform motion-safe:hover:scale-[1.06] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60 dark:text-white dark:hover:text-white",
             onBlog
               ? "bg-surface-2 text-foreground shadow-[0_0_0_1px_rgba(var(--accent-rgb)/0.25),0_0_20px_rgba(var(--accent-rgb)/0.10)]"
               : "text-muted hover:text-foreground",
