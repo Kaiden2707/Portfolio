@@ -1,0 +1,21 @@
+export default function TermsPage() {
+  return (
+    <main className="min-h-screen bg-[#0b0d12] px-8 py-8 text-[#f5f5f5]">
+      <div className="mx-auto w-full max-w-[600px]">
+        <h1 className="mb-6 text-3xl font-semibold">Terms of Service</h1>
+        <p className="mb-4 leading-7">
+          By using this site, you agree to use it responsibly and respectfully.
+        </p>
+        <p className="mb-4 leading-7">
+          Any data collected through sign-in is handled according to the Privacy Policy.
+        </p>
+        <p className="mb-4 leading-7">
+          You may not use this site for illegal, harmful, or abusive activity.
+        </p>
+        <p className="leading-7">
+          The site owner is not liable for misuse of the platform or its content.
+        </p>
+      </div>
+    </main>
+  );
+}
