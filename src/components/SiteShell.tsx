@@ -8,10 +8,12 @@ export function SiteShell({
   name,
   children,
   hideFooter,
+  backgroundOverlay,
 }: {
   name: string;
   children: ReactNode;
   hideFooter?: boolean;
+  backgroundOverlay?: ReactNode;
 }) {
   return (
     <div className="min-h-screen bg-transparent">
@@ -42,8 +44,9 @@ export function SiteShell({
       ) : (
         <div className="relative">
           <GridBackground />
+          {backgroundOverlay}
           <main className="relative z-10">{children}</main>
-          <footer className="bg-transparent">
+          <footer className="relative z-10 bg-transparent">
             <div className="mx-auto w-full max-w-5xl px-5 py-10 text-sm text-muted sm:px-8">
               <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
                 <p>
