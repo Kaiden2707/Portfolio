@@ -48,7 +48,7 @@ export function ImageCarousel({ images, className = "" }: Props) {
   return (
     <div className={`relative flex flex-col gap-3 ${className}`}>
       <div
-        className="relative aspect-[3/4] w-full overflow-hidden rounded-2xl border-2 border-accent dark:border-white bg-surface-2 touch-none"
+        className="relative aspect-[3/4] w-full overflow-hidden rounded-2xl touch-none"
         onPointerDown={handlePointerDown}
         onPointerUp={handlePointerUp}
         onPointerCancel={handlePointerUp}
@@ -56,7 +56,7 @@ export function ImageCarousel({ images, className = "" }: Props) {
         {images.map((img, i) => (
           <div
             key={img.src}
-            className="absolute inset-0 transition-transform duration-300 ease-out"
+            className={`absolute -inset-px ${count > 1 ? "transition-transform duration-300 ease-out" : ""}`}
             style={{
               transform: `translateX(${(i - index) * 100}%)`,
               zIndex: i === index ? 1 : 0,
@@ -66,7 +66,7 @@ export function ImageCarousel({ images, className = "" }: Props) {
               src={img.src}
               alt={img.alt}
               fill
-              className="object-cover transition-transform duration-300 ease-out hover:scale-110"
+              className="object-cover"
               sizes="(max-width: 640px) 100vw, 288px"
             />
           </div>

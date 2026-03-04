@@ -31,59 +31,7 @@ const accentClass =
 export default function AboutPage() {
   return (
     <div className="min-h-screen bg-transparent">
-      <SiteShell
-        name={profile.name}
-        backgroundOverlay={
-          <div className="pointer-events-none absolute inset-0 z-[1]" aria-hidden>
-            <div
-              className="absolute inset-0"
-              style={{
-                backgroundImage: `
-                  linear-gradient(to right, rgba(89, 21, 255, 0.56) 0px, transparent 1px),
-                  linear-gradient(to bottom, rgba(89, 21, 255, 0.56) 0px, transparent 1px)
-                `,
-                backgroundSize: "48px 48px",
-                maskImage:
-                  "linear-gradient(to bottom, black 0%, black 34%, rgba(0,0,0,0.5) 40%, transparent 48%)",
-                WebkitMaskImage:
-                  "linear-gradient(to bottom, black 0%, black 34%, rgba(0,0,0,0.5) 40%, transparent 48%)",
-              }}
-            />
-            <div
-              className="absolute inset-0 bg-black"
-              style={{
-                maskImage:
-                  "linear-gradient(to bottom, transparent 36%, rgba(0,0,0,0.35) 42%, rgba(0,0,0,0.85) 50%, black 58%, black 100%)",
-                WebkitMaskImage:
-                  "linear-gradient(to bottom, transparent 36%, rgba(0,0,0,0.35) 42%, rgba(0,0,0,0.85) 50%, black 58%, black 100%)",
-              }}
-            />
-            <img
-              src="/human-city-bg.avif"
-              alt=""
-              loading="eager"
-              fetchPriority="high"
-              decoding="async"
-              className="absolute inset-x-0 bottom-0 top-[48%] h-[52%] w-full object-cover object-top"
-              style={{
-                imageRendering: "auto",
-                opacity: 0.98,
-                maskImage:
-                  "linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.14) 14%, rgba(0,0,0,0.55) 34%, black 52%, black 100%)",
-                WebkitMaskImage:
-                  "linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.14) 14%, rgba(0,0,0,0.55) 34%, black 52%, black 100%)",
-              }}
-            />
-            <div
-              className="absolute inset-0"
-              style={{
-                background:
-                  "linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.01) 68%, rgba(0,0,0,0.08) 100%)",
-              }}
-            />
-          </div>
-        }
-      >
+      <SiteShell name={profile.name}>
         <div className="min-h-[2rem] sm:min-h-[3rem]" aria-hidden />
         <PageReveal>
           <Section
@@ -200,44 +148,44 @@ export default function AboutPage() {
             </div>
           </Section>
           <Section id="personal" eyebrow="Outside of code" title="A bit more human" titleScrollFlow>
-            <div className="space-y-6 px-1 py-2 sm:px-2 sm:py-3">
+            <div className="space-y-6 px-1 py-2 text-foreground/90 sm:px-2 sm:py-3 dark:text-white">
               <div className="flex flex-col gap-6 sm:flex-row sm:items-start">
                 <div className="min-w-0 flex-1 space-y-6">
-                  <p className="rounded-xl bg-black/15 px-4 py-3 text-sm leading-7 text-white sm:text-base">
+                  <p className="text-sm leading-7 sm:text-base">
                     I started coding out of curiosity, but stayed because of the feeling of turning nothing into something real.
                     There’s something addictive about solving a problem and watching an idea come to life.
                   </p>
                   <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                    <div className="rounded-2xl border border-white/20 bg-white/10 p-4 text-white shadow-xl backdrop-blur-md">
+                    <div className="p-4">
                       <div className="flex items-center gap-2 text-sm font-semibold">
                         <span aria-hidden>🧠</span>
                         Why I Build
                       </div>
-                      <ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-white">
+                      <ul className="mt-3 list-disc space-y-2 pl-5 text-sm">
                         <li>I like creating things from scratch.</li>
                         <li>I enjoy figuring out how things work.</li>
                         <li>I’m obsessed with refining small details until they feel right.</li>
                         <li>When something finally works, it’s a rush.</li>
                       </ul>
                     </div>
-                    <div className="rounded-2xl border border-white/20 bg-white/10 p-4 text-white shadow-xl backdrop-blur-md">
+                    <div className="p-4">
                       <div className="flex items-center gap-2 text-sm font-semibold">
                         <span aria-hidden>🌿</span>
                         Outside the Screen
                       </div>
-                      <ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-white">
+                      <ul className="mt-3 list-disc space-y-2 pl-5 text-sm">
                         <li>Into fitness - I like pushing limits physically the same way I do mentally.</li>
                         <li>Competitive by nature.</li>
                         <li>Gaming for strategy and creativity.</li>
                         <li>I care about aesthetics and clean design.</li>
                       </ul>
                     </div>
-                    <div className="rounded-2xl border border-white/20 bg-white/10 p-4 text-white shadow-xl backdrop-blur-md">
+                    <div className="p-4">
                       <div className="flex items-center gap-2 text-sm font-semibold">
                         <span aria-hidden>🚀</span>
                         What Drives Me
                       </div>
-                      <ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-white">
+                      <ul className="mt-3 list-disc space-y-2 pl-5 text-sm">
                         <li>Becoming insanely skilled at what I do.</li>
                         <li>Building websites for real people.</li>
                         <li>Working remotely and creating freedom through skill.</li>
@@ -245,7 +193,7 @@ export default function AboutPage() {
                       </ul>
                     </div>
                   </div>
-                  <div className="space-y-3 rounded-xl bg-black/20 px-4 py-3 text-white">
+                  <div className="space-y-3 px-4 py-3">
                     <h3 className="flex items-center gap-2 text-lg font-semibold sm:text-xl">
                       <span aria-hidden>🌍</span>
                       Where I’m Headed
@@ -260,12 +208,11 @@ export default function AboutPage() {
                     </p>
                   </div>
                 </div>
-                <div className="w-full sm:w-72 sm:shrink-0">
-                  <div className="rounded-2xl border border-white/20 bg-white/10 p-2 shadow-xl backdrop-blur-md">
-                    <ImageCarousel
-                      images={[{ src: "/personal-image.png", alt: "" }]}
-                    />
-                  </div>
+                <div className="group w-full sm:flex sm:h-[26rem] sm:w-[19.5rem] sm:shrink-0 sm:items-center sm:justify-center">
+                  <ImageCarousel
+                    className="w-full sm:w-72 sm:origin-center sm:transform-gpu sm:will-change-transform sm:transition-transform sm:duration-300 sm:ease-out sm:group-hover:scale-[1.06]"
+                    images={[{ src: "/personal-image.png", alt: "" }]}
+                  />
                 </div>
               </div>
             </div>
