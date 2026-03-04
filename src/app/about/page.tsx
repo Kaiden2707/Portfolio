@@ -3,6 +3,7 @@ import { Section } from "@/components/Section";
 import { SiteShell } from "@/components/SiteShell";
 import { PageReveal } from "@/components/PageReveal";
 import { CyberFoundationRadial } from "@/components/CyberFoundationRadial";
+import GradientText from "@/components/GradientText";
 import { profile } from "@/content/profile";
 
 function segmentizeQuoted(text: string): { quoted: boolean; text: string }[] {
@@ -25,8 +26,7 @@ function segmentizeQuoted(text: string): { quoted: boolean; text: string }[] {
   return segments.filter((s) => s.text.length > 0);
 }
 
-const accentClass =
-  "font-bold text-accent [text-shadow:0_0_8px_rgba(var(--accent-rgb),0.7),0_0_16px_rgba(var(--accent-rgb),0.4)]";
+const accentClass = "font-bold";
 
 export default function AboutPage() {
   return (
@@ -61,7 +61,18 @@ export default function AboutPage() {
                           return (
                             <span key={`who-${j}`} className="inline">
                               {needSpace ? " " : null}
-                              <span className={seg.quoted ? accentClass : "text-foreground/90 dark:text-white"}>{seg.text}</span>
+                              {seg.quoted ? (
+                                <GradientText
+                                  colors={["#5227FF", "#FF9FFC", "#B19EEF"]}
+                                  animationSpeed={2.5}
+                                  showBorder={false}
+                                  className={accentClass}
+                                >
+                                  {seg.text}
+                                </GradientText>
+                              ) : (
+                                <span className="text-foreground/90 dark:text-white">{seg.text}</span>
+                              )}
                             </span>
                           );
                         })}
@@ -86,7 +97,18 @@ export default function AboutPage() {
                           return (
                             <span key={`how-${i}-${j}`} className="inline">
                               {needSpace ? " " : null}
-                              <span className={seg.quoted ? accentClass : "text-foreground/90 dark:text-white"}>{seg.text}</span>
+                              {seg.quoted ? (
+                                <GradientText
+                                  colors={["#5227FF", "#FF9FFC", "#B19EEF"]}
+                                  animationSpeed={2.5}
+                                  showBorder={false}
+                                  className={accentClass}
+                                >
+                                  {seg.text}
+                                </GradientText>
+                              ) : (
+                                <span className="text-foreground/90 dark:text-white">{seg.text}</span>
+                              )}
                             </span>
                           );
                         })}
@@ -111,7 +133,18 @@ export default function AboutPage() {
                           return (
                             <span key={`cyber-intro-${j}`} className="inline">
                               {needSpace ? " " : null}
-                              <span className={seg.quoted ? accentClass : "text-foreground/90 dark:text-white"}>{seg.text}</span>
+                              {seg.quoted ? (
+                                <GradientText
+                                  colors={["#5227FF", "#FF9FFC", "#B19EEF"]}
+                                  animationSpeed={2.5}
+                                  showBorder={false}
+                                  className={accentClass}
+                                >
+                                  {seg.text}
+                                </GradientText>
+                              ) : (
+                                <span className="text-foreground/90 dark:text-white">{seg.text}</span>
+                              )}
                             </span>
                           );
                         })}
@@ -133,7 +166,18 @@ export default function AboutPage() {
                           return (
                             <span key={`cyber-outro-${j}`} className="inline">
                               {needSpace ? " " : null}
-                              <span className={seg.quoted ? accentClass : "text-foreground/90 dark:text-white"}>{seg.text}</span>
+                              {seg.quoted ? (
+                                <GradientText
+                                  colors={["#5227FF", "#FF9FFC", "#B19EEF"]}
+                                  animationSpeed={2.5}
+                                  showBorder={false}
+                                  className={accentClass}
+                                >
+                                  {seg.text}
+                                </GradientText>
+                              ) : (
+                                <span className="text-foreground/90 dark:text-white">{seg.text}</span>
+                              )}
                             </span>
                           );
                         })}
