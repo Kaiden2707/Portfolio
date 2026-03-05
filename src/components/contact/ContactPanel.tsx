@@ -103,10 +103,15 @@ export function ContactPanel() {
 
   return (
     <div className="tile-spotlight rounded-2xl border border-border bg-surface p-10 transition hover:border-accent/25 hover:bg-surface-2 sm:p-12 md:p-14 dark:text-white">
-      <p className="max-w-2xl text-sm leading-7 text-muted sm:text-base">
-        Get in touch through any of these channels. Hover over the icons to see
-        my handles.
-      </p>
+      <div className="max-w-2xl space-y-2">
+        <p className="text-base font-semibold text-foreground sm:text-lg">
+          Let's Connect!
+        </p>
+        <p className="text-sm leading-7 text-muted sm:text-base">
+          If you have an idea, opportunity, or just want to talk tech, feel free
+          to reach out :)
+        </p>
+      </div>
 
       <div className="mt-10 flex flex-wrap justify-center gap-6 sm:gap-8 md:gap-12">
         {contactItems.map((item) => {
