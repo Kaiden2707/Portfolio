@@ -51,6 +51,9 @@ export function SiteShell({
               <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
                 <p>
                   <span suppressHydrationWarning>© {new Date().getFullYear()}</span> {name}
+                  <span className="ml-2 italic text-xs text-muted-foreground/80">
+                    Cape Town, South Africa
+                  </span>
                 </p>
                 <p className="font-mono text-xs tracking-tight">
                   Built with Next.js + pnpm

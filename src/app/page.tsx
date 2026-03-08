@@ -69,6 +69,9 @@ export default function Home() {
               <div className="mx-auto flex max-w-5xl flex-col gap-2 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
                 <p>
                   <span suppressHydrationWarning>© {new Date().getFullYear()}</span> {profile.name}
+                  <span className="ml-2 italic text-xs text-white/45">
+                    Cape Town, South Africa
+                  </span>
                 </p>
                 <p className="font-mono text-xs tracking-tight">
                   Built with Next.js + pnpm
