@@ -3,7 +3,6 @@
 import { useEffect, useRef } from "react";
 import * as echarts from "echarts";
 import { techIconUrl } from "@/lib/techIcons";
-import { useTheme } from "next-themes";
 
 /* Vibrant segment colours: JS yellow, Python green, TS light blue, HTML red */
 const SEGMENT_COLORS = [
@@ -20,14 +19,14 @@ type LanguageItem = { name: string; percent: number; iconId: string };
 
 export function SkillsPieChart({ items }: { items: readonly LanguageItem[] }) {
   const chartRef = useRef<HTMLDivElement>(null);
-  const { resolvedTheme } = useTheme();
-  const isDarkMode = resolvedTheme !== "light";
-  const labelColor = isDarkMode ? "#ffffff" : "#111124";
 
   useEffect(() => {
     if (!chartRef.current || items.length === 0) return;
 
     const chart = echarts.init(chartRef.current);
+    const labelColor =
+      getComputedStyle(document.documentElement).getPropertyValue("--foreground").trim() ||
+      "#ffffff";
 
     const rich: Record<string, { backgroundColor?: { image: string }; width?: number; height?: number; color?: string; fontSize?: number; fontFamily?: string }> = {};
     items.forEach((_, idx) => {
@@ -93,7 +92,7 @@ export function SkillsPieChart({ items }: { items: readonly LanguageItem[] }) {
       window.removeEventListener("resize", onResize);
       chart.dispose();
     };
-  }, [items, labelColor]);
+  }, [items]);
 
   return (
     <div className="flex shrink-0 justify-end overflow-visible">

@@ -121,49 +121,79 @@ html.light {
   --accent-foreground: #ffffff;
 }
 
-html.light {
-  scrollbar-color: rgba(0, 0, 0, 0.25) transparent;
-}
-html.light::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.2);
-}
-html.light::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 0, 0, 0.35);
-}
-
-html {
+html,
+body {
   scroll-behavior: smooth;
   scrollbar-width: thin;
-  scrollbar-color: rgba(255, 255, 255, 0.4) transparent;
+  scrollbar-color: #ffffff transparent;
 }
 
-html::-webkit-scrollbar {
-  width: 8px;
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  width: 10px;
 }
 
-html::-webkit-scrollbar-track {
+html::-webkit-scrollbar-track,
+body::-webkit-scrollbar-track {
   background: transparent;
 }
 
-html::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.35);
-  border-radius: 4px;
+html::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-thumb {
+  background: #ffffff;
+  border-radius: 0;
 }
 
-html::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.5);
+html::-webkit-scrollbar-thumb:hover,
+body::-webkit-scrollbar-thumb:hover {
+  background: #ffffff;
 }
 
-@media (prefers-color-scheme: light) {
-  html {
-    scrollbar-color: rgba(0, 0, 0, 0.25) transparent;
-  }
-  html::-webkit-scrollbar-thumb {
-    background: rgba(0, 0, 0, 0.2);
-  }
-  html::-webkit-scrollbar-thumb:hover {
-    background: rgba(0, 0, 0, 0.35);
-  }
+html::-webkit-scrollbar-button,
+body::-webkit-scrollbar-button,
+html::-webkit-scrollbar-button:vertical:start:decrement,
+html::-webkit-scrollbar-button:vertical:end:increment,
+html::-webkit-scrollbar-button:vertical:start:increment,
+html::-webkit-scrollbar-button:vertical:end:decrement,
+body::-webkit-scrollbar-button:vertical:start:decrement,
+body::-webkit-scrollbar-button:vertical:end:increment,
+body::-webkit-scrollbar-button:vertical:start:increment,
+body::-webkit-scrollbar-button:vertical:end:decrement,
+html::-webkit-scrollbar-button:horizontal:start:decrement,
+html::-webkit-scrollbar-button:horizontal:end:increment,
+body::-webkit-scrollbar-button:horizontal:start:decrement,
+body::-webkit-scrollbar-button:horizontal:end:increment {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  max-width: 0 !important;
+  max-height: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  -webkit-appearance: none !important;
+}
+
+html::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+html.light,
+html.light body {
+  scrollbar-color: #000000 transparent;
+}
+html.light::-webkit-scrollbar-track,
+html.light body::-webkit-scrollbar-track {
+  background: transparent;
+}
+html.light::-webkit-scrollbar-thumb,
+html.light body::-webkit-scrollbar-thumb {
+  background: #000000;
+}
+html.light::-webkit-scrollbar-thumb:hover,
+html.light body::-webkit-scrollbar-thumb:hover {
+  background: #000000;
 }
 
 @media (prefers-reduced-motion: reduce) {
