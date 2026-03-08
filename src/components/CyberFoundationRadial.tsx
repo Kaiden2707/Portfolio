@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type CSSProperties } from "react";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { useTheme } from "next-themes";
 
 type CategoryId = "offensive" | "defensive" | "infrastructure" | "application";
@@ -106,10 +106,47 @@ function certTagStyle(category: Category, isDarkMode: boolean): CSSProperties {
 export function CyberFoundationRadial() {
   const [activeCategory, setActiveCategory] = useState<CategoryId | null>(null);
   const [hoveredCategory, setHoveredCategory] = useState<CategoryId | null>(null);
+  const [isPopupHovered, setIsPopupHovered] = useState(false);
+  const autoCloseTimeoutRef = useRef<number | null>(null);
   const { resolvedTheme } = useTheme();
   const isDarkMode = resolvedTheme !== "light";
 
+  function clearAutoCloseTimer() {
+    if (autoCloseTimeoutRef.current !== null) {
+      window.clearTimeout(autoCloseTimeoutRef.current);
+      autoCloseTimeoutRef.current = null;
+    }
+  }
+
+  function startAutoCloseTimer() {
+    clearAutoCloseTimer();
+    autoCloseTimeoutRef.current = window.setTimeout(() => {
+      setActiveCategory(null);
+      setHoveredCategory(null);
+      setIsPopupHovered(false);
+      autoCloseTimeoutRef.current = null;
+    }, 6000);
+  }
+
+  useEffect(() => {
+    if (!activeCategory || isPopupHovered) {
+      clearAutoCloseTimer();
+      return;
+    }
+    startAutoCloseTimer();
+    return clearAutoCloseTimer;
+  }, [activeCategory, isPopupHovered]);
+
+  useEffect(() => {
+    if (!activeCategory) setIsPopupHovered(false);
+  }, [activeCategory]);
+
+  useEffect(() => {
+    return clearAutoCloseTimer;
+  }, []);
+
   function handleCategoryClick(id: CategoryId) {
+    setIsPopupHovered(false);
     setActiveCategory((current) => (current === id ? null : id));
   }
 
@@ -142,13 +179,18 @@ export function CyberFoundationRadial() {
                 </span>
                 <div
                   className={[
-                    "pointer-events-none absolute z-20 min-w-[13rem] rounded-2xl p-3 transition-all duration-250 ease-out",
+                    "absolute z-20 min-w-[13rem] rounded-2xl p-3 transition-all duration-250 ease-out",
                     category.popupPosition,
+                    isActive ? "pointer-events-auto" : "pointer-events-none",
                     isActive
                       ? "translate-y-0 scale-100 opacity-100"
                       : "translate-y-1 scale-95 opacity-0",
                   ].join(" ")}
                   style={categoryPopupStyle(category, isDarkMode)}
+                  onMouseEnter={() => {
+                    if (isActive) setIsPopupHovered(true);
+                  }}
+                  onMouseLeave={() => setIsPopupHovered(false)}
                 >
                   <div className="flex flex-wrap gap-2">
                     {category.tags.map((tag) => (
@@ -188,12 +230,17 @@ export function CyberFoundationRadial() {
                 </span>
                 <div
                   className={[
-                    "pointer-events-none absolute left-1/2 top-full z-10 mt-2 w-[min(20rem,92vw)] -translate-x-1/2 rounded-2xl p-3 transition-all duration-250 ease-out",
+                    "absolute left-1/2 top-full z-10 mt-2 w-[min(20rem,92vw)] -translate-x-1/2 rounded-2xl p-3 transition-all duration-250 ease-out",
+                    isActive ? "pointer-events-auto" : "pointer-events-none",
                     isActive
                       ? "translate-y-0 scale-100 opacity-100"
                       : "translate-y-1 scale-95 opacity-0",
                   ].join(" ")}
                   style={categoryPopupStyle(category, isDarkMode)}
+                  onMouseEnter={() => {
+                    if (isActive) setIsPopupHovered(true);
+                  }}
+                  onMouseLeave={() => setIsPopupHovered(false)}
                 >
                   <div className="flex flex-wrap gap-2">
                     {category.tags.map((tag) => (
