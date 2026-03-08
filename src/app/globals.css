@@ -96,7 +96,8 @@
 
     --background: #fbfbfe;
     --foreground: #111124;
-    --muted: #4b4f5c;
+    --muted: #111124;
+    --muted-foreground: #111124;
     --surface: #ffffff;
     --surface-2: #f4f4ff;
     --border: rgba(17, 17, 36, 0.10);
@@ -108,7 +109,8 @@ html.light {
   color-scheme: light;
   --background: #fbfbfe;
   --foreground: #111124;
-  --muted: #4b4f5c;
+  --muted: #111124;
+  --muted-foreground: #111124;
   --surface: #ffffff;
   --surface-2: #f4f4ff;
   --border: rgba(17, 17, 36, 0.10);
@@ -344,6 +346,15 @@ html.dark .tech-logo-invert,
 .dark [class*="text-foreground\/90"],
 .dark [class*="text-foreground\/80"] {
   color: #ffffff !important;
+}
+
+/* Force light-mode body copy to black */
+html.light .text-muted {
+  color: #111124 !important;
+}
+html.light [class*="text-foreground\/90"],
+html.light [class*="text-foreground\/80"] {
+  color: #111124 !important;
 }
 
 /* Hero CTA: circular purple fill from center on hover, arrow slides right */
