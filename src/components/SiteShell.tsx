@@ -17,7 +17,7 @@ export function SiteShell({
 }) {
   return (
     <div className="min-h-screen bg-transparent">
-      <header className="sticky top-0 z-20 border-b border-white/10 bg-background/80 backdrop-blur-md supports-[backdrop-filter]:bg-background/60">
+      <header className="sticky top-0 z-20 border-b border-black/20 bg-background/80 backdrop-blur-[2px] supports-[backdrop-filter]:bg-background/60 dark:border-white/10">
         <div className="mx-auto flex w-full max-w-5xl items-center justify-between gap-6 px-5 py-4 sm:px-8">
           <Link
             href="/"
