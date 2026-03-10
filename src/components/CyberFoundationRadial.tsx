@@ -65,15 +65,17 @@ function categoryButtonStyle(
 ): CSSProperties {
   const glowOn = isActive || isHovered;
   const borderAlpha = isActive ? 0.72 : 0.58;
-  const baseColor = isDarkMode ? "#111111" : "#f4f4ff";
   const textColor = isDarkMode ? "#f5f5f5" : "#111124";
+  const background = isDarkMode
+    ? `radial-gradient(circle at center, rgba(${category.accentRgb}, 0.32) 0%, rgba(${category.accentRgb}, 0.20) 42%, #111111 78%)`
+    : `radial-gradient(circle at center, rgba(${category.accentRgb}, 0.42) 0%, rgba(${category.accentRgb}, 0.38) 60%, rgba(${category.accentRgb}, 0.34) 100%)`;
   return {
     color: textColor,
-    background: `radial-gradient(circle at center, rgba(${category.accentRgb}, ${isDarkMode ? "0.22" : "0.18"}), ${baseColor} 62%)`,
+    background,
     border: `1px solid rgba(${category.accentRgb}, ${borderAlpha})`,
     boxShadow: glowOn
-      ? `0 0 24px rgba(${category.accentRgb}, 0.62), inset 0 1px 0 rgba(255,255,255,0.06), inset 0 -8px 16px ${isDarkMode ? "rgba(0,0,0,0.35)" : "rgba(17,17,36,0.16)"}`
-      : `inset 0 1px 0 rgba(255,255,255,0.06), inset 0 -8px 16px ${isDarkMode ? "rgba(0,0,0,0.35)" : "rgba(17,17,36,0.16)"}`,
+      ? `0 0 34px rgba(${category.accentRgb}, 0.72), inset 0 1px 0 rgba(255,255,255,0.08), inset 0 -8px 16px ${isDarkMode ? "rgba(0,0,0,0.35)" : "rgba(17,17,36,0.16)"}`
+      : `0 0 14px rgba(${category.accentRgb}, 0.28), inset 0 1px 0 rgba(255,255,255,0.08), inset 0 -8px 16px ${isDarkMode ? "rgba(0,0,0,0.35)" : "rgba(17,17,36,0.16)"}`,
   };
 }
 
@@ -155,7 +157,7 @@ export function CyberFoundationRadial() {
       <div className="hidden md:block">
         <div className="relative mx-auto h-[24rem] w-full max-w-[40rem]">
           <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-            <div className="flex h-40 w-40 items-center justify-center rounded-full border border-accent/30 bg-surface/95 px-5 text-center text-sm font-semibold text-foreground shadow-[0_0_22px_rgba(var(--accent-rgb)/0.14)] transition-all duration-300 ease-out motion-safe:hover:scale-105 motion-safe:hover:shadow-[0_0_28px_rgba(var(--accent-rgb)/0.18)]">
+            <div className="flex h-40 w-40 items-center justify-center rounded-full border border-accent/45 bg-surface/95 px-5 text-center text-sm font-semibold text-foreground shadow-[0_0_32px_rgba(var(--accent-rgb)/0.28)] transition-all duration-300 ease-out motion-safe:hover:scale-105 motion-safe:hover:shadow-[0_0_42px_rgba(var(--accent-rgb)/0.36)]">
               Cyber &amp; Systems Education
             </div>
           </div>
@@ -207,7 +209,7 @@ export function CyberFoundationRadial() {
       </div>
 
       <div className="space-y-3 md:hidden">
-        <div className="rounded-2xl border border-accent/30 bg-surface px-4 py-5 text-center text-sm font-semibold text-foreground shadow-[0_0_18px_rgba(var(--accent-rgb)/0.12)]">
+        <div className="rounded-2xl border border-accent/45 bg-surface px-4 py-5 text-center text-sm font-semibold text-foreground shadow-[0_0_26px_rgba(var(--accent-rgb)/0.24)]">
           Cyber &amp; Systems Education
         </div>
         <div className="grid gap-3">
