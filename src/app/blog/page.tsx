@@ -8,16 +8,16 @@ import { profile } from "@/content/profile";
 const placeholderPosts = [
   {
     slug: "welcome",
-    title: "Welcome to the blog",
+    title: "Nothing here just yet",
     excerpt:
-      "Notes on what I'm building, what I'm learning, and the tools I use. Clean, minimal, and to the point.",
+      "This section is still in progress. Posts will start appearing here soon.",
     date: "2025-02-23",
   },
   {
     slug: "coming-soon",
-    title: "More posts soon",
+    title: "Coming soon",
     excerpt:
-      "I'll be adding short write-ups on frontend patterns, security basics, and project updates as I ship.",
+      "I will be sharing short write-ups on projects, frontend ideas, and security notes.",
     date: "—",
   },
 ];
@@ -31,7 +31,7 @@ export default function BlogPage() {
         <PageReveal>
           <Section id="posts" eyebrow="Writing" title="Blog">
           <p className="mb-8 text-sm leading-7 text-muted sm:text-base dark:text-white">
-            Short posts on development, security, and whatever I'm working on.
+            Nothing here for now. I am still setting this up and will publish posts soon.
           </p>
           <ul className="space-y-4">
             {placeholderPosts.map((post) => (
