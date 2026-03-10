@@ -10,6 +10,12 @@ const ethnocentric = localFont({
   display: "swap",
 });
 
+const nulshock = localFont({
+  src: "../../public/fonts/Nulshock Bd.otf",
+  variable: "--font-nulshock",
+  display: "swap",
+});
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -59,7 +65,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${bebasNeue.variable} ${roboto.variable} ${jetbrainsMono.variable} ${sairaStencil.variable} ${ethnocentric.variable} ${comfortaa.variable} min-h-screen bg-background text-foreground antialiased`}
+        className={`${geistSans.variable} ${bebasNeue.variable} ${roboto.variable} ${jetbrainsMono.variable} ${sairaStencil.variable} ${ethnocentric.variable} ${nulshock.variable} ${comfortaa.variable} min-h-screen bg-background text-foreground antialiased`}
       >
         <ThemeProvider>{children}</ThemeProvider>
       </body>

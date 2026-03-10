@@ -42,8 +42,8 @@ export default function AboutPage() {
           >
             <div className="grid gap-8 md:grid-cols-12 md:items-start">
               <div className="md:col-span-8">
-                <div className="space-y-4 text-sm leading-7 text-foreground/90 sm:text-base dark:text-white">
-                  <h3 className="font-hero-roboto text-lg font-semibold text-foreground sm:text-xl dark:text-white">
+                <div className="space-y-7 text-sm leading-7 text-foreground/90 sm:text-base dark:text-white">
+                  <h3 className="font-nulshock text-lg font-semibold text-foreground sm:text-xl dark:text-white">
                     Who I am
                   </h3>
                   {profile.about.slice(0, 1).map((p) => {
@@ -79,7 +79,7 @@ export default function AboutPage() {
                       </p>
                     );
                   })}
-                  <h3 className="font-hero-roboto pt-2 text-lg font-semibold text-foreground sm:text-xl dark:text-white">
+                  <h3 className="font-nulshock pt-6 text-lg font-semibold text-foreground sm:text-xl dark:text-white">
                     How I build
                   </h3>
                   {profile.about.slice(1, 3).map((p, i) => {
@@ -115,7 +115,7 @@ export default function AboutPage() {
                       </p>
                     );
                   })}
-                  <h3 className="font-hero-roboto pt-2 text-lg font-semibold text-foreground sm:text-xl dark:text-white">
+                  <h3 className="font-nulshock pt-6 text-lg font-semibold text-foreground sm:text-xl dark:text-white">
                     Cyber Security Background
                   </h3>
                   {profile.about.slice(3, 4).map((p) => {

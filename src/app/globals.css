@@ -301,6 +301,10 @@ body {
   font-family: var(--font-ethnocentric), var(--font-geist-sans), sans-serif;
 }
 
+.font-nulshock {
+  font-family: var(--font-nulshock), var(--font-geist-sans), sans-serif;
+}
+
 /* Section page headings: hero font, gradient text, ~25% lighter weight */
 .section-heading {
   font-family: var(--font-ethnocentric), var(--font-geist-sans), sans-serif;
