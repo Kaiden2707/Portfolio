@@ -45,14 +45,14 @@ export const FlipWords = ({
           ease: "easeOut",
         }}
         exit={{
-          opacity: 0,
-          y: -30,
-          x: 56,
-          scale: 1.14,
-          filter: "blur(10px)",
+          opacity: 1,
+          y: 0,
+          x: 0,
+          scale: 1,
+          filter: "blur(0px)",
           transition: {
-            duration: 0.86,
-            ease: [0.16, 0.78, 0.2, 1],
+            duration: 0.72,
+            ease: "linear",
           },
         }}
         className={cn(
@@ -64,18 +64,31 @@ export const FlipWords = ({
       >
         {currentWord.split(" ").map((word, wordIndex, wordArray) => (
           <span key={word + wordIndex} className="inline-block whitespace-nowrap">
-            {word.split("").map((letter, letterIndex) => (
+            {word.split("").map((letter, letterIndex, letters) => (
               <motion.span
                 key={word + letterIndex}
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
+                exit={{
+                  opacity: 0,
+                  x: 28 + (letterIndex - (letters.length - 1) / 2) * 6,
+                  y: -16 - Math.abs(letterIndex - (letters.length - 1) / 2) * 2,
+                  rotate: (letterIndex - (letters.length - 1) / 2) * 4.5,
+                  scale: 0.62,
+                  filter: "blur(12px)",
+                  transition: {
+                    delay: letterIndex * 0.035,
+                    duration: 0.86,
+                    ease: [0.12, 0.78, 0.16, 1],
+                  },
+                }}
                 transition={{
                   delay: wordIndex * 0.45 + letterIndex * 0.13,
                   duration: 0.58,
                   ease: "easeOut",
                 }}
                 className="inline-block"
-                style={{ willChange: "transform, opacity" }}
+                style={{ willChange: "transform, opacity", transformOrigin: "center bottom" }}
               >
                 {letter}
               </motion.span>

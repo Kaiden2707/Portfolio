@@ -51,7 +51,7 @@ export default function Home() {
                   <FlipWords
                     words={["modern", "clean", "fast"]}
                     duration={3600}
-                    className="ml-1 px-0 text-blue-400 dark:text-blue-300"
+                    className="ml-1 px-0 text-fuchsia-400 dark:text-fuchsia-300"
                   />
                   <span className="ml-1">interfaces</span>
                 </p>
