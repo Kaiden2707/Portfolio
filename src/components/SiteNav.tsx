@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname, useSearchParams } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { signOut, useSession } from "@/lib/auth-client";
 import { ThemeToggle } from "@/components/ThemeToggle";
@@ -15,10 +15,8 @@ const sectionLinks = [
 
 export function SiteNav() {
   const pathname = usePathname();
-  const searchParams = useSearchParams();
   const { data: session } = useSession();
   const onBlog = pathname?.startsWith("/blog") ?? false;
-  const isPreviewFrame = searchParams?.get("preview") === "1";
   const [loadedPreviews, setLoadedPreviews] = useState<Record<string, boolean>>({});
 
   function markPreviewLoaded(href: string) {
@@ -76,7 +74,7 @@ export function SiteNav() {
             >
               {label}
             </Link>
-            {!isPreviewFrame ? previewTile(href, label) : null}
+            {previewTile(href, label)}
           </span>
         ))}
         <span className="group/nav relative inline-flex">
@@ -86,7 +84,7 @@ export function SiteNav() {
           >
             Blog
           </Link>
-          {!isPreviewFrame ? previewTile("/blog", "Blog") : null}
+          {previewTile("/blog", "Blog")}
         </span>
       </div>
       <span className="flex-1" aria-hidden />
