@@ -1,29 +1,22 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
 import { signOut, useSession } from "@/lib/auth-client";
 import { ThemeToggle } from "@/components/ThemeToggle";
 
 const sectionLinks = [
-  { href: "/about", label: "About" },
-  { href: "/skills", label: "Skills" },
-  { href: "/projects", label: "Projects" },
-  { href: "/contact", label: "Contact" },
+  { href: "/about", label: "About", previewSrc: "/human-city-bg.webp" },
+  { href: "/skills", label: "Skills", previewSrc: "/project-docs/cysa-preview.png" },
+  { href: "/projects", label: "Projects", previewSrc: "/project-docs/pentest-preview.png" },
+  { href: "/contact", label: "Contact", previewSrc: "/human-city-bg.avif" },
 ] as const;
 
 export function SiteNav() {
   const pathname = usePathname();
   const { data: session } = useSession();
   const onBlog = pathname?.startsWith("/blog") ?? false;
-  const [loadedPreviews, setLoadedPreviews] = useState<Record<string, boolean>>({});
-
-  function markPreviewLoaded(href: string) {
-    setLoadedPreviews((current) =>
-      current[href] ? current : { ...current, [href]: true },
-    );
-  }
 
   function linkClass(isActive: boolean) {
     return [
@@ -34,25 +27,17 @@ export function SiteNav() {
     ].join(" ");
   }
 
-  function previewTile(href: string, label: string) {
-    const previewHref = `${href}?preview=1`;
-    const isLoaded = loadedPreviews[href];
+  function previewTile(previewSrc: string, label: string) {
     return (
       <span className="pointer-events-none absolute left-1/2 top-full z-30 mt-2 hidden w-52 -translate-x-1/2 translate-y-1 overflow-hidden rounded-2xl border border-border/80 bg-surface/95 opacity-0 shadow-[0_12px_30px_rgba(0,0,0,0.28)] transition-all duration-220 ease-out group-hover/nav:translate-y-0 group-hover/nav:opacity-100 group-focus-within/nav:translate-y-0 group-focus-within/nav:opacity-100 sm:block">
-        <span className="relative block h-32 w-52 overflow-hidden">
-          {!isLoaded ? (
-            <span className="absolute inset-0 animate-pulse bg-surface-2/80" />
-          ) : null}
-          <iframe
-            src={previewHref}
-            title={`${label} live preview`}
-            loading="lazy"
-            aria-hidden
-            tabIndex={-1}
-            onLoad={() => markPreviewLoaded(href)}
-            className="h-[640px] w-[1040px] origin-top-left scale-[0.2] border-0"
-          />
-        </span>
+        <Image
+          src={previewSrc}
+          alt={`${label} page preview`}
+          width={208}
+          height={128}
+          loading="lazy"
+          className="h-32 w-full object-cover"
+        />
       </span>
     );
   }
@@ -65,7 +50,7 @@ export function SiteNav() {
   return (
     <nav className="flex min-w-0 flex-1 items-center gap-1">
       <div className="flex items-center gap-1">
-        {sectionLinks.map(({ href, label }) => (
+        {sectionLinks.map(({ href, label, previewSrc }) => (
           <span key={href} className="group/nav relative inline-flex">
             <Link
               href={href}
@@ -74,7 +59,7 @@ export function SiteNav() {
             >
               {label}
             </Link>
-            {previewTile(href, label)}
+            {previewTile(previewSrc, label)}
           </span>
         ))}
         <span className="group/nav relative inline-flex">
@@ -84,7 +69,7 @@ export function SiteNav() {
           >
             Blog
           </Link>
-          {previewTile("/blog", "Blog")}
+          {previewTile("/human-nature-bg.webp", "Blog")}
         </span>
       </div>
       <span className="flex-1" aria-hidden />
