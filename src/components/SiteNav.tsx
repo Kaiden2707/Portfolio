@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
+import { useState } from "react";
 import { signOut, useSession } from "@/lib/auth-client";
 import { ThemeToggle } from "@/components/ThemeToggle";
 
@@ -14,8 +15,49 @@ const sectionLinks = [
 
 export function SiteNav() {
   const pathname = usePathname();
+  const searchParams = useSearchParams();
   const { data: session } = useSession();
   const onBlog = pathname?.startsWith("/blog") ?? false;
+  const isPreviewFrame = searchParams?.get("preview") === "1";
+  const [loadedPreviews, setLoadedPreviews] = useState<Record<string, boolean>>({});
+
+  function markPreviewLoaded(href: string) {
+    setLoadedPreviews((current) =>
+      current[href] ? current : { ...current, [href]: true },
+    );
+  }
+
+  function linkClass(isActive: boolean) {
+    return [
+      "transform-gpu rounded-full px-3 py-1.5 text-base transition-transform duration-250 ease-out will-change-transform motion-safe:hover:scale-[1.06] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60 dark:text-white dark:hover:text-white",
+      isActive
+        ? "bg-surface-2 text-foreground shadow-[0_0_0_1px_rgba(var(--accent-rgb)/0.25),0_0_20px_rgba(var(--accent-rgb)/0.10)]"
+        : "text-muted hover:text-foreground",
+    ].join(" ");
+  }
+
+  function previewTile(href: string, label: string) {
+    const previewHref = `${href}?preview=1`;
+    const isLoaded = loadedPreviews[href];
+    return (
+      <span className="pointer-events-none absolute left-1/2 top-full z-30 mt-2 hidden w-52 -translate-x-1/2 translate-y-1 overflow-hidden rounded-2xl border border-border/80 bg-surface/95 opacity-0 shadow-[0_12px_30px_rgba(0,0,0,0.28)] transition-all duration-220 ease-out group-hover/nav:translate-y-0 group-hover/nav:opacity-100 group-focus-within/nav:translate-y-0 group-focus-within/nav:opacity-100 sm:block">
+        <span className="relative block h-32 w-52 overflow-hidden">
+          {!isLoaded ? (
+            <span className="absolute inset-0 animate-pulse bg-surface-2/80" />
+          ) : null}
+          <iframe
+            src={previewHref}
+            title={`${label} live preview`}
+            loading="lazy"
+            aria-hidden
+            tabIndex={-1}
+            onLoad={() => markPreviewLoaded(href)}
+            className="h-[640px] w-[1040px] origin-top-left scale-[0.2] border-0"
+          />
+        </span>
+      </span>
+    );
+  }
 
   async function handleSignOut() {
     await signOut();
@@ -26,31 +68,26 @@ export function SiteNav() {
     <nav className="flex min-w-0 flex-1 items-center gap-1">
       <div className="flex items-center gap-1">
         {sectionLinks.map(({ href, label }) => (
-          <Link
-            key={href}
-            href={href}
-            aria-current={pathname === href ? "page" : undefined}
-            className={[
-              "transform-gpu rounded-full px-3 py-1.5 text-base transition-transform duration-250 ease-out will-change-transform motion-safe:hover:scale-[1.06] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60 dark:text-white dark:hover:text-white",
-              pathname === href
-                ? "bg-surface-2 text-foreground shadow-[0_0_0_1px_rgba(var(--accent-rgb)/0.25),0_0_20px_rgba(var(--accent-rgb)/0.10)]"
-                : "text-muted hover:text-foreground",
-            ].join(" ")}
-          >
-            {label}
-          </Link>
+          <span key={href} className="group/nav relative inline-flex">
+            <Link
+              href={href}
+              aria-current={pathname === href ? "page" : undefined}
+              className={linkClass(pathname === href)}
+            >
+              {label}
+            </Link>
+            {!isPreviewFrame ? previewTile(href, label) : null}
+          </span>
         ))}
-        <Link
-          href="/blog"
-          className={[
-            "transform-gpu rounded-full px-3 py-1.5 text-base transition-transform duration-250 ease-out will-change-transform motion-safe:hover:scale-[1.06] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60 dark:text-white dark:hover:text-white",
-            onBlog
-              ? "bg-surface-2 text-foreground shadow-[0_0_0_1px_rgba(var(--accent-rgb)/0.25),0_0_20px_rgba(var(--accent-rgb)/0.10)]"
-              : "text-muted hover:text-foreground",
-          ].join(" ")}
-        >
-          Blog
-        </Link>
+        <span className="group/nav relative inline-flex">
+          <Link
+            href="/blog"
+            className={linkClass(onBlog)}
+          >
+            Blog
+          </Link>
+          {!isPreviewFrame ? previewTile("/blog", "Blog") : null}
+        </span>
       </div>
       <span className="flex-1" aria-hidden />
       <div className="flex items-center gap-3">
