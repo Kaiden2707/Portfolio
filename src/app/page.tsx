@@ -3,6 +3,7 @@ import { SiteShell } from "@/components/SiteShell";
 import { profile } from "@/content/profile";
 import Grainient from "@/components/Grainient";
 import { MountAfterLayout } from "@/components/MountAfterLayout";
+import { FlipWords } from "@/components/ui/flipwords";
 
 export default function Home() {
   const [firstName, ...rest] = profile.name.split(" ");
@@ -45,8 +46,14 @@ export default function Home() {
                   <span className="block">{firstName}</span>
                   {lastName ? <span className="block">{lastName}</span> : null}
                 </h1>
-                <p className="font-ethnocentric font-extralight text-sm tracking-normal text-white sm:text-base">
-                  {profile.tagline}
+                <p className="mx-auto inline-flex w-[26ch] items-baseline justify-start pl-[4ch] text-left font-ethnocentric font-extralight text-base tracking-normal text-white sm:w-[28ch] sm:pl-[4.5ch] sm:text-lg">
+                  <span>I build</span>
+                  <FlipWords
+                    words={["modern", "clean", "fast"]}
+                    duration={3600}
+                    className="ml-1 px-0 text-blue-400 dark:text-blue-300"
+                  />
+                  <span className="ml-1">interfaces</span>
                 </p>
               </div>
             </div>
