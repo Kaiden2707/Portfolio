@@ -418,6 +418,137 @@ html.light [class*="text-foreground\/80"] {
   color: #0a0a0b;
 }
 
+/* Electric border utilities (purple variant) */
+@keyframes electric-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes electric-flicker {
+  0%, 100% {
+    opacity: 0.65;
+  }
+  40% {
+    opacity: 0.95;
+  }
+  70% {
+    opacity: 0.75;
+  }
+}
+
+.electric-border {
+  --electric-border-color: #a855f7;
+  --electric-glow-1: rgba(168, 85, 247, 0.55);
+  --electric-glow-2: rgba(217, 70, 239, 0.42);
+  position: relative;
+  isolation: isolate;
+}
+
+.electric-border::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background:
+    conic-gradient(
+      from 0deg,
+      transparent 0deg,
+      rgba(217, 70, 239, 0.9) 34deg,
+      transparent 72deg,
+      rgba(168, 85, 247, 0.95) 128deg,
+      transparent 170deg,
+      rgba(192, 132, 252, 0.95) 225deg,
+      transparent 270deg,
+      rgba(217, 70, 239, 0.9) 330deg,
+      transparent 360deg
+    );
+  animation: electric-spin 3.6s linear infinite, electric-flicker 1.8s ease-in-out infinite;
+  z-index: -1;
+}
+
+.electric-border::after {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  border-radius: inherit;
+  background: radial-gradient(circle at center, var(--electric-glow-1), var(--electric-glow-2), transparent 72%);
+  filter: blur(10px);
+  opacity: 0.72;
+  z-index: -2;
+  pointer-events: none;
+}
+
+.electric-inner {
+  position: relative;
+  border-radius: inherit;
+  overflow: hidden;
+}
+
+@keyframes electric-dash {
+  to {
+    stroke-dashoffset: -180;
+  }
+}
+
+@keyframes electric-dash-reverse {
+  to {
+    stroke-dashoffset: 160;
+  }
+}
+
+@keyframes electric-pulse {
+  0%, 100% {
+    opacity: 0.62;
+  }
+  45% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 0.78;
+  }
+}
+
+.electric-photo-wrap {
+  position: relative;
+  border-radius: 1rem;
+}
+
+.electric-photo-svg {
+  position: absolute;
+  inset: -6px;
+  width: calc(100% + 12px);
+  height: calc(100% + 12px);
+  pointer-events: none;
+  z-index: 3;
+  overflow: visible;
+}
+
+.electric-photo-stroke {
+  fill: none;
+  stroke: #c084fc;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 10 14 7 20;
+  stroke-dashoffset: 0;
+  animation: electric-dash 1.15s linear infinite, electric-pulse 1.5s ease-in-out infinite;
+  filter: url(#electric-distort-photo);
+}
+
+.electric-photo-stroke-secondary {
+  fill: none;
+  stroke: #d946ef;
+  stroke-width: 1.9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 7 16 4 22;
+  stroke-dashoffset: 0;
+  opacity: 0.8;
+  animation: electric-dash-reverse 1.45s linear infinite, electric-pulse 1.9s ease-in-out infinite;
+  filter: url(#electric-distort-photo);
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;

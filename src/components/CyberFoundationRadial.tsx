@@ -157,8 +157,10 @@ export function CyberFoundationRadial() {
       <div className="hidden md:block">
         <div className="relative mx-auto h-[24rem] w-full max-w-[40rem]">
           <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-            <div className="flex h-40 w-40 items-center justify-center rounded-full border border-accent/45 bg-surface/95 px-5 text-center text-sm font-semibold text-foreground shadow-[0_0_32px_rgba(var(--accent-rgb)/0.28)] transition-all duration-300 ease-out motion-safe:hover:scale-105 motion-safe:hover:shadow-[0_0_42px_rgba(var(--accent-rgb)/0.36)]">
-              Cyber &amp; Systems Education
+            <div className="electric-border rounded-full p-[2px]">
+              <div className="electric-inner flex h-40 w-40 items-center justify-center rounded-full border border-accent/45 bg-surface/95 px-5 text-center text-sm font-semibold text-foreground shadow-[0_0_32px_rgba(var(--accent-rgb)/0.28)] transition-all duration-300 ease-out motion-safe:hover:scale-105 motion-safe:hover:shadow-[0_0_42px_rgba(var(--accent-rgb)/0.36)]">
+                Cyber &amp; Systems Education
+              </div>
             </div>
           </div>
 
