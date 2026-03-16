@@ -57,7 +57,7 @@ export function HumanStorySection() {
   return (
     <div className="mx-auto w-full max-w-5xl">
       <div className="grid grid-cols-1 gap-y-8 lg:grid-cols-[minmax(14rem,19rem)_minmax(2rem,1fr)_minmax(0,30rem)_minmax(2rem,1fr)]">
-        <div className="lg:sticky lg:top-44 lg:self-start">
+        <div className="mt-6 lg:mt-14 lg:self-start">
           <div className="relative mx-auto w-full max-w-[19rem]">
             <div className="pointer-events-none absolute -inset-6 rounded-[2.4rem] bg-[radial-gradient(circle_at_center,rgba(244,63,94,0.46),rgba(217,70,239,0.36),rgba(168,85,247,0.30),transparent_72%)] blur-3xl" />
             <img
@@ -99,11 +99,11 @@ export function HumanStorySection() {
                     }
                   }}
                   className={[
-                    "cursor-pointer rounded-2xl border bg-surface/45 px-4 py-4 transition-all duration-300 ease-out sm:px-5 sm:py-5",
-                    "transform-gpu motion-safe:hover:scale-[1.02] hover:border-fuchsia-400 hover:shadow-[0_0_30px_rgba(168,85,247,0.45)]",
+                    "cursor-pointer rounded-2xl border-4 bg-surface/45 px-4 py-4 transition-[transform,border-color,box-shadow,background-color] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform sm:px-5 sm:py-5",
+                    "origin-center transform-gpu [backface-visibility:hidden] [transform:translateZ(0)] motion-safe:hover:scale-[1.02] hover:!border-fuchsia-400 hover:shadow-[0_0_34px_rgba(168,85,247,0.5)] dark:hover:!border-fuchsia-400 dark:hover:shadow-[0_0_34px_rgba(168,85,247,0.5)]",
                     isActive
                       ? "border-fuchsia-400 shadow-[0_0_32px_rgba(168,85,247,0.5)]"
-                      : "border-white/60 dark:border-white/55",
+                      : "!border-black/80 dark:!border-white/80",
                   ].join(" ")}
                 >
                   <h3

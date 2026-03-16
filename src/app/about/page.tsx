@@ -191,7 +191,7 @@ export default function AboutPage() {
               </div>
             </div>
           </Section>
-          <Section id="personal" eyebrow="Outside of code" title="A bit more human" titleScrollFlow>
+          <Section id="personal" eyebrow="Outside of code" title="Behind the Code" titleScrollFlow>
             <HumanStorySection />
           </Section>
         </PageReveal>
