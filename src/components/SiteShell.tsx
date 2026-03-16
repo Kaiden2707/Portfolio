@@ -49,12 +49,23 @@ export function SiteShell({
           <footer className="relative z-10 bg-transparent">
             <div className="mx-auto w-full max-w-5xl px-5 py-10 text-sm text-muted sm:px-8">
               <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-                <p>
-                  <span suppressHydrationWarning>© {new Date().getFullYear()}</span> {name}
-                  <span className="ml-2 italic text-xs text-muted-foreground/80">
-                    Cape Town, South Africa
-                  </span>
-                </p>
+                <div className="space-y-1">
+                  <p>
+                    <span suppressHydrationWarning>© {new Date().getFullYear()}</span> {name}
+                    <span className="ml-2 italic text-xs text-muted-foreground/80">
+                      Cape Town, South Africa
+                    </span>
+                  </p>
+                  <p className="text-xs text-muted-foreground">
+                    <Link href="/terms" className="transition hover:text-foreground">
+                      Terms of Service
+                    </Link>
+                    <span className="mx-2">•</span>
+                    <Link href="/privacy" className="transition hover:text-foreground">
+                      Privacy Policy
+                    </Link>
+                  </p>
+                </div>
                 <p className="font-mono text-xs tracking-tight">
                   Built with Next.js + pnpm
                 </p>

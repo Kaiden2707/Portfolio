@@ -57,13 +57,13 @@ export function HumanStorySection() {
   return (
     <div className="mx-auto w-full max-w-5xl">
       <div className="grid grid-cols-1 gap-y-8 lg:grid-cols-[minmax(14rem,19rem)_minmax(2rem,1fr)_minmax(0,30rem)_minmax(2rem,1fr)]">
-        <div className="lg:sticky lg:top-28 lg:self-start">
+        <div className="lg:sticky lg:top-44 lg:self-start">
           <div className="relative mx-auto w-full max-w-[19rem]">
-            <div className="pointer-events-none absolute -inset-4 rounded-[2rem] bg-[radial-gradient(circle_at_center,rgba(236,72,153,0.30),rgba(168,85,247,0.24),transparent_70%)] blur-2xl" />
+            <div className="pointer-events-none absolute -inset-6 rounded-[2.4rem] bg-[radial-gradient(circle_at_center,rgba(244,63,94,0.46),rgba(217,70,239,0.36),rgba(168,85,247,0.30),transparent_72%)] blur-3xl" />
             <img
               src="/personal-image.png"
               alt="Kaiden portrait"
-              className="relative h-[22rem] w-full rounded-2xl object-cover shadow-[0_0_32px_rgba(236,72,153,0.22),0_0_48px_rgba(168,85,247,0.20)]"
+              className="relative h-[22rem] w-full rounded-2xl object-cover shadow-[0_0_48px_rgba(244,63,94,0.35),0_0_72px_rgba(217,70,239,0.30),0_0_92px_rgba(168,85,247,0.24)]"
               loading="lazy"
             />
           </div>
