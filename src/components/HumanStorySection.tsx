@@ -1,0 +1,154 @@
+"use client";
+
+import { useState } from "react";
+
+type StoryStep = {
+  id: string;
+  title: string;
+  lead: string;
+  bullets: string[];
+};
+
+const storySteps: StoryStep[] = [
+  {
+    id: "why-i-build",
+    title: "Why I Build",
+    lead: "I enjoy turning ideas into real interfaces.",
+    bullets: [
+      "Building from nothing",
+      "Solving weird problems",
+      "Perfecting small UI details",
+    ],
+  },
+  {
+    id: "outside-the-screen",
+    title: "Outside the Screen",
+    lead: "When I am not coding, I still enjoy challenge and strategy.",
+    bullets: [
+      "Fitness and pushing limits",
+      "Competitive mindset",
+      "Strategy games",
+      "Design and aesthetics",
+    ],
+  },
+  {
+    id: "what-drives-me",
+    title: "What Drives Me",
+    lead: "I am focused on skill, impact, and building things that matter.",
+    bullets: [
+      "Becoming extremely skilled",
+      "Building real-world projects",
+      "Working remotely",
+      "Creating things people actually use",
+    ],
+  },
+  {
+    id: "where-im-headed",
+    title: "Where I am Headed",
+    lead:
+      "I am focused on becoming extremely good at building interfaces. The goal is simple - take ideas and turn them into clean, functional products.",
+    bullets: [],
+  },
+];
+
+export function HumanStorySection() {
+  const [activeId, setActiveId] = useState<string | null>(null);
+
+  return (
+    <div className="mx-auto w-full max-w-5xl">
+      <div className="grid grid-cols-1 gap-y-8 lg:grid-cols-[minmax(14rem,19rem)_minmax(2rem,1fr)_minmax(0,30rem)_minmax(2rem,1fr)]">
+        <div className="lg:sticky lg:top-28 lg:self-start">
+          <div className="relative mx-auto w-full max-w-[19rem]">
+            <div className="pointer-events-none absolute -inset-4 rounded-[2rem] bg-[radial-gradient(circle_at_center,rgba(236,72,153,0.30),rgba(168,85,247,0.24),transparent_70%)] blur-2xl" />
+            <img
+              src="/personal-image.png"
+              alt="Kaiden portrait"
+              className="relative h-[22rem] w-full rounded-2xl object-cover shadow-[0_0_32px_rgba(236,72,153,0.22),0_0_48px_rgba(168,85,247,0.20)]"
+              loading="lazy"
+            />
+          </div>
+        </div>
+
+        <div className="hidden lg:block" aria-hidden />
+
+        <div className="space-y-6 lg:space-y-8">
+          <div className="max-w-2xl space-y-2 text-foreground/90 dark:text-white">
+            <p className="text-sm leading-7 sm:text-base">
+              I started coding out of curiosity. Now I build things people actually use.
+            </p>
+            <p className="text-sm leading-7 sm:text-base">
+              I like turning ideas into real products.
+            </p>
+          </div>
+
+          <div className="space-y-3 lg:max-w-[30rem]">
+            {storySteps.map((step) => {
+              const isActive = activeId === step.id;
+              return (
+                <section
+                  key={step.id}
+                  role="button"
+                  tabIndex={0}
+                  onClick={() =>
+                    setActiveId((current) => (current === step.id ? null : step.id))
+                  }
+                  onKeyDown={(event) => {
+                    if (event.key === "Enter" || event.key === " ") {
+                      event.preventDefault();
+                      setActiveId((current) => (current === step.id ? null : step.id));
+                    }
+                  }}
+                  className={[
+                    "cursor-pointer rounded-2xl border bg-surface/45 px-4 py-4 transition-all duration-300 ease-out sm:px-5 sm:py-5",
+                    "transform-gpu motion-safe:hover:scale-[1.02] hover:border-fuchsia-400 hover:shadow-[0_0_30px_rgba(168,85,247,0.45)]",
+                    isActive
+                      ? "border-fuchsia-400 shadow-[0_0_32px_rgba(168,85,247,0.5)]"
+                      : "border-white/60 dark:border-white/55",
+                  ].join(" ")}
+                >
+                  <h3
+                    className={[
+                      "font-nulshock text-base transition-all duration-300 sm:text-lg",
+                      isActive
+                        ? "text-foreground drop-shadow-[0_0_10px_rgba(var(--accent-rgb)/0.22)] dark:text-white"
+                        : "text-muted",
+                    ].join(" ")}
+                  >
+                    {step.title}
+                  </h3>
+
+                  <div
+                    className={[
+                      "overflow-hidden transition-[max-height,opacity,margin] duration-500 ease-out",
+                      isActive ? "mt-3 max-h-[28rem] opacity-100 pb-2" : "mt-0 max-h-0 opacity-0",
+                    ].join(" ")}
+                  >
+                    <div>
+                      <div
+                        className={[
+                          "translate-y-2 text-foreground/90 transition-all duration-500 ease-out dark:text-white",
+                          isActive ? "translate-y-0 opacity-100" : "opacity-0",
+                        ].join(" ")}
+                      >
+                        <p className="text-sm leading-7 sm:text-base">{step.lead}</p>
+                        {step.bullets.length > 0 ? (
+                          <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-6 sm:text-[0.95rem]">
+                            {step.bullets.map((bullet) => (
+                              <li key={bullet}>{bullet}</li>
+                            ))}
+                          </ul>
+                        ) : null}
+                      </div>
+                    </div>
+                  </div>
+                </section>
+              );
+            })}
+          </div>
+        </div>
+
+        <div className="hidden lg:block" aria-hidden />
+      </div>
+    </div>
+  );
+}

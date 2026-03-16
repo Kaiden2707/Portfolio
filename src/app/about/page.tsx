@@ -1,8 +1,8 @@
-import { ImageCarousel } from "@/components/ImageCarousel";
 import { Section } from "@/components/Section";
 import { SiteShell } from "@/components/SiteShell";
 import { PageReveal } from "@/components/PageReveal";
 import { CyberFoundationRadial } from "@/components/CyberFoundationRadial";
+import { HumanStorySection } from "@/components/HumanStorySection";
 import GradientText from "@/components/GradientText";
 import { profile } from "@/content/profile";
 
@@ -192,74 +192,7 @@ export default function AboutPage() {
             </div>
           </Section>
           <Section id="personal" eyebrow="Outside of code" title="A bit more human" titleScrollFlow>
-            <div className="space-y-6 px-1 py-2 text-foreground/90 sm:px-2 sm:py-3 dark:text-white">
-              <div className="flex flex-col gap-6 sm:flex-row sm:items-start">
-                <div className="min-w-0 flex-1 space-y-6">
-                  <p className="text-sm leading-7 sm:text-base">
-                    I started coding out of curiosity, but stayed because of the feeling of turning nothing into something real.
-                    There’s something addictive about solving a problem and watching an idea come to life.
-                  </p>
-                  <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                    <div className="p-4">
-                      <div className="flex items-center gap-2 text-sm font-semibold">
-                        <span aria-hidden>🧠</span>
-                        Why I Build
-                      </div>
-                      <ul className="mt-3 list-disc space-y-2 pl-5 text-sm">
-                        <li>I like creating things from scratch.</li>
-                        <li>I enjoy figuring out how things work.</li>
-                        <li>I’m obsessed with refining small details until they feel right.</li>
-                        <li>When something finally works, it’s a rush.</li>
-                      </ul>
-                    </div>
-                    <div className="p-4">
-                      <div className="flex items-center gap-2 text-sm font-semibold">
-                        <span aria-hidden>🌿</span>
-                        Outside the Screen
-                      </div>
-                      <ul className="mt-3 list-disc space-y-2 pl-5 text-sm">
-                        <li>Into fitness - I like pushing limits physically the same way I do mentally.</li>
-                        <li>Competitive by nature.</li>
-                        <li>Gaming for strategy and creativity.</li>
-                        <li>I care about aesthetics and clean design.</li>
-                      </ul>
-                    </div>
-                    <div className="p-4">
-                      <div className="flex items-center gap-2 text-sm font-semibold">
-                        <span aria-hidden>🚀</span>
-                        What Drives Me
-                      </div>
-                      <ul className="mt-3 list-disc space-y-2 pl-5 text-sm">
-                        <li>Becoming insanely skilled at what I do.</li>
-                        <li>Building websites for real people.</li>
-                        <li>Working remotely and creating freedom through skill.</li>
-                        <li>Making cool things that actually get used.</li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div className="space-y-3 px-4 py-3">
-                    <h3 className="flex items-center gap-2 text-lg font-semibold sm:text-xl">
-                      <span aria-hidden>🌍</span>
-                      Where I’m Headed
-                    </h3>
-                    <p className="text-base leading-7 sm:text-lg sm:leading-8">
-                      I’m not just learning to code, I’m building a skillset that gives me the freedom to create anything I can imagine.
-                      My goal isn’t just to work remotely, but to become so skilled that the quality of my work speaks before I do.
-                    </p>
-                    <p className="text-base leading-7 sm:text-lg sm:leading-8">
-                      I want to reach a point where I can take any idea, mine or someone else’s and bring it to life cleanly and confidently.
-                      Not chasing trends, but building things that feel intentional, thoughtful, and built to last.
-                    </p>
-                  </div>
-                </div>
-                <div className="group w-full sm:flex sm:h-[26rem] sm:w-[19.5rem] sm:shrink-0 sm:items-center sm:justify-center">
-                  <ImageCarousel
-                    className="w-full sm:w-72 sm:origin-center sm:transform-gpu sm:will-change-transform sm:transition-transform sm:duration-300 sm:ease-out sm:group-hover:scale-[1.06]"
-                    images={[{ src: "/personal-image.png", alt: "" }]}
-                  />
-                </div>
-              </div>
-            </div>
+            <HumanStorySection />
           </Section>
         </PageReveal>
       </SiteShell>
