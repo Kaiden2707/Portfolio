@@ -35,6 +35,8 @@ export function SiteNav() {
           alt={`${label} page preview`}
           width={208}
           height={128}
+          quality={70}
+          sizes="208px"
           loading="lazy"
           className="h-32 w-full object-cover"
         />
