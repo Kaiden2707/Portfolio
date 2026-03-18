@@ -1,22 +1,23 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useState } from "react";
 import { signOut, useSession } from "@/lib/auth-client";
 import { ThemeToggle } from "@/components/ThemeToggle";
 
 const sectionLinks = [
-  { href: "/about", label: "About", previewSrc: "/human-city-bg.webp" },
-  { href: "/skills", label: "Skills", previewSrc: "/project-docs/cysa-preview.png" },
-  { href: "/projects", label: "Projects", previewSrc: "/project-docs/pentest-preview.png" },
-  { href: "/contact", label: "Contact", previewSrc: "/human-city-bg.avif" },
+  { href: "/about", label: "About" },
+  { href: "/skills", label: "Skills" },
+  { href: "/contact", label: "Contact" },
 ] as const;
 
 export function SiteNav() {
   const pathname = usePathname();
   const { data: session } = useSession();
   const onBlog = pathname?.startsWith("/blog") ?? false;
+  const onProjects = pathname === "/projects";
+  const [skillsMenuOpen, setSkillsMenuOpen] = useState(false);
 
   function linkClass(isActive: boolean) {
     return [
@@ -27,21 +28,11 @@ export function SiteNav() {
     ].join(" ");
   }
 
-  function previewTile(previewSrc: string, label: string) {
-    return (
-      <span className="pointer-events-none absolute left-1/2 top-full z-30 mt-2 hidden w-52 -translate-x-1/2 translate-y-1 overflow-hidden rounded-2xl border border-border/80 bg-surface/95 opacity-0 shadow-[0_12px_30px_rgba(0,0,0,0.28)] transition-all duration-220 ease-out group-hover/nav:translate-y-0 group-hover/nav:opacity-100 group-focus-within/nav:translate-y-0 group-focus-within/nav:opacity-100 sm:block">
-        <Image
-          src={previewSrc}
-          alt={`${label} page preview`}
-          width={208}
-          height={128}
-          quality={70}
-          sizes="208px"
-          loading="lazy"
-          className="h-32 w-full object-cover"
-        />
-      </span>
-    );
+  function dropdownItemClass(isActive: boolean) {
+    return [
+      "block transform-gpu rounded-lg px-2.5 py-1.5 text-center text-sm transition-[transform,color,background-color] duration-200 ease-out motion-safe:hover:scale-[1.06]",
+      isActive ? "bg-surface-2 text-foreground" : "text-muted hover:bg-surface-2 hover:text-foreground",
+    ].join(" ");
   }
 
   async function handleSignOut() {
@@ -52,17 +43,63 @@ export function SiteNav() {
   return (
     <nav className="flex min-w-0 flex-1 items-center gap-1">
       <div className="flex items-center gap-1">
-        {sectionLinks.map(({ href, label, previewSrc }) => (
-          <span key={href} className="group/nav relative inline-flex">
-            <Link
-              href={href}
-              aria-current={pathname === href ? "page" : undefined}
-              className={linkClass(pathname === href)}
+        {sectionLinks.map(({ href, label }) => (
+          href === "/skills" ? (
+            <span
+              key={href}
+              className="group/nav relative inline-flex"
+              onMouseEnter={() => setSkillsMenuOpen(true)}
+              onMouseLeave={() => setSkillsMenuOpen(false)}
+              onFocusCapture={() => setSkillsMenuOpen(true)}
+              onBlurCapture={(event) => {
+                if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
+                  setSkillsMenuOpen(false);
+                }
+              }}
             >
-              {label}
-            </Link>
-            {previewTile(previewSrc, label)}
-          </span>
+              <Link
+                href={href}
+                aria-current={pathname === href ? "page" : undefined}
+                className={linkClass(pathname === href || onProjects)}
+              >
+                <span className="inline-flex items-center gap-1">
+                  {label}
+                  <span
+                    className={[
+                      "text-[10px] transition-transform duration-250 ease-out",
+                      skillsMenuOpen ? "rotate-180" : "rotate-0",
+                    ].join(" ")}
+                    aria-hidden
+                  >
+                    ▼
+                  </span>
+                </span>
+              </Link>
+              <div
+                className={[
+                  "absolute left-1/2 top-full z-40 mt-0 w-fit min-w-[7.25rem] -translate-x-1/2 rounded-xl border border-red-400/75 bg-surface/95 p-1.5 shadow-[0_0_20px_rgba(239,68,68,0.38),0_12px_30px_rgba(0,0,0,0.28)]",
+                  "transition-all duration-220 ease-out",
+                  skillsMenuOpen
+                    ? "pointer-events-auto translate-y-0 opacity-100"
+                    : "pointer-events-none -translate-y-1 opacity-0",
+                ].join(" ")}
+              >
+                <Link href="/projects" className={`${dropdownItemClass(onProjects)} whitespace-nowrap`}>
+                  Projects
+                </Link>
+              </div>
+            </span>
+          ) : (
+            <span key={href} className="group/nav relative inline-flex">
+              <Link
+                href={href}
+                aria-current={pathname === href ? "page" : undefined}
+                className={linkClass(pathname === href)}
+              >
+                {label}
+              </Link>
+            </span>
+          )
         ))}
         <span className="group/nav relative inline-flex">
           <Link
@@ -71,7 +108,6 @@ export function SiteNav() {
           >
             Blog
           </Link>
-          {previewTile("/human-nature-bg.webp", "Blog")}
         </span>
       </div>
       <span className="flex-1" aria-hidden />
