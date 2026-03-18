@@ -65,10 +65,13 @@ export function ContactPanel() {
       id: "email",
       icon: GmailIcon,
       label: email,
-      href: email ? `mailto:${email}` : undefined,
+      href: email
+        ? `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(email)}`
+        : undefined,
+      openInNewTab: true,
       handle: email,
-      action: () => handleCopy("email"),
-      showCopy: true,
+      action: undefined,
+      showCopy: false,
     },
     {
       id: "phone",
@@ -142,6 +145,8 @@ export function ContactPanel() {
               {item.href ? (
                 <a
                   href={item.href}
+                  target={"openInNewTab" in item && item.openInNewTab ? "_blank" : undefined}
+                  rel={"openInNewTab" in item && item.openInNewTab ? "noopener noreferrer" : undefined}
                   onClick={(e) => {
                     if (item.action) {
                       e.preventDefault();
