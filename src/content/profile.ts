@@ -6,7 +6,7 @@ export const profile = {
     "I create real projects while testing ideas, identifying weaknesses and optimizing outcomes.",
     "I focus on maintaining \"open communication\" with my employers to ensure the website \"aligns\" with their \"objectives\" and most importantly the \"customers needs\". My goal when building is clear: Customer focused solutions, clean execution and \"reliable results\".",
     "Understanding how systems can be \"exploited\" and where vulnerabilities appear, changes how I \"approach\" building websites.",
-    "Even on frontend websites, I consider the full stack and how all components link together and build with both \"performance\" and \"responsibility\" in mind.",
+    "On all my websites, I consider the full stack and how all components link together and build with both \"performance\" and \"responsibility\" in mind.",
   ],
   aboutCyberBullets: [
     "Secure data handling",
