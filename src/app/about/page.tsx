@@ -82,7 +82,7 @@ export default function AboutPage() {
                   <h3 className="font-nulshock pt-6 text-lg font-semibold text-foreground sm:text-xl dark:text-white">
                     How I build
                   </h3>
-                  {profile.about.slice(1, 3).map((p, i) => {
+                  {profile.about.slice(2, 3).map((p, i) => {
                     const normalized = p.replace(/,(?!\s)/g, ", ");
                     const segments = segmentizeQuoted(normalized);
                     return (
