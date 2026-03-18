@@ -60,7 +60,7 @@ export function HumanStorySection() {
       <div className="grid grid-cols-1 gap-y-8 lg:grid-cols-[minmax(14rem,19rem)_minmax(2rem,1fr)_minmax(0,26rem)_minmax(2rem,1fr)]">
         <div className="mt-6 lg:mt-14 lg:self-start">
           <div className="relative mx-auto w-full max-w-[19rem]">
-            <div className="pointer-events-none absolute -inset-6 rounded-[2.4rem] bg-[radial-gradient(circle_at_center,rgba(244,63,94,0.46),rgba(217,70,239,0.36),rgba(168,85,247,0.30),transparent_72%)] blur-3xl" />
+            <div className="pointer-events-none absolute -inset-3 rounded-[2.2rem] bg-[radial-gradient(circle_at_center,rgba(91,33,182,0.34),rgba(124,58,237,0.30),rgba(76,29,149,0.24),transparent_74%)] blur-2xl" />
             <Image
               src="/personal-image.png"
               alt="Kaiden portrait"
@@ -68,7 +68,7 @@ export function HumanStorySection() {
               height={352}
               quality={82}
               sizes="(min-width: 1024px) 304px, (min-width: 640px) 288px, 100vw"
-              className="relative h-[22rem] w-full rounded-2xl object-cover shadow-[0_0_48px_rgba(244,63,94,0.35),0_0_72px_rgba(217,70,239,0.30),0_0_92px_rgba(168,85,247,0.24)]"
+              className="relative h-[22rem] w-full rounded-2xl object-cover shadow-[0_0_30px_rgba(124,58,237,0.30),0_0_52px_rgba(91,33,182,0.24),0_0_68px_rgba(76,29,149,0.20)]"
             />
           </div>
         </div>
