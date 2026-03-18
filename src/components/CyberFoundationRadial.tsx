@@ -14,6 +14,12 @@ type Category = {
   accentRgb: string;
 };
 
+function mixRgbWithWhite(accentRgb: string, ratio: number): string {
+  const [r, g, b] = accentRgb.split(",").map((v) => Number.parseInt(v.trim(), 10));
+  const mix = (value: number) => Math.round(value + (255 - value) * ratio);
+  return `rgb(${mix(r)}, ${mix(g)}, ${mix(b)})`;
+}
+
 const categories: Category[] = [
   {
     id: "offensive",
@@ -80,9 +86,19 @@ function categoryButtonStyle(
 }
 
 function categoryPopupStyle(category: Category, isDarkMode: boolean): CSSProperties {
-  const baseColor = isDarkMode ? "#101221" : "#f8f8ff";
+  if (!isDarkMode) {
+    const baseColor = mixRgbWithWhite(category.accentRgb, 0.12);
+    const highlightColor = mixRgbWithWhite(category.accentRgb, 0.32);
+    return {
+      backgroundColor: baseColor,
+      backgroundImage: `radial-gradient(circle at 26% 18%, rgba(255,255,255,0.42), rgba(255,255,255,0) 36%), linear-gradient(155deg, ${highlightColor} 0%, ${baseColor} 78%)`,
+      border: `1px solid rgba(${category.accentRgb}, 0.9)`,
+      boxShadow: `0 12px 28px rgba(17,17,36,0.25), 0 0 26px rgba(${category.accentRgb}, 0.52), inset 0 1px 0 rgba(255,255,255,0.22)`,
+    };
+  }
+  const baseColor = "#101221";
   return {
-    background: `radial-gradient(circle at center, rgba(${category.accentRgb}, ${isDarkMode ? "0.14" : "0.10"}), ${baseColor} 72%)`,
+    background: `radial-gradient(circle at center, rgba(${category.accentRgb}, 0.14), ${baseColor} 72%)`,
     border: `1px solid rgba(${category.accentRgb}, 0.5)`,
     boxShadow: `0 8px 24px rgba(0,0,0,0.35), 0 0 16px rgba(${category.accentRgb}, 0.25)`,
   };
@@ -95,11 +111,22 @@ function certTagClass() {
 }
 
 function certTagStyle(category: Category, isDarkMode: boolean): CSSProperties {
-  const baseColor = isDarkMode ? "#0f1016" : "#f3f4ff";
+  const baseColor = isDarkMode ? "#0f1016" : "#ffffff";
   const textColor = isDarkMode ? "#f5f5f5" : "#111124";
+  if (!isDarkMode) {
+    const lighterTag = mixRgbWithWhite(category.accentRgb, 0.72);
+    const lighterTag2 = mixRgbWithWhite(category.accentRgb, 0.84);
+    return {
+      color: textColor,
+      backgroundColor: lighterTag,
+      backgroundImage: `linear-gradient(145deg, ${lighterTag2}, ${lighterTag})`,
+      border: `1px solid rgba(${category.accentRgb}, 0.75)`,
+      boxShadow: `0 0 12px rgba(${category.accentRgb}, 0.28)`,
+    };
+  }
   return {
     color: textColor,
-    background: `radial-gradient(circle at center, rgba(${category.accentRgb}, ${isDarkMode ? "0.18" : "0.14"}), ${baseColor} 66%)`,
+    background: `radial-gradient(circle at center, rgba(${category.accentRgb}, 0.18), ${baseColor} 66%)`,
     border: `1px solid rgba(${category.accentRgb}, 0.5)`,
     boxShadow: `0 0 14px rgba(${category.accentRgb}, 0.24)`,
   };
@@ -109,9 +136,18 @@ export function CyberFoundationRadial() {
   const [activeCategory, setActiveCategory] = useState<CategoryId | null>(null);
   const [hoveredCategory, setHoveredCategory] = useState<CategoryId | null>(null);
   const [isPopupHovered, setIsPopupHovered] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const autoCloseTimeoutRef = useRef<number | null>(null);
   const { resolvedTheme } = useTheme();
-  const isDarkMode = resolvedTheme !== "light";
+  const isDarkMode = !mounted
+    ? true
+    : resolvedTheme != null
+      ? resolvedTheme === "dark"
+      : document.documentElement.classList.contains("dark");
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   function clearAutoCloseTimer() {
     if (autoCloseTimeoutRef.current !== null) {
