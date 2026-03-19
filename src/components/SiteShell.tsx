@@ -23,13 +23,13 @@ export function SiteShell({
             href="/"
             className="group inline-flex items-center gap-2 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60"
           >
-            <span className="relative inline-flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-full bg-surface-2 ring-1 ring-border sm:h-9 sm:w-9">
+            <span className="relative inline-flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-full bg-black ring-1 ring-fuchsia-400/90 shadow-[0_0_14px_rgba(168,85,247,0.55)] sm:h-9 sm:w-9">
               <Image
                 src="/navbar-logo.png"
                 alt=""
                 width={36}
                 height={36}
-                className="object-contain"
+                className="h-full w-full object-cover"
                 priority
               />
             </span>

@@ -17,7 +17,7 @@ const storySteps: StoryStep[] = [
     lead: "I enjoy turning ideas into real interfaces.",
     bullets: [
       "Building from nothing",
-      "Solving weird problems",
+      "The feeling of something finally working after countless efforts",
       "Perfecting small UI details",
     ],
   },
@@ -26,7 +26,7 @@ const storySteps: StoryStep[] = [
     title: "Outside the Screen",
     lead: "When I am not coding, I still enjoy challenge and strategy.",
     bullets: [
-      "Fitness and pushing limits",
+      "Fitness/Hypertrophy training while pushing my limits.",
       "Competitive mindset",
       "Strategy games",
       "Design and aesthetics",
