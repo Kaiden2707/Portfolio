@@ -3,6 +3,7 @@ import { SiteShell } from "@/components/SiteShell";
 import { PageReveal } from "@/components/PageReveal";
 import { CyberFoundationRadial } from "@/components/CyberFoundationRadial";
 import { HumanStorySection } from "@/components/HumanStorySection";
+import { AboutSkillsRadar } from "@/components/AboutSkillsRadar";
 import GradientText from "@/components/GradientText";
 import { profile } from "@/content/profile";
 
@@ -188,6 +189,7 @@ export default function AboutPage() {
               </div>
               <div className="md:col-span-4 md:-mr-14 md:pt-2 md:pl-3 lg:-mr-24 lg:pl-6">
                 <CyberFoundationRadial />
+                <AboutSkillsRadar />
               </div>
             </div>
           </Section>
