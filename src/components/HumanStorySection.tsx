@@ -103,7 +103,7 @@ export function HumanStorySection() {
                     }
                   }}
                   className={[
-                    "cursor-pointer select-none rounded-2xl border-4 bg-surface/45 px-4 py-4 transition-[transform,border-color,background-color] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] sm:px-5 sm:py-5",
+                    "cursor-pointer select-none rounded-2xl border-4 bg-white dark:bg-black px-4 py-4 transition-[transform,border-color,background-color] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] sm:px-5 sm:py-5",
                     "origin-center transform-gpu [backface-visibility:hidden] [transform:translateZ(0)] motion-safe:hover:scale-[1.02] hover:!border-fuchsia-400 hover:shadow-[0_0_22px_rgba(168,85,247,0.38)] dark:hover:!border-fuchsia-400 dark:hover:shadow-[0_0_22px_rgba(168,85,247,0.38)]",
                     isActive
                       ? "border-fuchsia-400 shadow-[0_0_20px_rgba(168,85,247,0.34)]"
