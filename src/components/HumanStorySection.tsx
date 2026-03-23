@@ -76,16 +76,7 @@ export function HumanStorySection() {
         <div className="hidden lg:block" aria-hidden />
 
         <div className="space-y-6 lg:space-y-8">
-          <div className="max-w-2xl space-y-2 text-foreground/90 dark:text-white">
-            <p className="text-sm leading-7 sm:text-base">
-              I started coding out of curiosity. Now I build things people actually use.
-            </p>
-            <p className="text-sm leading-7 sm:text-base">
-              I like turning ideas into real products.
-            </p>
-          </div>
-
-          <div className="space-y-3 lg:max-w-[26rem]">
+          <div className="mt-6 space-y-3 lg:mt-14 lg:max-w-[26rem]">
             {storySteps.map((step) => {
               const isActive = activeId === step.id;
               return (
