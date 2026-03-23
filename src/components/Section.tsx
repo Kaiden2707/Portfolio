@@ -7,6 +7,7 @@ export function Section({
   title,
   eyebrow,
   titleScrollFlow,
+  headingLevel = 2,
   children,
   containerClassName,
 }: {
@@ -14,9 +15,12 @@ export function Section({
   title: string;
   eyebrow?: string;
   titleScrollFlow?: boolean;
+  headingLevel?: 1 | 2;
   children: ReactNode;
   containerClassName?: string;
 }) {
+  const HeadingTag = headingLevel === 1 ? "h1" : "h2";
+
   return (
     <section id={id} className="scroll-mt-24 py-8 sm:py-10">
       <div className={`mx-auto w-full px-5 sm:px-8 ${containerClassName ?? "max-w-5xl"}`}>
@@ -27,9 +31,9 @@ export function Section({
                 {eyebrow}
               </div>
             ) : null}
-            <h2 className="section-heading mt-2 text-2xl font-medium tracking-tight sm:text-3xl">
+            <HeadingTag className="section-heading mt-2 text-2xl font-medium tracking-tight sm:text-3xl">
               {title}
-            </h2>
+            </HeadingTag>
           </div>
           <div className="hidden h-px flex-1 bg-border sm:block" />
         </div>

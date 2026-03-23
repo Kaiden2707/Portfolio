@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { Geist, Bebas_Neue, Roboto, JetBrains_Mono, Saira_Stencil_One, Comfortaa } from "next/font/google";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import { siteConfig } from "@/lib/seo";
 import "./globals.css";
 
 const ethnocentric = localFont({
@@ -52,9 +53,41 @@ const comfortaa = Comfortaa({
 });
 
 export const metadata: Metadata = {
-  title: "Kaiden McIntosh | Portfolio",
-  description:
-    "Portfolio website for Kaiden McIntosh — dark, minimalist, techy UI with a purple accent.",
+  metadataBase: new URL(siteConfig.siteUrl),
+  title: {
+    default: siteConfig.title,
+    template: "%s | Kaiden McIntosh",
+  },
+  description: siteConfig.description,
+  applicationName: siteConfig.name,
+  keywords: [...siteConfig.keywords],
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    locale: siteConfig.locale,
+    siteName: siteConfig.name,
+    title: siteConfig.title,
+    description: siteConfig.description,
+    url: "/",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteConfig.title,
+    description: siteConfig.description,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
 };
 
 export default function RootLayout({
@@ -62,11 +95,27 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const personJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: "Kaiden McIntosh",
+    jobTitle: "Frontend Web Developer",
+    url: siteConfig.siteUrl,
+    sameAs: [
+      "https://github.com/Kaiden2707",
+      "https://instagram.com/Kaiden.xo",
+    ],
+  };
+
   return (
     <html lang="en" className="h-full" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${bebasNeue.variable} ${roboto.variable} ${jetbrainsMono.variable} ${sairaStencil.variable} ${ethnocentric.variable} ${nulshock.variable} ${comfortaa.variable} min-h-screen bg-background text-foreground antialiased`}
       >
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+        />
         <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>

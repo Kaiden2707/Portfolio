@@ -46,7 +46,7 @@ export function TechStackBar({
           >
             <img
               src={techIconUrl(item.id)}
-              alt=""
+              alt={`${item.label} logo`}
               width={ICON_SIZE}
               height={ICON_SIZE}
               className={`shrink-0 opacity-90 ${invertInDark(item.id) ? "tech-logo-invert" : ""}`}

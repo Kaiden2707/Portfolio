@@ -1,9 +1,19 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { SiteShell } from "@/components/SiteShell";
 import { profile } from "@/content/profile";
 import Grainient from "@/components/Grainient";
 import { MountAfterLayout } from "@/components/MountAfterLayout";
 import { FlipWords } from "@/components/ui/flipwords";
+import { siteConfig } from "@/lib/seo";
+
+export const metadata: Metadata = {
+  title: "Home",
+  description: siteConfig.description,
+  alternates: {
+    canonical: "/",
+  },
+};
 
 export default function Home() {
   const [firstName, ...rest] = profile.name.split(" ");

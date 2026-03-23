@@ -26,7 +26,7 @@ export function SiteShell({
             <span className="relative inline-flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-full bg-black ring-1 ring-fuchsia-400/90 shadow-[0_0_14px_rgba(168,85,247,0.55)] sm:h-9 sm:w-9">
               <Image
                 src="/navbar-logo.png"
-                alt=""
+                alt={`${name} logo`}
                 width={36}
                 height={36}
                 className="h-full w-full object-cover"

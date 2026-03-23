@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { Section } from "@/components/Section";
 import { SiteShell } from "@/components/SiteShell";
 import { PageReveal } from "@/components/PageReveal";
@@ -10,8 +11,24 @@ import {
   backendBarItems,
   topLanguages,
 } from "@/content/techStack";
+import { siteConfig } from "@/lib/seo";
 import { techIconUrl } from "@/lib/techIcons";
 import { SkillsPieChart } from "@/components/SkillsPieChart";
+
+export const metadata: Metadata = {
+  title: "Skills",
+  description:
+    "Explore Kaiden McIntosh's frontend and backend tech stack, top coding languages, and GitHub activity.",
+  alternates: {
+    canonical: "/skills",
+  },
+  openGraph: {
+    title: "Skills | Kaiden McIntosh",
+    description:
+      "Explore Kaiden McIntosh's frontend and backend tech stack, top coding languages, and GitHub activity.",
+    url: `${siteConfig.siteUrl}/skills`,
+  },
+};
 
 export default function SkillsPage() {
   return (
@@ -19,7 +36,7 @@ export default function SkillsPage() {
       <SiteShell name={profile.name}>
         <div className="min-h-[2rem] sm:min-h-[3rem]" aria-hidden />
         <PageReveal>
-          <Section id="skills" eyebrow="Stack" title="Skills" titleScrollFlow>
+          <Section id="skills" eyebrow="Stack" title="Skills" headingLevel={1} titleScrollFlow>
             <div className="max-w-2xl space-y-3 text-muted-foreground">
               {Array.isArray(profile.skillsIntro)
                 ? profile.skillsIntro.map((para, i) => (
@@ -53,7 +70,7 @@ export default function SkillsPage() {
                   >
                     <img
                       src={techIconUrl(iconId)}
-                      alt=""
+                      alt={`${name} logo`}
                       width={26}
                       height={26}
                       className="shrink-0 opacity-90"
@@ -80,7 +97,7 @@ export default function SkillsPage() {
                 <h3 className="col-span-1 flex items-center gap-2 whitespace-nowrap text-2xl font-semibold text-foreground dark:text-white sm:text-3xl">
                   <img
                     src={techIconUrl("github")}
-                    alt=""
+                    alt="GitHub logo"
                     width={28}
                     height={28}
                     className="shrink-0 tech-logo-invert"

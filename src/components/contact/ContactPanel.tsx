@@ -128,7 +128,7 @@ export function ContactPanel() {
             ) : "iconId" in item && item.iconId ? (
               <img
                 src={techIconUrl(item.iconId)}
-                alt=""
+                alt={`${item.id} icon`}
                 width={40}
                 height={40}
                 className={`h-8 w-8 sm:h-10 sm:w-10 shrink-0 object-contain ${item.invertDark ? "tech-logo-invert" : ""}`}

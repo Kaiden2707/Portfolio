@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { Section } from "@/components/Section";
 import { SiteShell } from "@/components/SiteShell";
 import { PageReveal } from "@/components/PageReveal";
@@ -6,6 +7,7 @@ import { HumanStorySection } from "@/components/HumanStorySection";
 import { AboutSkillsRadar } from "@/components/AboutSkillsRadar";
 import GradientText from "@/components/GradientText";
 import { profile } from "@/content/profile";
+import { siteConfig } from "@/lib/seo";
 
 function segmentizeQuoted(text: string): { quoted: boolean; text: string }[] {
   const segments: { quoted: boolean; text: string }[] = [];
@@ -29,6 +31,21 @@ function segmentizeQuoted(text: string): { quoted: boolean; text: string }[] {
 
 const accentClass = "font-bold";
 
+export const metadata: Metadata = {
+  title: "About",
+  description:
+    "Learn more about Kaiden McIntosh, including frontend development approach, cybersecurity background, and personal work style.",
+  alternates: {
+    canonical: "/about",
+  },
+  openGraph: {
+    title: "About | Kaiden McIntosh",
+    description:
+      "Learn more about Kaiden McIntosh, including frontend development approach, cybersecurity background, and personal work style.",
+    url: `${siteConfig.siteUrl}/about`,
+  },
+};
+
 export default function AboutPage() {
   return (
     <div className="min-h-screen bg-transparent">
@@ -39,6 +56,7 @@ export default function AboutPage() {
             id="about"
             eyebrow="Intro"
             title="About"
+            headingLevel={1}
             titleScrollFlow
           >
             <div className="grid gap-8 md:grid-cols-12 md:items-start">

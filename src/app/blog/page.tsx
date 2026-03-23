@@ -1,9 +1,11 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { Section } from "@/components/Section";
 import { SiteShell } from "@/components/SiteShell";
 import { TileSpotlight } from "@/components/TileSpotlight";
 import { PageReveal } from "@/components/PageReveal";
 import { profile } from "@/content/profile";
+import { siteConfig } from "@/lib/seo";
 
 const placeholderPosts = [
   {
@@ -22,6 +24,25 @@ const placeholderPosts = [
   },
 ];
 
+export const metadata: Metadata = {
+  title: "Blog",
+  description:
+    "Read blog updates from Kaiden McIntosh on frontend development, UI ideas, project notes, and security insights.",
+  robots: {
+    index: false,
+    follow: false,
+  },
+  alternates: {
+    canonical: "/blog",
+  },
+  openGraph: {
+    title: "Blog | Kaiden McIntosh",
+    description:
+      "Read blog updates from Kaiden McIntosh on frontend development, UI ideas, project notes, and security insights.",
+    url: `${siteConfig.siteUrl}/blog`,
+  },
+};
+
 export default function BlogPage() {
   return (
     <div className="min-h-screen bg-transparent">
@@ -29,7 +50,7 @@ export default function BlogPage() {
         <div className="min-h-[2rem] sm:min-h-[3rem]" aria-hidden />
 
         <PageReveal>
-          <Section id="posts" eyebrow="Writing" title="Blog">
+          <Section id="posts" eyebrow="Writing" title="Blog" headingLevel={1}>
           <p className="mb-8 text-sm leading-7 text-muted sm:text-base dark:text-white">
             Nothing here for now. I am still setting this up and will publish posts soon.
           </p>

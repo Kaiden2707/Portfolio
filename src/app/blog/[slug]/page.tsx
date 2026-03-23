@@ -1,8 +1,10 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Section } from "@/components/Section";
 import { SiteShell } from "@/components/SiteShell";
 import { profile } from "@/content/profile";
+import { siteConfig } from "@/lib/seo";
 
 const posts: Record<
   string,
@@ -23,6 +25,39 @@ const posts: Record<
   },
 };
 
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const post = posts[slug];
+  if (!post) {
+    return {
+      title: "Post not found",
+      robots: { index: false, follow: false },
+    };
+  }
+
+  return {
+    title: post.title,
+    description: post.excerpt,
+    robots: {
+      index: false,
+      follow: false,
+    },
+    alternates: {
+      canonical: `/blog/${slug}`,
+    },
+    openGraph: {
+      title: `${post.title} | Kaiden McIntosh`,
+      description: post.excerpt,
+      url: `${siteConfig.siteUrl}/blog/${slug}`,
+      type: "article",
+    },
+  };
+}
+
 export default async function BlogPostPage({
   params,
 }: {
@@ -37,7 +72,7 @@ export default async function BlogPostPage({
       <SiteShell name={profile.name}>
         <div className="min-h-[2rem] sm:min-h-[3rem]" aria-hidden />
 
-        <Section id="post" eyebrow="Blog" title={post.title}>
+        <Section id="post" eyebrow="Blog" title={post.title} headingLevel={1}>
           <div className="flex flex-wrap items-baseline justify-between gap-2 text-sm text-muted">
             <span className="font-mono">{post.date}</span>
             <Link

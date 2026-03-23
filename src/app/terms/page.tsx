@@ -1,3 +1,13 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Terms of Service",
+  description: "Terms of service for the Kaiden McIntosh portfolio website.",
+  alternates: {
+    canonical: "/terms",
+  },
+};
+
 export default function TermsPage() {
   return (
     <main className="min-h-screen bg-[#0b0d12] px-8 py-8 text-[#f5f5f5]">

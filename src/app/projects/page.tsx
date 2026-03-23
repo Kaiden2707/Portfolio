@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Section } from "@/components/Section";
@@ -6,6 +7,22 @@ import { TileSpotlight } from "@/components/TileSpotlight";
 import { PageReveal } from "@/components/PageReveal";
 import { projectDocs } from "@/content/projectDocs";
 import { profile } from "@/content/profile";
+import { siteConfig } from "@/lib/seo";
+
+export const metadata: Metadata = {
+  title: "Projects",
+  description:
+    "Browse project highlights and case-study documents by Kaiden McIntosh, including university and client-focused work.",
+  alternates: {
+    canonical: "/projects",
+  },
+  openGraph: {
+    title: "Projects | Kaiden McIntosh",
+    description:
+      "Browse project highlights and case-study documents by Kaiden McIntosh, including university and client-focused work.",
+    url: `${siteConfig.siteUrl}/projects`,
+  },
+};
 
 export default function ProjectsPage() {
   return (
@@ -13,7 +30,7 @@ export default function ProjectsPage() {
       <SiteShell name={profile.name}>
         <div className="min-h-[2rem] sm:min-h-[3rem]" aria-hidden />
         <PageReveal>
-          <Section id="projects" eyebrow="Next up" title="Projects" titleScrollFlow>
+          <Section id="projects" eyebrow="Next up" title="Projects" headingLevel={1} titleScrollFlow>
             <div className="space-y-6">
               <p className="text-center text-sm leading-7 text-muted sm:text-base dark:text-white">
                 These are university projects from EDUVOS that I&apos;ve completed. Real websites from employers will be shown here soon.
@@ -31,7 +48,7 @@ export default function ProjectsPage() {
                       <div className="relative aspect-[4/3] w-full overflow-hidden bg-muted">
                         <Image
                           src={doc.previewImage}
-                          alt=""
+                          alt={`${doc.title} project preview`}
                           fill
                           className="object-cover transition duration-300 group-hover:scale-105"
                           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
