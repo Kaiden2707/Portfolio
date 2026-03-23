@@ -46,7 +46,10 @@ export default function Home() {
                   <span className="block">{firstName}</span>
                   {lastName ? <span className="block">{lastName}</span> : null}
                 </h1>
-                <p className="mx-auto inline-flex w-[26ch] items-baseline justify-start pl-[4ch] text-left font-ethnocentric font-extralight text-base tracking-normal text-white sm:w-[28ch] sm:pl-[4.5ch] sm:text-lg">
+                <p className="font-ethnocentric text-sm font-extralight tracking-wide text-white/90 sm:text-base">
+                  Frontend web developer
+                </p>
+                <p className="mx-auto mt-3 inline-flex w-[26ch] items-baseline justify-start pl-[4ch] text-left font-ethnocentric font-extralight text-base tracking-normal text-white sm:mt-4 sm:w-[28ch] sm:pl-[4.5ch] sm:text-lg">
                   <span>I build</span>
                   <FlipWords
                     words={["modern", "clean", "fast"]}
