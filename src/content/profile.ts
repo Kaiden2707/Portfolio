@@ -4,9 +4,9 @@ export const profile = {
   about: [
     "I am a frontend developer who delivers fast, modern and \"visually appealing\" web experiences. While design is important, I also ensure \"functionality\".",
     "I create real projects while testing ideas, identifying weaknesses and optimizing outcomes.",
-    "I focus on maintaining \"open communication\" with my employers to ensure the website \"aligns\" with their \"objectives\" and most importantly the \"customers needs\". My goal when building is clear: Customer focused solutions, clean execution and \"reliable results\".",
+    "I focus on maintaining \"open communication\" with my employers to ensure the website \"aligns\" with their \"objectives\" and most importantly the \"customers needs\".\nMy goal when building is clear: Customer focused solutions, clean execution and \"reliable results\".",
     "Understanding how systems can be \"exploited\" and where vulnerabilities appear, changes how I \"approach\" building websites.",
-    "On all my websites, I consider the full stack and how all components link together and build with both \"performance\" and \"responsibility\" in mind.",
+    "On all my websites, I consider the full stack and how all components link together\nand build with both \"performance\" and \"responsibility\" in mind.",
   ],
   aboutCyberBullets: [
     "Secure data handling",

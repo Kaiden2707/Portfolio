@@ -69,7 +69,7 @@ export default function AboutPage() {
                     const normalized = p.replace(/,(?!\s)/g, ", ");
                     const segments = segmentizeQuoted(normalized);
                     return (
-                      <p key="who" className="text-sm leading-7 text-foreground/90 sm:text-base dark:text-white">
+                      <p key="who" className="whitespace-pre-line text-sm leading-7 text-foreground/90 sm:text-base dark:text-white">
                         {segments.map((seg, j) => {
                           const prevTrimmed = segments[j - 1]?.text.trim() ?? "";
                           const currTrimmed = seg.text.trim();
@@ -105,7 +105,7 @@ export default function AboutPage() {
                     const normalized = p.replace(/,(?!\s)/g, ", ");
                     const segments = segmentizeQuoted(normalized);
                     return (
-                      <p key={`how-${i}`} className="text-sm leading-7 text-foreground/90 sm:text-base dark:text-white">
+                      <p key={`how-${i}`} className="whitespace-pre-line text-sm leading-7 text-foreground/90 sm:text-base dark:text-white">
                         {segments.map((seg, j) => {
                           const prevTrimmed = segments[j - 1]?.text.trim() ?? "";
                           const currTrimmed = seg.text.trim();
@@ -141,7 +141,7 @@ export default function AboutPage() {
                     const normalized = p.replace(/,(?!\s)/g, ", ");
                     const segments = segmentizeQuoted(normalized);
                     return (
-                      <p key="cyber-intro" className="text-sm leading-7 text-foreground/90 sm:text-base dark:text-white">
+                      <p key="cyber-intro" className="whitespace-pre-line text-sm leading-7 text-foreground/90 sm:text-base dark:text-white">
                         {segments.map((seg, j) => {
                           const prevTrimmed = segments[j - 1]?.text.trim() ?? "";
                           const currTrimmed = seg.text.trim();
@@ -174,7 +174,7 @@ export default function AboutPage() {
                     const normalized = p.replace(/,(?!\s)/g, ", ");
                     const segments = segmentizeQuoted(normalized);
                     return (
-                      <p key="cyber-outro" className="mt-3 text-sm leading-7 text-foreground/90 sm:text-base dark:text-white">
+                      <p key="cyber-outro" className="mt-3 whitespace-pre-line text-sm leading-7 text-foreground/90 sm:text-base dark:text-white">
                         {segments.map((seg, j) => {
                           const prevTrimmed = segments[j - 1]?.text.trim() ?? "";
                           const currTrimmed = seg.text.trim();
