@@ -2,46 +2,60 @@
 
 import { useEffect, useRef } from "react";
 import * as echarts from "echarts";
+import { useTheme } from "next-themes";
 
-const LABELS = [
+const AXIS_LABELS = [
   "Pentest +",
-  "Network +",
+  "Linux Administration",
   "CySA +",
   "A +",
   "Security +",
-  "Linux Administration",
+  "Network +",
 ] as const;
 
-const VALUES = [88, 83, 78, 65, 84, 76] as const;
+const VALUES = [88, 70, 78, 65, 84, 60] as const;
+const LABEL_POSITIONS = [
+  { top: "12%", left: "50%", translate: "-translate-x-1/2", align: "text-center" },
+  { top: "31%", left: "74%", translate: "translate-x-0", align: "text-left" },
+  { top: "65%", left: "74%", translate: "translate-x-0", align: "text-left" },
+  { top: "88%", left: "50%", translate: "-translate-x-1/2", align: "text-center" },
+  { top: "65%", left: "26%", translate: "-translate-x-full", align: "text-right" },
+  { top: "31%", left: "26%", translate: "-translate-x-full", align: "text-right" },
+] as const;
 
 export function AboutSkillsRadar() {
   const chartRef = useRef<HTMLDivElement>(null);
+  const { resolvedTheme } = useTheme();
 
   useEffect(() => {
     if (!chartRef.current) return;
     const chart = echarts.init(chartRef.current);
 
-    const indicator = LABELS.map((name) => ({ name, max: 100 }));
+    const indicator = AXIS_LABELS.map(() => ({
+      // HTML labels are rendered around the chart for crisp, selectable text.
+      name: "",
+      max: 100,
+    }));
     const neon = "#c084fc";
     const neonSoft = "rgba(192,132,252,0.16)";
-    const labelVisible = "rgba(232, 224, 255, 0.92)";
+    const isDarkMode =
+      resolvedTheme === "dark" ||
+      (resolvedTheme == null && document.documentElement.classList.contains("dark"));
+    const labelColor = isDarkMode ? "#ffffff" : "#111124";
 
     chart.setOption({
       animation: true,
       animationDuration: 1250,
       animationEasing: "cubicOut",
       radar: {
-        center: ["50%", "56%"],
-        radius: "66%",
+        center: ["50%", "52%"],
+        radius: "50%",
         startAngle: 90,
         splitNumber: 4,
         shape: "polygon",
         indicator,
-        axisName: {
-          color: "rgba(232, 224, 255, 0)",
-          fontSize: 11,
-          fontWeight: 500,
-        },
+        axisNameGap: 26,
+        axisName: { show: false, color: labelColor, fontSize: 14, fontWeight: 700 },
         axisLine: {
           lineStyle: {
             color: "rgba(192,132,252,0.25)",
@@ -90,29 +104,39 @@ export function AboutSkillsRadar() {
       ],
     });
 
-    const labelTimer = window.setTimeout(() => {
-      chart.setOption({
-        radar: {
-          axisName: { color: labelVisible },
-        },
-      });
-    }, 500);
-
     const onResize = () => chart.resize();
     window.addEventListener("resize", onResize);
     return () => {
-      window.clearTimeout(labelTimer);
       window.removeEventListener("resize", onResize);
       chart.dispose();
     };
-  }, []);
+  }, [resolvedTheme]);
 
   return (
-    <div className="mt-6 rounded-2xl border border-accent/35 bg-[#0d0b17]/95 p-4 shadow-[0_0_22px_rgba(var(--accent-rgb)/0.24)]">
-      <p className="mb-2 text-center text-xs font-medium uppercase tracking-[0.16em] text-white/75">
+    <div className="mt-6">
+      <p className="mb-3 text-center font-nulshock text-lg font-semibold text-foreground sm:text-xl dark:text-white">
         6 Courses
       </p>
-      <div ref={chartRef} className="h-[18rem] w-full" aria-label="Cyber security course radar chart" />
+      <div className="relative h-[20rem] w-full">
+        <div
+          ref={chartRef}
+          className="absolute inset-0"
+          aria-label="Cyber security course radar chart"
+        />
+        {AXIS_LABELS.map((label, idx) => {
+          const pos = LABEL_POSITIONS[idx];
+          const isBottomCenter = idx === 3;
+          return (
+            <span
+              key={label}
+              className={`absolute z-10 max-w-[10rem] -translate-y-1/2 text-sm font-semibold leading-5 text-foreground dark:text-white ${pos.translate} ${pos.align} ${isBottomCenter ? "min-w-[3rem]" : ""}`}
+              style={{ top: pos.top, left: pos.left }}
+            >
+              {label}
+            </span>
+          );
+        })}
+      </div>
     </div>
   );
 }
