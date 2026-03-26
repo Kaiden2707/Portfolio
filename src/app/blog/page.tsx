@@ -13,7 +13,7 @@ const placeholderPosts = [
     title: "Nothing here just yet",
     excerpt:
       "This section is still in progress. Posts will start appearing here soon.",
-    date: "2025-02-23",
+    date: "2026-03-05",
   },
   {
     slug: "coming-soon",
