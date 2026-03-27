@@ -57,7 +57,6 @@ export default function AboutPage() {
             eyebrow="Intro"
             title="About"
             headingLevel={1}
-            titleScrollFlow
           >
             <div className="grid gap-8 md:grid-cols-12 md:items-start">
               <div className="md:col-span-8">
@@ -211,7 +210,7 @@ export default function AboutPage() {
               </div>
             </div>
           </Section>
-          <Section id="personal" eyebrow="A bit more human" title="Behind the Code" titleScrollFlow>
+          <Section id="personal" eyebrow="A bit more human" title="Behind the Code">
             <HumanStorySection />
           </Section>
         </PageReveal>

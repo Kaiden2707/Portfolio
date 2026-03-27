@@ -1,12 +1,9 @@
-"use client";
-
 import type { ReactNode } from "react";
 
 export function Section({
   id,
   title,
   eyebrow,
-  titleScrollFlow,
   headingLevel = 2,
   children,
   containerClassName,
@@ -14,7 +11,6 @@ export function Section({
   id: string;
   title: string;
   eyebrow?: string;
-  titleScrollFlow?: boolean;
   headingLevel?: 1 | 2;
   children: ReactNode;
   containerClassName?: string;

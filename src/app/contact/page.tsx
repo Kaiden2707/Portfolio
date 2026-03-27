@@ -27,7 +27,7 @@ export default function ContactPage() {
       <SiteShell name={profile.name}>
         <div className="min-h-[2rem] sm:min-h-[3rem]" aria-hidden />
         <PageReveal>
-          <Section id="contact" eyebrow="Connect" title="Contact" headingLevel={1} titleScrollFlow>
+          <Section id="contact" eyebrow="Connect" title="Contact" headingLevel={1}>
             <ContactPanel />
           </Section>
         </PageReveal>

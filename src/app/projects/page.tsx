@@ -30,7 +30,7 @@ export default function ProjectsPage() {
       <SiteShell name={profile.name}>
         <div className="min-h-[2rem] sm:min-h-[3rem]" aria-hidden />
         <PageReveal>
-          <Section id="projects" eyebrow="Next up" title="Projects" headingLevel={1} titleScrollFlow>
+          <Section id="projects" eyebrow="Next up" title="Projects" headingLevel={1}>
             <div className="space-y-6">
               <p className="text-center text-sm leading-7 text-muted sm:text-base dark:text-white">
                 These are university projects from EDUVOS that I&apos;ve completed. Real websites from employers will be shown here soon.

@@ -36,7 +36,7 @@ export default function SkillsPage() {
       <SiteShell name={profile.name}>
         <div className="min-h-[2rem] sm:min-h-[3rem]" aria-hidden />
         <PageReveal>
-          <Section id="skills" eyebrow="Stack" title="Skills" headingLevel={1} titleScrollFlow>
+          <Section id="skills" eyebrow="Stack" title="Skills" headingLevel={1}>
             <div className="max-w-2xl space-y-3 text-muted-foreground">
               {Array.isArray(profile.skillsIntro)
                 ? profile.skillsIntro.map((para, i) => (
