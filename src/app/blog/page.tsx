@@ -7,13 +7,22 @@ import { PageReveal } from "@/components/PageReveal";
 import { profile } from "@/content/profile";
 import { siteConfig } from "@/lib/seo";
 
+function formatToday() {
+  return new Intl.DateTimeFormat("en-ZA", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  }).format(new Date());
+}
+
 const placeholderPosts = [
   {
     slug: "welcome",
     title: "Nothing here just yet",
     excerpt:
       "This section is still in progress. Posts will start appearing here soon.",
-    date: "2026-03-05",
+    /** `null` = always show today’s date when the page is rendered */
+    date: null as string | null,
   },
   {
     slug: "coming-soon",
@@ -23,6 +32,9 @@ const placeholderPosts = [
     date: "—",
   },
 ];
+
+/** Ensures the welcome tile date reflects the current day on each request, not build time */
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Blog",
@@ -62,7 +74,7 @@ export default function BlogPage() {
                     <div className="flex flex-wrap items-baseline justify-between gap-2">
                       <h3 className="text-sm font-semibold">{post.title}</h3>
                       <span className="font-mono text-xs text-muted">
-                        {post.date}
+                        {post.date ?? formatToday()}
                       </span>
                     </div>
                     <p className="mt-2 text-sm leading-6 text-muted">
