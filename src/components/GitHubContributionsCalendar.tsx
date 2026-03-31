@@ -130,7 +130,7 @@ export function GitHubContributionsCalendar({
         {statBlocks.map(({ label, value }) => (
           <div
             key={label}
-            className="rounded-lg border border-border bg-surface/80 px-4 py-3 text-center"
+            className="rounded-lg border border-fuchsia-400/55 bg-surface/80 px-4 py-3 text-center shadow-[0_0_20px_rgba(168,85,247,0.28),0_0_36px_rgba(124,58,237,0.12)] dark:border-fuchsia-400/45 dark:shadow-[0_0_22px_rgba(168,85,247,0.35),0_0_40px_rgba(91,33,182,0.15)]"
           >
             <div className="text-[10px] uppercase tracking-wider text-muted">
               {label}
