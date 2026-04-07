@@ -29,7 +29,7 @@ export default function PrivacyPage() {
         <p className="text-lg leading-8">
           If you have questions about this policy, contact: Kaidenmcintosh27@gmail.com
         </p>
-        <p className="mt-8 font-mono text-lg text-[#f5f5f5]/70">{'>>'}</p>
+        <p className="mt-8 font-mono text-lg text-[#f5f5f5]/70">{'>> ...'}</p>
       </div>
     </main>
   );
