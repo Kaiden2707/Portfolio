@@ -25,7 +25,7 @@ export default function TermsPage() {
         <p className="text-lg leading-8">
           The site owner is not liable for misuse of the platform or its content.
         </p>
-        <p className="mt-8 font-mono text-lg text-[#f5f5f5]/70">{'>>'}</p>
+        <p className="mt-8 font-mono text-lg text-[#f5f5f5]/70">{'>> ...'}</p>
       </div>
     </main>
   );
